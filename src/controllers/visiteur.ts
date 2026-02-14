@@ -18,6 +18,3 @@ export const deleteVisiteur = async (req: Request, res: Response) => {}
 
 // CONTROLEURS POUR LA RECUPERATION DE TOUS LES VISITEURS (ADMIN UNIQUEMENT)
 export const getAllVisiteurs = async (req: Request, res: Response) => {}
-
-// CONTROLEURS POUR LA RECUPERATION DES INFORMATIONS D'UN VISITEUR SPECIFIQUE (ADMIN UNIQUEMENT)
-export const getVisiteurByIDAdmin = async (req: Request, res: Response) => {}

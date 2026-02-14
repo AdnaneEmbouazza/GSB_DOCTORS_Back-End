@@ -28,7 +28,7 @@ router.get ('/account/:id' , isloggedOn , visiteurControleur.getVisiteurByID);
 router.put ('/account/:id' , isloggedOn , visiteurControleur.updateVisiteur);
 router.delete ('/account/:id' , isloggedOn , visiteurControleur.deleteVisiteur);
 
-// ROUTES ADMIN (authentification + rôle admin) => implique mofification dans la BDD
+// ROUTES ADMIN (authentification + rôle admin) => implique mofification dans la BDD (à voir si je le fais ou pas)
 // =======================================
 
 /*
