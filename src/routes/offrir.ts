@@ -1,4 +1,4 @@
 import { Router } from "express";
-//import * as offrirControleur from "../controllers/offrir.js";
+import * as offrirControleur from "../controllers/offrir";
 
 const router = Router();

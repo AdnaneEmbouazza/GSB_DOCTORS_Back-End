@@ -1,4 +1,5 @@
 import { Router } from "express";
-//import * as familleControleur from "../controllers/famille.js";
+import * as familleControlleur from '../controllers/visiteur';
+
 
 const router = Router();
