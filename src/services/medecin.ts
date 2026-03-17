@@ -9,7 +9,7 @@ export function getMedecinByID (id: number): Promise<Medecin> {
 
 }
 
-export function createMedecins (data: CreateMedecinDTO): Promise<Medecin> {
+export function createMedecin (data: CreateMedecinDTO): Promise<Medecin> {
 
 }
 

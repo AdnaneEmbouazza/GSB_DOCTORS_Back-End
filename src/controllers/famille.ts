@@ -10,7 +10,7 @@ export function listAllFamilles(req: Request, res: Response) {
 
 export function listFamilleByID(req: Request, res: Response){
     const {id} = req.params;
-    const famille = familleService.getFamilleByID(id);
+    const famille = familleService.getFamilleByID(String(id));
     if (famille) {
         res.json(famille);
     } else {
