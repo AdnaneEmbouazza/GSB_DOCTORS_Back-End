@@ -11,6 +11,10 @@ Ce projet est une API REST construite avec Node.js, Express et TypeScript pour g
 - **services/** : Gère la logique métier et l’accès aux données.
 - **app.ts** : Point d’entrée de l’application.
 
+## ORM 
+
+- PRISMA 
+
 ## Prérequis
 
 - Node.js >= 16
