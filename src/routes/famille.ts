@@ -5,10 +5,10 @@ const router = Router();
 
 router.get('/familles' , familleControlleur.listAllFamilles);
 
-router.get('/familles/:id' , familleControlleur.listFamilleByID);
+router.get('/famille/:id' , familleControlleur.listFamilleByID);
 
-router.post('/familles' , familleControlleur.createFamille);
+router.post('/famille' , familleControlleur.createFamille);
 
-router.put('/familles/:id' , familleControlleur.updateFamilleByID);
+router.put('/famille/:id' , familleControlleur.updateFamilleByID);
 
-router.delete('/familles/:id' , familleControlleur.deleteFamilleByID);
+router.delete('/famille/:id' , familleControlleur.deleteFamilleByID);

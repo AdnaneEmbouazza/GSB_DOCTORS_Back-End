@@ -22,7 +22,7 @@ export function createFamille (req: Request, res: Response){
     const data = req.body;
     const newFamille = familleService.createFamille(data);
     if (newFamille) {
-    res.json(newFamille);
+        res.json(newFamille);
     }
     else{
         // gérer les cas d'erreur , mettre en place une gestion d'erreur plus robuste
