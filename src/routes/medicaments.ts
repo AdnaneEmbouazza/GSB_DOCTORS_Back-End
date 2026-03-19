@@ -1,16 +1,27 @@
 import { Router } from "express";
+import {isloggedOn} from "../middleware/auth";
 import * as medicamentsControleur from "../controllers/medicaments";
 
 const router = Router();
 
-router.get('/medicaments' , medicamentsControleur.listAllMedicaments);
+// ROUTES PRIVEES (authentification )
 
-router.get('/medicament' , medicamentsControleur.listAllMedicamentsByID);
+/*
+GET /GSB/medicaments => affiche la liste de tous les medicaments
+GET /GSB/medicament/:id => affiche les infos d'un medicament spécifique
+POST /GSB/medicament => crée un nouveau medicament
+PUT /GSB/medicament/:id => modifie un medicament spécifique
+DELETE /GSB/medicament/:id => supprime un medicament spécifique
+*/
 
-router.post('/medicament/:id' , medicamentsControleur.createMedicament);
+router.get('/medicaments' ,isloggedOn , medicamentsControleur.listAllMedicaments);
 
-router.put('/medicament/:id' , medicamentsControleur.updateMedicamentByID);
+router.get('/medicament' , isloggedOn , medicamentsControleur.listMedicamentsByID);
 
-router.delete('/medicament/:id' , medicamentsControleur.deleteMedicamentByID);
+router.post('/medicament/:id' , isloggedOn , medicamentsControleur.createMedicament);
+
+router.put('/medicament/:id' , isloggedOn , medicamentsControleur.updateMedicamentByID);
+
+router.delete('/medicament/:id' , isloggedOn , medicamentsControleur.deleteMedicamentByID);
 
 export default router;

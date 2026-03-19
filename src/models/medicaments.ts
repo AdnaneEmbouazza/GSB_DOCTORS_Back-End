@@ -6,7 +6,7 @@ export interface Medicament {
   composition: string;
   effets: string;
   contreIndications: string;
-}
+};
 
 //pour la création (POST)
 export interface CreateMedicamentDTO {
@@ -16,7 +16,7 @@ export interface CreateMedicamentDTO {
   composition: string;
   effets: string;
   contreIndications: string;
-}
+};
 
 //pour la modification (PUT/PATCH)
 export interface UpdateMedicamentDTO {
@@ -26,4 +26,4 @@ export interface UpdateMedicamentDTO {
   effets?: string;
   contreIndications?: string;
   //ID non modifiable
-}
+};

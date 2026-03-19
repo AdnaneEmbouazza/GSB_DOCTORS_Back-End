@@ -9,7 +9,7 @@ export interface Visiteur {
   cp: string;
   ville: string;
   dateEmbauche: string;
-}
+};
 
 // Pour la création (POST)
 export interface CreateVisiteurDTO {
@@ -22,7 +22,7 @@ export interface CreateVisiteurDTO {
   ville: string;
   dateEmbauche: string;
   // ID auto incrémenté
-}
+};
 
 // Pour la modification (PUT/PATCH)
 export interface UpdateVisiteurDTO {
@@ -35,4 +35,4 @@ export interface UpdateVisiteurDTO {
   ville?: string;
   dateEmbauche?: string;
   // ID non modifiable
-}
+};

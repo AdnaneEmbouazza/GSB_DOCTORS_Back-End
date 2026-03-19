@@ -6,7 +6,7 @@ export interface Medecin {
   tel: string | null;
   specialitecomplementaire: string | null;
   departement: number;
-}
+};
 
 // pour la création (POST)
 export interface CreateMedecinDTO {
@@ -17,7 +17,7 @@ export interface CreateMedecinDTO {
   specialitecomplementaire?: string | null;
   departement: number;
   // ID auto incrémenté
-}
+};
 
 // pour la modification (PUT/PATCH)
 export interface UpdateMedecinDTO {
@@ -28,4 +28,4 @@ export interface UpdateMedecinDTO {
   specialitecomplementaire?: string | null;
   departement?: number;
   //ID non modifiable
-}
+};

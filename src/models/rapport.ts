@@ -5,7 +5,7 @@ export interface Rapport {
   bilan: string;
   idVisiteur: string;
   idMedecin: number;
-}
+};
 
 //pour la création (POST)
 export interface CreateRapportDTO {
@@ -15,7 +15,7 @@ export interface CreateRapportDTO {
   idVisiteur: string;
   idMedecin: number;
   // ID auto incrémenté
-}
+};
 
 //pour la modification (PUT/PATCH)
 export interface UpdateRapportDTO {
@@ -25,4 +25,4 @@ export interface UpdateRapportDTO {
   idVisiteur?: string;
   idMedecin?: number;
   //ID non modifiable
-}
+};

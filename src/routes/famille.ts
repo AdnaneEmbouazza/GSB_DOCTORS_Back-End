@@ -1,16 +1,27 @@
 import { Router } from "express";
+import {isloggedOn} from "../middleware/auth";
 import * as familleControlleur from '../controllers/famille';
 
 const router = Router();
 
-router.get('/familles' , familleControlleur.listAllFamilles);
+// ROUTES PRIVES (authentification )
 
-router.get('/famille/:id' , familleControlleur.listFamilleByID);
+/* 
+GET /GSB/familles => affiche la liste de toutes les familles
+GET /GSB/famille/:id => affiche les infos d'une famille spécifique
+POST /GSB/famille => crée une nouvelle famille
+PUT /GSB/famille/:id => modifie une famille spécifique
+DELETE /GSB/famille/:id => supprime une famille spécifique
+*/
 
-router.post('/famille' , familleControlleur.createFamille);
+router.get('/familles', isloggedOn , familleControlleur.listAllFamilles);
 
-router.put('/famille/:id' , familleControlleur.updateFamilleByID);
+router.get('/famille/:id', isloggedOn , familleControlleur.listFamilleByID);
 
-router.delete('/famille/:id' , familleControlleur.deleteFamilleByID);
+router.post('/famille' , isloggedOn ,familleControlleur.createFamille);
+
+router.put('/famille/:id' , isloggedOn , familleControlleur.updateFamilleByID);
+
+router.delete('/famille/:id' , isloggedOn , familleControlleur.deleteFamilleByID);
 
 export default router;
