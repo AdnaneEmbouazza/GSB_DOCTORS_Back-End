@@ -20,3 +20,7 @@ export function updateVisiteurByID (id: number, data: UpdateVisiteurDTO): Promis
 export function deleteVisiteurByID (id: number ): Promise<Visiteur> {
 
 }
+
+export function login (email: string, password: string): Promise<string> {
+
+}

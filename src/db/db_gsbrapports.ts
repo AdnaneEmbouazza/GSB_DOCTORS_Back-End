@@ -11,7 +11,7 @@ export const db = new Pool(
     password : process.env.DB_PASSWORD,
     port: parseInt(process.env.DB_PORT || '33306')
     }
-)
+);
 
 
 // Test connexion au démarrage
