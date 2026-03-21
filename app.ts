@@ -1,0 +1,29 @@
+import { swaggerUi, specs } from './src/swagger';
+import express from 'express';
+import familleRouter from './src/routes/famille';
+import medicamentRouter from './src/routes/medicaments';
+import medecinRouter from './src/routes/medecin';
+import visiteurRouter from './src/routes/visiteur';
+import rapportRouter from './src/routes/rapport';
+import offreRouter from './src/routes/offrir';
+
+
+const app = express();
+const PORT = 3000;
+
+// Swagger documentation
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs));
+
+app.use(express.json());
+app.use('/api/familles', familleRouter);
+app.use('/api/medicaments', medicamentRouter);
+app.use('/api/medecins', medecinRouter);
+app.use('/api/visiteurs', visiteurRouter);
+app.use('/api/rapports', rapportRouter);
+app.use('/api/offres', offreRouter);
+
+// Démarrage du serveur
+app.listen(PORT, () => {
+  console.log(`Server running on http://localhost:${PORT}`);
+  console.log(`Swagger docs at http://localhost:${PORT}/api-docs`);
+});
