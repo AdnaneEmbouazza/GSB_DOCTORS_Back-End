@@ -1,6 +1,7 @@
 import { Router } from "express";
 import {isloggedOn} from "../middleware/authHandler";
 import * as familleControlleur from '../controllers/famille';
+import asyncHandler from "../middleware/asyncHandler";
 
 const router = Router();
 
@@ -14,14 +15,16 @@ PUT /GSB/famille/:id => modifie une famille spécifique
 DELETE /GSB/famille/:id => supprime une famille spécifique
 */
 
-router.get('/familles', isloggedOn , familleControlleur.listAllFamilles);
+// Async handler pour gérer les throw d'erreurs dans les fonctions asynchrones du contrôleurs
 
-router.get('/famille/:id', isloggedOn , familleControlleur.listFamilleByID);
+router.get('/familles', isloggedOn , asyncHandler(familleControlleur.listAllFamilles));
 
-router.post('/famille' , isloggedOn ,familleControlleur.createFamille);
+router.get('/famille/:id', isloggedOn , asyncHandler(familleControlleur.listFamilleByID));
 
-router.put('/famille/:id' , isloggedOn , familleControlleur.updateFamilleByID);
+router.post('/famille' , isloggedOn , asyncHandler(familleControlleur.createFamille));
 
-router.delete('/famille/:id' , isloggedOn , familleControlleur.deleteFamilleByID);
+router.put('/famille/:id' , isloggedOn , asyncHandler(familleControlleur.updateFamilleByID));
+
+router.delete('/famille/:id' , isloggedOn , asyncHandler(familleControlleur.deleteFamilleByID));
 
 export default router;

@@ -2,7 +2,7 @@ import winston from 'winston';
 
 // Configuration de Winston pour le logging
 const logger = winston.createLogger({
-    level: 'info', // Niveau de log par défaut
+    level: 'http', // Niveau de log par défaut
 
     format: winston.format.combine(
         winston.format.timestamp({ format: 'YYYY-MM-DD HH:mm:ss' }), // Format du timestamp

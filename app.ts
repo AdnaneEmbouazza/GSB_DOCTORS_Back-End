@@ -6,6 +6,9 @@ import medecinRouter from './src/routes/medecin';
 import visiteurRouter from './src/routes/visiteur';
 import rapportRouter from './src/routes/rapport';
 import offreRouter from './src/routes/offrir';
+import {isloggedOn} from "./src/middleware/authHandler";
+import { error } from 'node:console';
+import { errorHandler } from './src/middleware/errorHandler';
 
 
 const app = express();
@@ -22,6 +25,7 @@ app.use('/api/visiteurs', visiteurRouter);
 app.use('/api/rapports', rapportRouter);
 app.use('/api/offres', offreRouter);
 
+app.use(errorHandler);
 
 app.get('/', (req, res) => {
   res.json({ message: 'Bienvenue sur l\'API de GSB' });
