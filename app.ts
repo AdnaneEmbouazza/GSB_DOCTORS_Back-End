@@ -22,6 +22,11 @@ app.use('/api/visiteurs', visiteurRouter);
 app.use('/api/rapports', rapportRouter);
 app.use('/api/offres', offreRouter);
 
+
+app.get('/', (req, res) => {
+  res.json({ message: 'Bienvenue sur l\'API de GSB' });
+});
+
 // Démarrage du serveur
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);

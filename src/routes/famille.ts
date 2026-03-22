@@ -1,5 +1,5 @@
 import { Router } from "express";
-import {isloggedOn} from "../middleware/auth";
+import {isloggedOn} from "../middleware/authHandler";
 import * as familleControlleur from '../controllers/famille';
 
 const router = Router();
