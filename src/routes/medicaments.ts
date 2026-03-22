@@ -1,6 +1,7 @@
 import { Router } from "express";
 import {isloggedOn} from "../middleware/authHandler";
 import * as medicamentsControleur from "../controllers/medicaments";
+import asyncHandler from "../middleware/asyncHandler";
 
 const router = Router();
 
@@ -14,14 +15,14 @@ PUT /GSB/medicament/:id => modifie un medicament spécifique
 DELETE /GSB/medicament/:id => supprime un medicament spécifique
 */
 
-router.get('/medicaments' ,isloggedOn , medicamentsControleur.listAllMedicaments);
+router.get('/medicaments' ,isloggedOn , asyncHandler(medicamentsControleur.listAllMedicaments));
 
-router.get('/medicament' , isloggedOn , medicamentsControleur.listMedicamentsByID);
+router.get('/medicament' , isloggedOn , asyncHandler(medicamentsControleur.listMedicamentsByID));
 
-router.post('/medicament/:id' , isloggedOn , medicamentsControleur.createMedicament);
+router.post('/medicament/:id' , isloggedOn , asyncHandler(medicamentsControleur.createMedicament));
 
-router.put('/medicament/:id' , isloggedOn , medicamentsControleur.updateMedicamentByID);
+router.put('/medicament/:id' , isloggedOn , asyncHandler(medicamentsControleur.updateMedicamentByID));
 
-router.delete('/medicament/:id' , isloggedOn , medicamentsControleur.deleteMedicamentByID);
+router.delete('/medicament/:id' , isloggedOn , asyncHandler(medicamentsControleur.deleteMedicamentByID));
 
 export default router;

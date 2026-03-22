@@ -1,6 +1,7 @@
 import { Router } from "express";
 import {isloggedOn} from "../middleware/authHandler";
 import * as offrirControlleur from "../controllers/offrir";
+import asyncHandler from "../middleware/asyncHandler";
 
 const router = Router();
 
@@ -15,15 +16,15 @@ PUT /GSB/offrir/:id => modifie un offre spécifique
 DELETE /GSB/offrir/:id => supprime un offre spécifique
 */
 
-router.get('/offrir' ,isloggedOn , offrirControlleur.listAllOffre);
+router.get('/offrir' ,isloggedOn , asyncHandler(offrirControlleur.listAllOffre));
 
-router.get('/offrir/:id' , isloggedOn , offrirControlleur.listOffreByID);
+router.get('/offrir/:id' , isloggedOn , asyncHandler(offrirControlleur.listOffreByID));
 
-router.post('/offrir' , isloggedOn , offrirControlleur.createOffre);
+router.post('/offrir' , isloggedOn , asyncHandler(offrirControlleur.createOffre));
 
-router.put('/offrir/:id' , isloggedOn , offrirControlleur.updateOffreByID);
+router.put('/offrir/:id' , isloggedOn , asyncHandler(offrirControlleur.updateOffreByID));
 
-router.delete('/offrir/:id' , isloggedOn , offrirControlleur.deleteOffreByID);
+router.delete('/offrir/:id' , isloggedOn , asyncHandler(offrirControlleur.deleteOffreByID));
  
 
 export default router;

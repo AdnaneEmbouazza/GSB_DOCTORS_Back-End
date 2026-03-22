@@ -1,6 +1,7 @@
 import { Router } from "express";
 import {isloggedOn} from "../middleware/authHandler";
 import * as medecinControleur from "../controllers/medecin";
+import asyncHandler from "../middleware/asyncHandler";
 
 const router = Router();
 
@@ -14,14 +15,14 @@ PUT /GSB/medecin/:id => modifie un médecin spécifique
 DELETE /GSB/medecin/:id => supprime un médecin spécifique
 */
 
-router.get('/medecins' , isloggedOn , medecinControleur.listAllMedecins);
+router.get('/medecins' , isloggedOn , asyncHandler(medecinControleur.listAllMedecins));
 
-router.get('/medecin/:id' , isloggedOn , medecinControleur.listMedecinsByID);
+router.get('/medecin/:id' , isloggedOn , asyncHandler(medecinControleur.listMedecinsByID));
 
-router.post('/medecin' , isloggedOn , medecinControleur.createMedecin);
+router.post('/medecin' , isloggedOn , asyncHandler(medecinControleur.createMedecin));
 
-router.put('/medecin/:id' , isloggedOn , medecinControleur.updateMedecinByID);
+router.put('/medecin/:id' , isloggedOn , asyncHandler(medecinControleur.updateMedecinByID));
 
-router.delete('/medecin' , isloggedOn , medecinControleur.deleteMedecinByID);
+router.delete('/medecin/:id' , isloggedOn , asyncHandler(medecinControleur.deleteMedecinByID));
 
 export default router;

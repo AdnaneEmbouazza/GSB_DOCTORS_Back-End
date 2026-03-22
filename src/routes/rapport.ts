@@ -1,6 +1,7 @@
 import { Router } from "express";
 import {isloggedOn} from "../middleware/authHandler";
 import * as rapportControleur from "../controllers/rapport";
+import asyncHandler from "../middleware/asyncHandler";
 
 const router = Router();
 
@@ -14,14 +15,14 @@ PUT /GSB/rapport/:id => modifie un rapport spécifique
 DELETE /GSB/rapport/:id => supprime un rapport spécifique
 */
 
-router.get('/rapports' , isloggedOn , rapportControleur.listAllRapport)
+router.get('/rapports' , isloggedOn , asyncHandler(rapportControleur.listAllRapport));
 
-router.get('/rapport/:id' , isloggedOn , rapportControleur.listRapportByID)
+router.get('/rapport/:id' , isloggedOn , asyncHandler(rapportControleur.listRapportByID));
 
-router.post('/rapport' , isloggedOn , rapportControleur.createRapport)
+router.post('/rapport' , isloggedOn , asyncHandler(rapportControleur.createRapport));
 
-router.put('/rapport/:id' , isloggedOn , rapportControleur.updateRapportByID)
+router.put('/rapport/:id' , isloggedOn , asyncHandler(rapportControleur.updateRapportByID));
 
-router.delete('/rapport/:id' , isloggedOn , rapportControleur.deleteRapportByID)
+router.delete('/rapport/:id' , isloggedOn , asyncHandler(rapportControleur.deleteRapportByID));
 
 export default router;
