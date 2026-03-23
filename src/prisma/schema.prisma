@@ -78,9 +78,11 @@ model Rapport {
 
 //Modèle OFFRIR
 model Offrir {
-  idrapport             Int         @id @default(autoincrement()) // clé étrangère vers rapport
-  idmedicament          String      @db.VarChar(30) // clé étrangère vers medicament
+  idrapport             Int         
+  idmedicament          String      
   quantite              Int
+
+  @@id([idrapport, idmedicament]) // clé primaire composée 
 
   rapport                Rapport          @relation(fields: [idrapport], references: [id]) // relation avec le modèle RAPPORT => un rapport peut etre relié à plusieurs offres
   medicament             Medicament       @relation(fields: [idmedicament] , references: [id])  // relation avec le modèle MEDICAMENTS => un medicament peut etre relié à plusieurs offres
