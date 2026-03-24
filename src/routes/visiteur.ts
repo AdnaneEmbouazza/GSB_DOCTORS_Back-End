@@ -5,32 +5,221 @@ import asyncHandler from "../middleware/asyncHandler";
 
 const router = Router();
 
-// ROUTES PUBLIQUES (no authentification )
-// =======================================
-
-/* 
-POST /GSB/visiteurs/login => authentification 
-POST /GSB/visiteurs/inscription => création d'un compte 
-*/
-
+/**
+ * @swagger
+ * /api/visiteurs/login:
+ *   post:
+ *     summary: Authentification d'un visiteur
+ *     description: Authentifie un visiteur avec ses identifiants
+ *     tags:
+ *       - Visiteurs
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               login:
+ *                 type: string
+ *               password:
+ *                 type: string
+ *             required:
+ *               - login
+ *               - password
+ *     responses:
+ *       200:
+ *         description: Authentification réussie
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 token:
+ *                   type: string
+ *                 refreshToken:
+ *                   type: string
+ *       401:
+ *         description: Identifiants invalides
+ */
 router.post('/login' , asyncHandler(visiteurControleur.login));
+/**
+ * @swagger
+ * /api/visiteurs/inscription:
+ *   post:
+ *     summary: Créer un nouveau compte visiteur
+ *     description: Enregistre un nouveau visiteur dans le système
+ *     tags:
+ *       - Visiteurs
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               nom:
+ *                 type: string
+ *               prenom:
+ *                 type: string
+ *               login:
+ *                 type: string
+ *               password:
+ *                 type: string
+ *               adresse:
+ *                 type: string
+ *               cp:
+ *                 type: string
+ *               ville:
+ *                 type: string
+ *             required:
+ *               - login
+ *               - password
+ *     responses:
+ *       201:
+ *         description: Compte créé avec succès
+ *       400:
+ *         description: Données invalides ou login déjà utilisé
+ */
 router.post('/inscription' , asyncHandler(visiteurControleur.inscription));
 
-// ROUTES PRIVEES (authentification obligatoire)
-// =======================================
-
-/*
-GET /GSB/visiteurs/account/:id => affiche les infos du compte pour l'utilisateur connecté
-PUT /GSB/visiteurs/account/:id => modifie les infos du compte par l'utilisateur connecté
-DELETE /GSB/visiteurs/account/:id => supprime le compte de l'utilisateur connectés
-GET /GSB/visiteurs/ => affiche la liste de tous les visiteurs (admin uniquement)
-GET /GSB/visiteurs/:id => affiche les infos d'un visiteur spécifique (admin uniquement)
-*/
-
+/**
+ * @swagger
+ * /api/visiteurs/account/{id}:
+ *   get:
+ *     summary: Récupérer les infos du compte
+ *     description: Retourne les informations du compte de l'utilisateur connecté
+ *     security:
+ *       - BearerAuth: []
+ *     tags:
+ *       - Visiteurs
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: integer
+ *         description: ID du visiteur
+ *     responses:
+ *       200:
+ *         description: Informations du compte récupérées
+ *       404:
+ *         description: Visiteur non trouvé
+ *       401:
+ *         description: Non authentifié
+ */
 router.get ('/account/:id' , isloggedOn , asyncHandler(visiteurControleur.getVisiteurByID));
+/**
+ * @swagger
+ * /api/visiteurs/account/{id}:
+ *   put:
+ *     summary: Modifier les infos du compte
+ *     description: Met à jour les informations du compte de l'utilisateur connecté
+ *     security:
+ *       - BearerAuth: []
+ *     tags:
+ *       - Visiteurs
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: integer
+ *         description: ID du visiteur
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               nom:
+ *                 type: string
+ *               prenom:
+ *                 type: string
+ *               adresse:
+ *                 type: string
+ *               cp:
+ *                 type: string
+ *               ville:
+ *                 type: string
+ *     responses:
+ *       200:
+ *         description: Compte modifié avec succès
+ *       404:
+ *         description: Visiteur non trouvé
+ *       401:
+ *         description: Non authentifié
+ */
 router.put ('/account/:id' , isloggedOn , asyncHandler(visiteurControleur.updateVisiteur));
+/**
+ * @swagger
+ * /api/visiteurs/account/{id}:
+ *   delete:
+ *     summary: Supprimer le compte
+ *     description: Supprime le compte de l'utilisateur connecté
+ *     security:
+ *       - BearerAuth: []
+ *     tags:
+ *       - Visiteurs
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: integer
+ *         description: ID du visiteur
+ *     responses:
+ *       200:
+ *         description: Compte supprimé avec succès
+ *       404:
+ *         description: Visiteur non trouvé
+ *       401:
+ *         description: Non authentifié
+ */
 router.delete ('/account/:id' , isloggedOn , asyncHandler(visiteurControleur.deleteVisiteur));
+/**
+ * @swagger
+ * /api/visiteurs:
+ *   get:
+ *     summary: Récupérer la liste de tous les visiteurs
+ *     description: Retourne la liste complète de tous les visiteurs (admin uniquement)
+ *     security:
+ *       - BearerAuth: []
+ *     tags:
+ *       - Visiteurs
+ *     responses:
+ *       200:
+ *         description: Liste des visiteurs récupérée
+ *       401:
+ *         description: Non authentifié
+ */
 router.get ('/' , isloggedOn , asyncHandler(visiteurControleur.getAllVisiteurs));
+/**
+ * @swagger
+ * /api/visiteurs/{id}:
+ *   get:
+ *     summary: Récupérer un visiteur par ID
+ *     description: Retourne les détails d'un visiteur spécifique (admin uniquement)
+ *     security:
+ *       - BearerAuth: []
+ *     tags:
+ *       - Visiteurs
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: integer
+ *         description: ID du visiteur
+ *     responses:
+ *       200:
+ *         description: Visiteur récupéré avec succès
+ *       404:
+ *         description: Visiteur non trouvé
+ *       401:
+ *         description: Non authentifié
+ */
 router.get ('/:id' , isloggedOn , asyncHandler(visiteurControleur.getVisiteurByID));
 
 export default router;

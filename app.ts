@@ -18,12 +18,12 @@ const PORT = 3000;
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs));
 
 app.use(express.json());
-app.use('/api/familles', familleRouter);
-app.use('/api/medicaments', medicamentRouter);
-app.use('/api/medecins', medecinRouter);
-app.use('/api/visiteurs', visiteurRouter);
-app.use('/api/rapports', rapportRouter);
-app.use('/api/offres', offreRouter);
+app.use('/api', familleRouter);
+app.use('/api', medicamentRouter);
+app.use('/api', medecinRouter);
+app.use('/api', visiteurRouter);
+app.use('/api', rapportRouter);
+app.use('/api', offreRouter);
 
 app.use(errorHandler);
 
