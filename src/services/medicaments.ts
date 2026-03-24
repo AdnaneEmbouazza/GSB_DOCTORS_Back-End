@@ -1,4 +1,4 @@
-import { Medicament } from '../client/generated/prisma/client';
+import { Medicament } from '@prisma/client';
 import prisma from '../prisma';
 import { CreateMedicamentDTO , UpdateMedicamentDTO} from '../models/medicaments';
 
@@ -20,10 +20,10 @@ export function createMedicament (data: CreateMedicamentDTO): Promise<Medicament
         data: {
             id: data.id,
             nomCommercial: data.nomCommercial,
-            idfamille: data.idFamille,
+            idfamille: data.idfamille,
             composition: data.composition,
             effets: data.effets,
-            contreindications: data.contreIndications
+            contreindications: data.contreindications
         }
     });
 }
@@ -34,10 +34,10 @@ export function updateMedicamentByID (id: string, data: UpdateMedicamentDTO): Pr
         where: { id },
         data: {
             nomCommercial: data.nomCommercial,
-            idfamille: data.idFamille,
+            idfamille: data.idfamille,
             composition: data.composition,
             effets: data.effets,
-            contreindications: data.contreIndications
+            contreindications: data.contreindications
         }
     });
 }

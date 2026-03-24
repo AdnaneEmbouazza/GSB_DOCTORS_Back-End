@@ -1,4 +1,4 @@
-import { Visiteur } from "../client/generated/prisma/client";
+import { Visiteur } from "@prisma/client";
 import prisma from "../prisma";
 import {CreateVisiteurDTO , UpdateVisiteurDTO } from "../models/visiteur";
 
@@ -31,7 +31,7 @@ export function createVisiteur (data: CreateVisiteurDTO): Promise<Visiteur> {
             adresse: data.adresse,
             cp: data.cp,
             ville: data.ville,
-            dateembauche: new Date(data.dateEmbauche)
+            dateembauche: data.dateembauche
         }
     });
 }
@@ -48,7 +48,7 @@ export function updateVisiteurByID (id: number, data: UpdateVisiteurDTO): Promis
             adresse: data.adresse,
             cp: data.cp,
             ville: data.ville,
-            dateembauche: data.dateEmbauche ? new Date(data.dateEmbauche) : undefined
+            dateembauche: data.dateembauche
         }
     });
 }

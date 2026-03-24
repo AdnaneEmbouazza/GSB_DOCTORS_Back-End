@@ -1,4 +1,4 @@
-import { Famille } from "../client/generated/prisma/client";
+import { Famille } from "@prisma/client";
 import prisma from "../prisma";
 import { CreateFamilleDTO , UpdateFamilleDTO } from "../models/famille";
 

@@ -1,16 +1,13 @@
 // This is your Prisma schema file,
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
-  provider = "prisma-client"
-  output   = "../client/generated/prisma"
+  provider = "prisma-client-js"
 }
 
 datasource db {
   provider = "mysql"
+  url      = env("DATABASE_URL")
 }
 
 //Modèle FAMILLE 
@@ -26,8 +23,8 @@ model Medecin {
   nom                        String      @db.VarChar(30)
   prenom                     String      @db.VarChar(30)
   adresse                    String      @db.VarChar(80)
-  tel                        String      @db.VarChar(15)
-  specialitecomplementaire   String      @db.VarChar(50)
+  tel                        String?     @db.VarChar(15)
+  specialitecomplementaire   String?     @db.VarChar(50)
   departement                Int         
   rapport                    Rapport[]           // relation avec le modèle RAPPORT => tout les rapports relié à un médecin
 }

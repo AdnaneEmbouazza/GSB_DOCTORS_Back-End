@@ -1,14 +1,4 @@
-export interface Medecin {
-  id: number;
-  nom: string;
-  prenom: string;
-  adresse: string;
-  tel?: string | null;
-  specialitecomplementaire?: string | null;
-  departement: number;
-};
-
-// pour la création (POST)
+// DTOs pour les requêtes API
 export interface CreateMedecinDTO {
   nom: string;
   prenom: string;
@@ -16,10 +6,8 @@ export interface CreateMedecinDTO {
   tel?: string | null;
   specialitecomplementaire?: string | null;
   departement: number;
-  // ID auto incrémenté
-};
+}
 
-// pour la modification (PUT/PATCH)
 export interface UpdateMedecinDTO {
   nom?: string;
   prenom?: string;
@@ -27,5 +15,4 @@ export interface UpdateMedecinDTO {
   tel?: string | null;
   specialitecomplementaire?: string | null;
   departement?: number;
-  //ID non modifiable
-};
+}

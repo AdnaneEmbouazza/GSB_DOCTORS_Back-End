@@ -1,4 +1,4 @@
-import { Offrir } from '../client/generated/prisma/client';
+import { Offrir } from '@prisma/client';
 import prisma from '../prisma';
 import { CreateOffrirDTO , UpdateOffrirDTO} from '../models/offrir';
 
@@ -23,9 +23,9 @@ export function getOffreByID (idrapport: number, idmedicament: string): Promise<
 export function createOffre (data: CreateOffrirDTO): Promise<Offrir> {
     return prisma.offrir.create({
         data: {
-            idrapport: data.idRapport,
-            idmedicament: data.idMedicament,
-            quantite: data.quantite || 0
+            idrapport: data.idrapport,
+            idmedicament: data.idmedicament,
+            quantite: data.quantite
         }
     });
 }

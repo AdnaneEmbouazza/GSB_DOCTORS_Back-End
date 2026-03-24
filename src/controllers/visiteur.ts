@@ -27,8 +27,8 @@ export async function login(req: Request, res: Response): Promise<void> {
 export async function inscription(req: Request, res: Response): Promise<void> {
     const data : CreateVisiteurDTO = req.body;
 
-    if (!data.nom || !data.prenom || !data.login || !data.mdp || !data.adresse || !data.cp || !data.ville || !data.dateEmbauche) {
-        throw new BadRequestError('Tous les champs sont requis');
+    if (!data.login || !data.mdp) {
+        throw new BadRequestError('Login et mot de passe sont requis');
     }
 
     // Gestion erreur 400 (donnés manquantes ou invalides)

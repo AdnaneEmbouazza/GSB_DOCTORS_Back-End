@@ -1,4 +1,4 @@
-import { Medecin } from "../client/generated/prisma/client";
+import { Medecin } from "@prisma/client";
 import prisma from "../prisma";
 import {CreateMedecinDTO , UpdateMedecinDTO } from "../models/medecin";
 

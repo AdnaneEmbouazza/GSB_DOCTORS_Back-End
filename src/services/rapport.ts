@@ -1,4 +1,4 @@
-import { Rapport } from '../client/generated/prisma/client';
+import { Rapport } from '@prisma/client';
 import prisma from '../prisma';
 import { CreateRapportDTO, UpdateRapportDTO} from '../models/rapport';
 
@@ -18,11 +18,11 @@ export function getRapportByID (id: number): Promise<Rapport | null> {
 export function createRapport (data: CreateRapportDTO): Promise<Rapport> {
     return prisma.rapport.create({
         data: {
-            date: new Date(data.date),
+            date: data.date,
             motif: data.motif,
             bilan: data.bilan,
-            idvisiteur: data.idVisiteur,
-            idmedecin: data.idMedecin
+            idvisiteur: data.idvisiteur,
+            idmedecin: data.idmedecin
         }
     });
 }
@@ -32,11 +32,11 @@ export function updateRapportByID (id: number, data: UpdateRapportDTO): Promise<
     return prisma.rapport.update({
         where: { id },
         data: {
-            date: data.date ? new Date(data.date) : undefined,
+            date: data.date,
             motif: data.motif,
             bilan: data.bilan,
-            idvisiteur: data.idVisiteur,
-            idmedecin: data.idMedecin
+            idvisiteur: data.idvisiteur,
+            idmedecin: data.idmedecin
         }
     });
 }
