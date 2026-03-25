@@ -1,0 +1,97 @@
+{
+  "listAllMedecins": {
+    "description": "Récupérer la liste de tous les médecins (sans authentification)",
+    "endpoint": "GET /api/medecins",
+    "expectedResponse": [
+      {
+        "id": 1,
+        "nom": "MARTIN",
+        "prenom": "Prosper",
+        "adresse": "25 rue Anatole France BRIANCON 05100",
+        "tel": "0485244174",
+        "specialitecomplementaire": null,
+        "departement": 5
+      },
+      {
+        "id": 2,
+        "nom": "BLANC",
+        "prenom": "Anne-Lucie",
+        "adresse": "39 rue des gatinnes BILLIAT 01200",
+        "tel": "0356895400",
+        "specialitecomplementaire": "Pédiatre",
+        "departement": 1
+      }
+    ]
+  },
+  "getMedecinById": {
+    "description": "Récupérer un médecin par ID",
+    "endpoint": "GET /api/medecin/1",
+    "headers": {
+      "Authorization": "Bearer <token_from_login>"
+    },
+    "expectedResponse": {
+      "id": 1,
+      "nom": "MARTIN",
+      "prenom": "Prosper",
+      "adresse": "25 rue Anatole France BRIANCON 05100",
+      "tel": "0485244174",
+      "specialitecomplementaire": null,
+      "departement": 5,
+      "rapport": []
+    }
+  },
+  "createMedecin": {
+    "description": "Créer un nouveau médecin",
+    "endpoint": "POST /api/medecin",
+    "headers": {
+      "Authorization": "Bearer <token_from_login>"
+    },
+    "body": {
+      "nom": "DUPONT",
+      "prenom": "Marie",
+      "adresse": "789 boulevard Victor Hugo LYON 69000",
+      "tel": "0478956234",
+      "specialitecomplementaire": "Cardiologue",
+      "departement": 69
+    },
+    "expectedResponse": {
+      "id": 1001,
+      "nom": "DUPONT",
+      "prenom": "Marie",
+      "adresse": "789 boulevard Victor Hugo LYON 69000",
+      "tel": "0478956234",
+      "specialitecomplementaire": "Cardiologue",
+      "departement": 69
+    }
+  },
+  "updateMedecin": {
+    "description": "Modifier un médecin",
+    "endpoint": "PUT /api/medecin/101",
+    "headers": {
+      "Authorization": "Bearer <token_from_login>"
+    },
+    "body": {
+      "tel": "0478956235",
+      "specialitecomplementaire": "Cardiologue spécialisée"
+    },
+    "expectedResponse": {
+      "id": 1001,
+      "nom": "DUPONT",
+      "prenom": "Marie",
+      "adresse": "789 boulevard Victor Hugo LYON 69000",
+      "tel": "0478956235",
+      "specialitecomplementaire": "Cardiologue spécialisée",
+      "departement": 69
+    }
+  },
+  "deleteMedecin": {
+    "description": "Supprimer un médecin",
+    "endpoint": "DELETE /api/medecin/101",
+    "headers": {
+      "Authorization": "Bearer <token_from_login>"
+    },
+    "expectedResponse": {
+      "message": "Médecin supprimé avec succès"
+    }
+  }
+}

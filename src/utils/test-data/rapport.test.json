@@ -1,0 +1,105 @@
+{
+  "listAllRapports": {
+    "description": "Récupérer la liste de tous les rapports",
+    "endpoint": "GET /api/rapports",
+    "headers": {
+      "Authorization": "Bearer <token_from_login>"
+    },
+    "expectedResponse": [
+      {
+        "id": 1,
+        "date": "2024-01-15T10:30:00Z",
+        "motif": "Visite médicale de routine",
+        "bilan": "Patient en bonne santé",
+        "idvisiteur": 1,
+        "idmedecin": 1
+      },
+      {
+        "id": 2,
+        "date": "2024-01-16T14:00:00Z",
+        "motif": "Suivi de traitement",
+        "bilan": "Amélioration notée",
+        "idvisiteur": 1,
+        "idmedecin": 2
+      }
+    ]
+  },
+  "getRapportById": {
+    "description": "Récupérer un rapport par ID",
+    "endpoint": "GET /api/rapport/1",
+    "headers": {
+      "Authorization": "Bearer <token_from_login>"
+    },
+    "expectedResponse": {
+      "id": 1,
+      "date": "2024-01-15T10:30:00Z",
+      "motif": "Visite médicale de routine",
+      "bilan": "Patient en bonne santé",
+      "idvisiteur": 1,
+      "idmedecin": 1,
+      "visiteur": {
+        "id": 1,
+        "nom": "Dupont",
+        "prenom": "Jean"
+      },
+      "medecin": {
+        "id": 1,
+        "nom": "MARTIN",
+        "prenom": "Prosper"
+      },
+      "offrir": []
+    }
+  },
+  "createRapport": {
+    "description": "Créer un nouveau rapport",
+    "endpoint": "POST /api/rapport",
+    "headers": {
+      "Authorization": "Bearer <token_from_login>"
+    },
+    "body": {
+      "date": "2024-03-25T09:00:00Z",
+      "motif": "Visite de suivi post-opératoire",
+      "bilan": "Récupération en cours",
+      "idvisiteur": 1,
+      "idmedecin": 3
+    },
+    "expectedResponse": {
+      "id": 3,
+      "date": "2024-03-25T09:00:00Z",
+      "motif": "Visite de suivi post-opératoire",
+      "bilan": "Récupération en cours",
+      "idvisiteur": 1,
+      "idmedecin": 3
+    }
+  },
+  "updateRapport": {
+    "description": "Modifier un rapport",
+    "endpoint": "PUT /api/rapport/3",
+    "headers": {
+      "Authorization": "Bearer <token_from_login>"
+    },
+    "body": {
+      "date": "2024-03-25T10:00:00Z",
+      "motif": "Visite de suivi post-opératoire - Contrôle",
+      "bilan": "Récupération excellente"
+    },
+    "expectedResponse": {
+      "id": 3,
+      "date": "2024-03-25T10:00:00Z",
+      "motif": "Visite de suivi post-opératoire - Contrôle",
+      "bilan": "Récupération excellente",
+      "idvisiteur": 1,
+      "idmedecin": 3
+    }
+  },
+  "deleteRapport": {
+    "description": "Supprimer un rapport",
+    "endpoint": "DELETE /api/rapport/3",
+    "headers": {
+      "Authorization": "Bearer <token_from_login>"
+    },
+    "expectedResponse": {
+      "message": "Rapport supprimé avec succès"
+    }
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "listAllFamilles": {
+    "description": "Récupérer la liste de toutes les familles",
+    "endpoint": "GET /api/familles",
+    "headers": {
+      "Authorization": "Bearer <token_from_login>"
+    },
+    "expectedResponse": [
+      {
+        "id": "AA",
+        "libelle": "Antalgiques en association"
+      },
+      {
+        "id": "AAA",
+        "libelle": "Antalgiques antipyréques en association"
+      },
+      {
+        "id": "ABC",
+        "libelle": "Antibiotique antiacnénique local"
+      }
+    ]
+  },
+  "getFamilleById": {
+    "description": "Récupérer une famille par ID",
+    "endpoint": "GET /api/famille/AA",
+    "headers": {
+      "Authorization": "Bearer <token_from_login>"
+    },
+    "expectedResponse": {
+      "id": "AA",
+      "libelle": "Antalgiques en association",
+      "medicaments": [
+        {
+          "id": "MED001",
+          "nomCommercial": "Efferalgan",
+          "idfamille": "AA"
+        }
+      ]
+    }
+  },
+  "createFamille": {
+    "description": "Créer une nouvelle famille",
+    "endpoint": "POST /api/famille",
+    "headers": {
+      "Authorization": "Bearer <token_from_login>"
+    },
+    "body": {
+      "id": "AFX",
+      "libelle": "Antifongiques à usage externe"
+    },
+    "expectedResponse": {
+      "id": "AFX",
+      "libelle": "Antifongiques à usage externe"
+    }
+  },
+  "updateFamille": {
+    "description": "Modifier une famille",
+    "endpoint": "PUT /api/famille/AFX",
+    "headers": {
+      "Authorization": "Bearer <token_from_login>"
+    },
+    "body": {
+      "libelle": "Antifongiques traitement complet"
+    },
+    "expectedResponse": {
+      "id": "AFX",
+      "libelle": "Antifongiques traitement complet"
+    }
+  },
+  "deleteFamille": {
+    "description": "Supprimer une famille",
+    "endpoint": "DELETE /api/famille/AFX",
+    "headers": {
+      "Authorization": "Bearer <token_from_login>"
+    },
+    "expectedResponse": {
+      "message": "Famille supprimée avec succès"
+    }
+  }
+}

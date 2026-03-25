@@ -1,0 +1,249 @@
+{
+  "_description": "Données de test complètes pour l'API GSB Doctors - Utilisez ces données avec Swagger pour tester rapidement l'API",
+  "_note": "N'oubliez pas d'effectuer d'abord un login pour récupérer le token d'authentification",
+  
+  "ETAPE_1_AUTHENTIFICATION": {
+    "POST_login": {
+      "endpoint": "POST /api/visiteurs/login",
+      "description": "Connexion (récupère le token à utiliser pour les autres requêtes)",
+      "body": {
+        "login": "jdupont",
+        "password": "password123"
+      }
+    },
+    "POST_inscription": {
+      "endpoint": "POST /api/visiteurs/inscription",
+      "description": "Créer un nouveau compte visiteur",
+      "body": {
+        "nom": "Dupont",
+        "prenom": "Jean",
+        "login": "jdupont",
+        "password": "securePassword123!",
+        "adresse": "123 rue de Paris",
+        "cp": "75001",
+        "ville": "Paris"
+      }
+    },
+    "GET_account": {
+      "endpoint": "GET /api/visiteurs/account/1",
+      "description": "Récupérer les infos du compte (remplacer 1 par l'ID réel)",
+      "requires_auth": true
+    },
+    "PUT_account": {
+      "endpoint": "PUT /api/visiteurs/account/1",
+      "description": "Modifier les infos du compte",
+      "requires_auth": true,
+      "body": {
+        "nom": "Dupont",
+        "prenom": "Jean-Pierre",
+        "adresse": "456 avenue des Champs",
+        "cp": "75008",
+        "ville": "Paris"
+      }
+    }
+  },
+
+  "ETAPE_2_FAMILLES": {
+    "GET_all_familles": {
+      "endpoint": "GET /api/familles",
+      "description": "Récupérer la liste de toutes les familles",
+      "requires_auth": true
+    },
+    "GET_famille_by_id": {
+      "endpoint": "GET /api/famille/AA",
+      "description": "Récupérer une famille par ID (remplacer AA par l'ID désiré)",
+      "requires_auth": true
+    },
+    "POST_famille": {
+      "endpoint": "POST /api/famille",
+      "description": "Créer une nouvelle famille",
+      "requires_auth": true,
+      "body": {
+        "id": "AFX",
+        "libelle": "Antifongiques à usage externe"
+      }
+    },
+    "PUT_famille": {
+      "endpoint": "PUT /api/famille/AFX",
+      "description": "Modifier une famille (remplacer AFX par l'ID à modifier)",
+      "requires_auth": true,
+      "body": {
+        "libelle": "Antifongiques traitement complet"
+      }
+    },
+    "DELETE_famille": {
+      "endpoint": "DELETE /api/famille/AFX",
+      "description": "Supprimer une famille (remplacer AFX par l'ID à supprimer)",
+      "requires_auth": true
+    }
+  },
+
+  "ETAPE_3_MEDECINS": {
+    "GET_all_medecins": {
+      "endpoint": "GET /api/medecins",
+      "description": "Lister tous les médecins ⭐ SANS AUTHENTIFICATION",
+      "requires_auth": false
+    },
+    "GET_medecin_by_id": {
+      "endpoint": "GET /api/medecin/1",
+      "description": "Récupérer un médecin par ID (remplacer 1 par l'ID désiré)",
+      "requires_auth": true
+    },
+    "POST_medecin": {
+      "endpoint": "POST /api/medecin",
+      "description": "Créer un nouveau médecin",
+      "requires_auth": true,
+      "body": {
+        "nom": "DUPONT",
+        "prenom": "Marie",
+        "adresse": "789 boulevard Victor Hugo LYON 69000",
+        "tel": "0478956234",
+        "specialitecomplementaire": "Cardiologue",
+        "departement": 69
+      }
+    },
+    "PUT_medecin": {
+      "endpoint": "PUT /api/medecin/101",
+      "description": "Modifier un médecin (remplacer 101 par l'ID à modifier)",
+      "requires_auth": true,
+      "body": {
+        "tel": "0478956235",
+        "specialitecomplementaire": "Cardiologue spécialisée"
+      }
+    },
+    "DELETE_medecin": {
+      "endpoint": "DELETE /api/medecin/101",
+      "description": "Supprimer un médecin (remplacer 101 par l'ID à supprimer)",
+      "requires_auth": true
+    }
+  },
+
+  "ETAPE_4_MEDICAMENTS": {
+    "GET_all_medicaments": {
+      "endpoint": "GET /api/medicaments",
+      "description": "Récupérer la liste de tous les médicaments",
+      "requires_auth": true
+    },
+    "GET_medicament_by_id": {
+      "endpoint": "GET /api/medicament/EFFERALGAN",
+      "description": "Récupérer un médicament par ID (remplacer EFFERALGAN par l'ID désiré)",
+      "requires_auth": true
+    },
+    "POST_medicament": {
+      "endpoint": "POST /api/medicament/NUROFEN",
+      "description": "Créer un nouveau médicament (remplacer NUROFEN dans l'URL et le body par l'ID désiré)",
+      "requires_auth": true,
+      "body": {
+        "id": "NUROFEN",
+        "nomCommercial": "Nurofen 400mg",
+        "idfamille": "AIN",
+        "composition": "Ibuprofène 400mg",
+        "effets": "Anti-inflammatoire, analgésique",
+        "contreindications": "Asthme, insuffisance rénale"
+      }
+    },
+    "PUT_medicament": {
+      "endpoint": "PUT /api/medicament/NUROFEN",
+      "description": "Modifier un médicament (remplacer NUROFEN par l'ID à modifier)",
+      "requires_auth": true,
+      "body": {
+        "nomCommercial": "Nurofen 500mg",
+        "composition": "Ibuprofène 500mg",
+        "effets": "Anti-inflammatoire puissant, analgésique"
+      }
+    },
+    "DELETE_medicament": {
+      "endpoint": "DELETE /api/medicament/NUROFEN",
+      "description": "Supprimer un médicament (remplacer NUROFEN par l'ID à supprimer)",
+      "requires_auth": true
+    }
+  },
+
+  "ETAPE_5_RAPPORTS": {
+    "GET_all_rapports": {
+      "endpoint": "GET /api/rapports",
+      "description": "Récupérer la liste de tous les rapports",
+      "requires_auth": true
+    },
+    "GET_rapport_by_id": {
+      "endpoint": "GET /api/rapport/1",
+      "description": "Récupérer un rapport par ID (remplacer 1 par l'ID désiré)",
+      "requires_auth": true
+    },
+    "POST_rapport": {
+      "endpoint": "POST /api/rapport",
+      "description": "Créer un nouveau rapport",
+      "requires_auth": true,
+      "body": {
+        "date": "2024-03-25T09:00:00Z",
+        "motif": "Visite de suivi post-opératoire",
+        "bilan": "Récupération en cours",
+        "idvisiteur": 1,
+        "idmedecin": 3
+      },
+      "important": "Assurez-vous que idvisiteur et idmedecin existent dans la base de données"
+    },
+    "PUT_rapport": {
+      "endpoint": "PUT /api/rapport/3",
+      "description": "Modifier un rapport (remplacer 3 par l'ID à modifier)",
+      "requires_auth": true,
+      "body": {
+        "date": "2024-03-25T10:00:00Z",
+        "motif": "Visite de suivi post-opératoire - Contrôle",
+        "bilan": "Récupération excellente"
+      }
+    },
+    "DELETE_rapport": {
+      "endpoint": "DELETE /api/rapport/3",
+      "description": "Supprimer un rapport (remplacer 3 par l'ID à supprimer)",
+      "requires_auth": true
+    }
+  },
+
+  "ETAPE_6_OFFRES": {
+    "GET_all_offres": {
+      "endpoint": "GET /api/offrir",
+      "description": "Récupérer la liste de toutes les offres",
+      "requires_auth": true
+    },
+    "GET_offre_by_id": {
+      "endpoint": "GET /api/offrir/1-EFFERALGAN",
+      "description": "Récupérer une offre par ID (format: idrapport-idmedicament)",
+      "requires_auth": true
+    },
+    "POST_offre": {
+      "endpoint": "POST /api/offrir",
+      "description": "Créer une nouvelle offre",
+      "requires_auth": true,
+      "body": {
+        "idrapport": 3,
+        "idmedicament": "EFFERALGAN",
+        "quantite": 5
+      },
+      "important": "Le rapport et le médicament doivent exister dans la base de données"
+    },
+    "PUT_offre": {
+      "endpoint": "PUT /api/offrir/3-EFFERALGAN",
+      "description": "Modifier une offre (modifier la quantité) (remplacer l'ID par celui à modifier)",
+      "requires_auth": true,
+      "body": {
+        "quantite": 8
+      }
+    },
+    "DELETE_offre": {
+      "endpoint": "DELETE /api/offrir/3-EFFERALGAN",
+      "description": "Supprimer une offre (remplacer l'ID par celui à supprimer)",
+      "requires_auth": true
+    }
+  },
+
+  "GUIDE_RAPIDE": {
+    "1_Start": "npm start",
+    "2_Swagger": "http://localhost:3000/api-docs",
+    "3_First_Step": "POST /api/visiteurs/login - Utilisez les credentials fournis",
+    "4_Copy_Token": "Copiez le token reçu",
+    "5_Authorize": "Cliquez sur le cadenas 🔒 et entrez: Bearer <votre_token>",
+    "6_Test": "Commencez par tester les endpoints en suivant les étapes ci-dessus",
+    "7_Tip": "Consultez chaque fichier .test.json pour des données détaillées par module"
+  }
+}

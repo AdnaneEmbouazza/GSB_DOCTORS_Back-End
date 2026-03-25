@@ -1,0 +1,79 @@
+{
+  "login": {
+    "description": "Authentification d'un visiteur",
+    "endpoint": "POST /api/visiteurs/login",
+    "body": {
+      "login": "jdupont",
+      "password": "password123"
+    },
+    "expectedResponse": {
+      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+      "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+    }
+  },
+  
+  "inscription": {
+    "description": "Créer un nouveau compte visiteur",
+    "endpoint": "POST /api/visiteurs/inscription",
+    "body": {
+      "nom": "Dupont",
+      "prenom": "Jean",
+      "login": "jdupont",
+      "password": "securePassword123!",
+      "adresse": "123 rue de Paris",
+      "cp": "75001",
+      "ville": "Paris"
+    },
+    "expectedResponse": {
+      "id": 1,
+      "nom": "Dupont",
+      "prenom": "Jean",
+      "login": "jdupont",
+      "adresse": "123 rue de Paris",
+      "cp": "75001",
+      "ville": "Paris"
+    }
+  },
+
+  "getAccountById": {
+    "description": "Récupérer les informations du compte",
+    "endpoint": "GET /api/visiteurs/account/1",
+    "headers": {
+      "Authorization": "Bearer <token_from_login>"
+    },
+    "expectedResponse": {
+      "id": 1,
+      "nom": "Dupont",
+      "prenom": "Jean",
+      "login": "jdupont",
+      "adresse": "123 rue de Paris",
+      "cp": "75001",
+      "ville": "Paris",
+      "dateembauche": "2024-01-15T00:00:00Z"
+    }
+  },
+
+  "updateAccount": {
+    "description": "Modifier les informations du compte",
+    "endpoint": "PUT /api/visiteurs/account/1",
+    "headers": {
+      "Authorization": "Bearer <token_from_login>"
+    },
+    "body": {
+      "nom": "Dupont",
+      "prenom": "Jean-Pierre",
+      "adresse": "456 avenue des Champs",
+      "cp": "75008",
+      "ville": "Paris"
+    },
+    "expectedResponse": {
+      "id": 1,
+      "nom": "Dupont",
+      "prenom": "Jean-Pierre",
+      "login": "jdupont",
+      "adresse": "456 avenue des Champs",
+      "cp": "75008",
+      "ville": "Paris"
+    }
+  }
+}

@@ -1,0 +1,100 @@
+{
+  "listAllMedicaments": {
+    "description": "Récupérer la liste de tous les médicaments",
+    "endpoint": "GET /api/medicaments",
+    "headers": {
+      "Authorization": "Bearer <token_from_login>"
+    },
+    "expectedResponse": [
+      {
+        "id": "EFFERALGAN",
+        "nomCommercial": "Efferalgan 500mg",
+        "idfamille": "AA",
+        "composition": "Paracétamol 500mg",
+        "effets": "Analgésique, antipyrétique",
+        "contreindications": "Insuffisance hépatique sévère"
+      },
+      {
+        "id": "DOLIPRANE",
+        "nomCommercial": "Doliprane 1000mg",
+        "idfamille": "AA",
+        "composition": "Paracétamol 1000mg",
+        "effets": "Analgésique, antipyrétique",
+        "contreindications": "Insuffisance hépatique sévère"
+      }
+    ]
+  },
+  "getMedicamentById": {
+    "description": "Récupérer un médicament par ID",
+    "endpoint": "GET /api/medicament/EFFERALGAN",
+    "headers": {
+      "Authorization": "Bearer <token_from_login>"
+    },
+    "expectedResponse": {
+      "id": "EFFERALGAN",
+      "nomCommercial": "Efferalgan 500mg",
+      "idfamille": "AA",
+      "composition": "Paracétamol 500mg",
+      "effets": "Analgésique, antipyrétique",
+      "contreindications": "Insuffisance hépatique sévère",
+      "famille": {
+        "id": "AA",
+        "libelle": "Antalgiques en association"
+      },
+      "offerts": []
+    }
+  },
+  "createMedicament": {
+    "description": "Créer un nouveau médicament",
+    "endpoint": "POST /api/medicament/NUROFEN",
+    "headers": {
+      "Authorization": "Bearer <token_from_login>"
+    },
+    "body": {
+      "id": "NUROFEN",
+      "nomCommercial": "Nurofen 400mg",
+      "idfamille": "AIN",
+      "composition": "Ibuprofène 400mg",
+      "effets": "Anti-inflammatoire, analgésique",
+      "contreindications": "Asthme, insuffisance rénale"
+    },
+    "expectedResponse": {
+      "id": "NUROFEN",
+      "nomCommercial": "Nurofen 400mg",
+      "idfamille": "AIN",
+      "composition": "Ibuprofène 400mg",
+      "effets": "Anti-inflammatoire, analgésique",
+      "contreindications": "Asthme, insuffisance rénale"
+    }
+  },
+  "updateMedicament": {
+    "description": "Modifier un médicament",
+    "endpoint": "PUT /api/medicament/NUROFEN",
+    "headers": {
+      "Authorization": "Bearer <token_from_login>"
+    },
+    "body": {
+      "nomCommercial": "Nurofen 500mg",
+      "composition": "Ibuprofène 500mg",
+      "effets": "Anti-inflammatoire puissant, analgésique"
+    },
+    "expectedResponse": {
+      "id": "NUROFEN",
+      "nomCommercial": "Nurofen 500mg",
+      "idfamille": "AIN",
+      "composition": "Ibuprofène 500mg",
+      "effets": "Anti-inflammatoire puissant, analgésique",
+      "contreindications": "Asthme, insuffisance rénale"
+    }
+  },
+  "deleteMedicament": {
+    "description": "Supprimer un médicament",
+    "endpoint": "DELETE /api/medicament/NUROFEN",
+    "headers": {
+      "Authorization": "Bearer <token_from_login>"
+    },
+    "expectedResponse": {
+      "message": "Médicament supprimé avec succès"
+    }
+  }
+}

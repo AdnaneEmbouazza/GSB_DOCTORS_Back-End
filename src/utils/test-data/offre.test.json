@@ -1,0 +1,90 @@
+{
+  "listAllOffres": {
+    "description": "Récupérer la liste de toutes les offres",
+    "endpoint": "GET /api/offrir",
+    "headers": {
+      "Authorization": "Bearer <token_from_login>"
+    },
+    "expectedResponse": [
+      {
+        "idrapport": 1,
+        "idmedicament": "EFFERALGAN",
+        "quantite": 2
+      },
+      {
+        "idrapport": 1,
+        "idmedicament": "DOLIPRANE",
+        "quantite": 1
+      },
+      {
+        "idrapport": 2,
+        "idmedicament": "NUROFEN",
+        "quantite": 3
+      }
+    ]
+  },
+  "getOffreById": {
+    "description": "Récupérer une offre par ID (format: idrapport-idmedicament)",
+    "endpoint": "GET /api/offrir/1-EFFERALGAN",
+    "headers": {
+      "Authorization": "Bearer <token_from_login>"
+    },
+    "expectedResponse": {
+      "idrapport": 1,
+      "idmedicament": "EFFERALGAN",
+      "quantite": 2,
+      "rapport": {
+        "id": 1,
+        "date": "2024-01-15T10:30:00Z",
+        "motif": "Visite médicale de routine"
+      },
+      "medicament": {
+        "id": "EFFERALGAN",
+        "nomCommercial": "Efferalgan 500mg",
+        "idfamille": "AA"
+      }
+    }
+  },
+  "createOffre": {
+    "description": "Créer une nouvelle offre",
+    "endpoint": "POST /api/offrir",
+    "headers": {
+      "Authorization": "Bearer <token_from_login>"
+    },
+    "body": {
+      "idrapport": 3,
+      "idmedicament": "EFFERALGAN",
+      "quantite": 5
+    },
+    "expectedResponse": {
+      "idrapport": 3,
+      "idmedicament": "EFFERALGAN",
+      "quantite": 5
+    }
+  },
+  "updateOffre": {
+    "description": "Modifier une offre (mise à jour de la quantité)",
+    "endpoint": "PUT /api/offrir/3-EFFERALGAN",
+    "headers": {
+      "Authorization": "Bearer <token_from_login>"
+    },
+    "body": {
+      "quantite": 8
+    },
+    "expectedResponse": {
+      "idrapport": 3,
+      "idmedicament": "EFFERALGAN",
+      "quantite": 8
+    }
+  },
+  "deleteOffre": {
+    "description": "Supprimer une offre",
+    "endpoint": "DELETE /api/offrir/3-EFFERALGAN",
+    "headers": {
+      "Authorization": "Bearer <token_from_login>"
+    },
+    "expectedResponse": {
+      "message": "Offre supprimée avec succès"
+    }
+  }
+}
