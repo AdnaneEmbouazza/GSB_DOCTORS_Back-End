@@ -37,7 +37,7 @@ const router = Router();
  *               properties:
  *                 token:
  *                   type: string
- *                 refreshToken:
+ *                 accessToken:
  *                   type: string
  *       401:
  *         description: Identifiants invalides

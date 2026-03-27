@@ -53,7 +53,7 @@ model Visiteur {
   cp                   String?      @db.VarChar(5)
   ville                String?      @db.VarChar(30)
   dateembauche         DateTime?
-  refreshToken         String?      @db.VarChar(500)  // JWT refresh token
+  acessToken           String?      @db.VarChar(500)  // JWT acess token
 
   rapport             Rapport[]     // relation avec le modèle RAPPORT => tout les rapports relié à un visiteur
 }

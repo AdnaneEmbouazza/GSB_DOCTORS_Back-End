@@ -3638,7 +3638,7 @@ CREATE TABLE `visiteur` (
   `cp` varchar(5),
   `ville` varchar(30),
   `dateEmbauche` date,
-  `refreshToken` varchar(500) DEFAULT NULL COMMENT 'JWT refresh token',
+  `acessToken` varchar(500) DEFAULT NULL COMMENT 'JWT acess token'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 --
 -- Contenu de la table `visiteur`
