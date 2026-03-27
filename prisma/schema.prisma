@@ -7,7 +7,7 @@ generator client {
 
 datasource db {
   provider = "mysql"
-  url      = env("DATABASE_URL")
+  url      = env("DATABASE_URL") 
 }
 
 //Modèle FAMILLE 
@@ -36,11 +36,11 @@ model Medecin {
 //Modèle MEDICAMENTS
 model Medicament {
   id                    String      @id @db.VarChar(30)
-  nomCommercial         String      @db.VarChar(80)
-  idfamille             String      @db.VarChar(10) // clé étrangère vers la famille
+  nomcommercial         String      @db.VarChar(80) @map("nomCommercial")
+  idfamille             String      @db.VarChar(10) @map("idFamille")  // clé étrangère vers la famille
   composition           String      @db.VarChar(100)
   effets                String      @db.VarChar(100)
-  contreindications     String      @db.VarChar(100)
+  contreindications     String      @db.VarChar(100) @map("contreIndications")
 
   famille               Famille    @relation(fields: [idfamille], references: [id]) // relation avec le modèle FAMILLE => une famille peut avoir plusieurs medicaments
   offerts               Offrir[]            // relation avec le modèle OFFRIR => tout les apparitions d'un medicament dans des offres
@@ -58,8 +58,8 @@ model Visiteur {
   adresse              String?      @db.VarChar(30)
   cp                   String?      @db.VarChar(5)
   ville                String?      @db.VarChar(30)
-  dateEmbauche         DateTime?    @db.Date
-  acessToken           String?      @db.VarChar(500)  // JWT acess token
+  dateembauche         DateTime?    @db.Date @map("dateEmbauche")
+  acesstoken           String?      @db.VarChar(500) @map("acessToken") // JWT acess token
 
   rapport             Rapport[]     // relation avec le modèle RAPPORT => tout les rapports relié à un visiteur
 
@@ -72,8 +72,8 @@ model Rapport {
   date                 DateTime?
   motif                String?      @db.VarChar(100)
   bilan                String?      @db.VarChar(100)
-  idvisiteur           Int          // clé étrangère vers visiteur
-  idmedecin            Int          // clé étrangère vers medecin
+  idvisiteur           Int @map("idVisiteur")       // clé étrangère vers visiteur
+  idmedecin            Int @map("idMedecin")        // clé étrangère vers medecin
 
   visiteur             Visiteur     @relation(fields: [idvisiteur], references: [id]) // relation avec le modèle VISITEUR => un visiteur peut avoir plusieurs rapports
   medecin              Medecin      @relation(fields: [idmedecin], references: [id]) // relation avec le modèle MEDECIN => un médecin peut avoir plusieurs rapports
@@ -84,8 +84,8 @@ model Rapport {
 
 //Modèle OFFRIR
 model Offrir {
-  idrapport             Int         
-  idmedicament          String      
+  idrapport             Int  @map("idRapport")      
+  idmedicament          String  @map("idMedicament") 
   quantite              Int
 
   @@id([idrapport, idmedicament]) // clé primaire composée 

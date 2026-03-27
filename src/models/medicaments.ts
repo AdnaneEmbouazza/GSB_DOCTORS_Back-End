@@ -1,7 +1,7 @@
 
 export interface Medicament {
   id: string;
-  nomCommercial: string;
+  nomcommercial: string;
   idfamille: string;
   composition: string;
   effets: string;
@@ -11,7 +11,7 @@ export interface Medicament {
 //pour la création (POST)
 export interface CreateMedicamentDTO {
   id: string;
-  nomCommercial: string;
+  nomcommercial: string;
   idfamille: string;
   composition: string;
   effets: string;
@@ -20,7 +20,7 @@ export interface CreateMedicamentDTO {
 
 //pour la modification (PUT/PATCH)
 export interface UpdateMedicamentDTO {
-  nomCommercial?: string;
+  nomcommercial?: string;
   idfamille?: string;
   composition?: string;
   effets?: string;

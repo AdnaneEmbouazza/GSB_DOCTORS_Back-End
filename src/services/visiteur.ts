@@ -6,26 +6,63 @@ import { generateAccessToken, TokenPayload } from "../utils/token";
 import { UnauthorizedError } from "../error";
 
 // getAllVisiteurs : renvoie une liste de tous les visiteurs
-export function getAllVisiteurs(): Promise<Visiteur[]> {
-    return prisma.visiteur.findMany();
+export function getAllVisiteurs() {
+    return prisma.visiteur.findMany({
+        select: {
+            id: true,
+            nom: true,
+            prenom: true,
+            login: true,
+            adresse: true,
+            cp: true,
+            ville: true,
+            dateembauche: true,
+            acesstoken: true,
+            rapport: true
+        }
+    });
 }
 
 // getCurrentVisiteur : renvoie le visiteur actuellement connecté en fonction de l'ID du token
-export async function getCurrentVisiteur(payload: TokenPayload): Promise<Visiteur | null> {
+export async function getCurrentVisiteur(payload: TokenPayload) {
     return prisma.visiteur.findUnique({
-        where: { id: payload.id }
+        where: { id: payload.id },
+        select: {
+            id: true,
+            nom: true,
+            prenom: true,
+            login: true,
+            adresse: true,
+            cp: true,
+            ville: true,
+            dateembauche: true,
+            acesstoken: true,
+            rapport: true
+        }
     });
 }
 
 // getVisiteurByID : renvoie un visiteur en fonction de son ID
-export function getVisiteurByID (id: number): Promise<Visiteur | null> {
+export function getVisiteurByID (id: number) {
     return prisma.visiteur.findUnique({
-        where: { id }
+        where: { id },
+        select: {
+            id: true,
+            nom: true,
+            prenom: true,
+            login: true,
+            adresse: true,
+            cp: true,
+            ville: true,
+            dateembauche: true,
+            acesstoken: true,
+            rapport: true
+        }
     });
 }
 
 // createVisiteur : crée un nouveau visiteur à partir des données fournies
-export async function createVisiteur (data: CreateVisiteurDTO): Promise<Visiteur> {
+export async function createVisiteur (data: CreateVisiteurDTO) {
     // Hasher le mot de passe avant de le stocker
     const hashedPassword = await hashPassword(data.mdp);
     
@@ -39,12 +76,24 @@ export async function createVisiteur (data: CreateVisiteurDTO): Promise<Visiteur
             cp: data.cp,
             ville: data.ville,
             dateembauche: data.dateembauche
+        },
+        select: {
+            id: true,
+            nom: true,
+            prenom: true,
+            login: true,
+            adresse: true,
+            cp: true,
+            ville: true,
+            dateembauche: true,
+            acesstoken: true,
+            rapport: true
         }
     });
 }
 
 // updateVisiteurByID : met à jour un visiteur existant en fonction de son ID et des données fournies
-export function updateVisiteurByID (id: number, data: UpdateVisiteurDTO): Promise<Visiteur> {
+export function updateVisiteurByID (id: number, data: UpdateVisiteurDTO) {
     return prisma.visiteur.update({
         where: { id },
         data: {
@@ -56,14 +105,38 @@ export function updateVisiteurByID (id: number, data: UpdateVisiteurDTO): Promis
             cp: data.cp,
             ville: data.ville,
             dateembauche: data.dateembauche
+        },
+        select: {
+            id: true,
+            nom: true,
+            prenom: true,
+            login: true,
+            adresse: true,
+            cp: true,
+            ville: true,
+            dateembauche: true,
+            acesstoken: true,
+            rapport: true
         }
     });
 }
 
 // deleteVisiteurByID : supprime un visiteur en fonction de son ID
-export function deleteVisiteurByID (id: number): Promise<Visiteur> {
+export function deleteVisiteurByID (id: number) {
     return prisma.visiteur.delete({
-        where: { id }
+        where: { id },
+        select: {
+            id: true,
+            nom: true,
+            prenom: true,
+            login: true,
+            adresse: true,
+            cp: true,
+            ville: true,
+            dateembauche: true,
+            acesstoken: true,
+            rapport: true
+        }
     });
 }
 
