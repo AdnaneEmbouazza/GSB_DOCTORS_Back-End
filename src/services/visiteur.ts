@@ -21,7 +21,7 @@ export function getAllVisiteurs() {
             rapport: true
         }
     });
-}
+};
 
 // getCurrentVisiteur : renvoie le visiteur actuellement connecté en fonction de l'ID du token
 export async function getCurrentVisiteur(payload: TokenPayload) {
@@ -40,7 +40,7 @@ export async function getCurrentVisiteur(payload: TokenPayload) {
             rapport: true
         }
     });
-}
+};
 
 // getVisiteurByID : renvoie un visiteur en fonction de son ID
 export function getVisiteurByID (id: number) {
@@ -59,7 +59,7 @@ export function getVisiteurByID (id: number) {
             rapport: true
         }
     });
-}
+};
 
 // createVisiteur : crée un nouveau visiteur à partir des données fournies
 export async function createVisiteur (data: CreateVisiteurDTO) {
@@ -90,7 +90,67 @@ export async function createVisiteur (data: CreateVisiteurDTO) {
             rapport: true
         }
     });
-}
+};
+
+// updateCurrentVisiteurByID : met à jour un visiteur existant en fonction de son ID et des données fournies
+// L'utilisateur ne peut modifier que son propre compte
+export function updateCurrentVisiteurByID (id: number, data: UpdateVisiteurDTO, payload: TokenPayload) {
+    // Vérifier que l'utilisateur ne modifie que son propre compte
+    if (payload.id !== id) {
+        throw new UnauthorizedError('Vous ne pouvez modifier que votre propre compte');
+    }
+
+    return prisma.visiteur.update({
+        where: { id },
+        data: {
+            nom: data.nom,
+            prenom: data.prenom,
+            login: data.login,
+            mdp: data.mdp,
+            adresse: data.adresse,
+            cp: data.cp,
+            ville: data.ville,
+            dateembauche: data.dateembauche
+        },
+        select: {
+            id: true,
+            nom: true,
+            prenom: true,
+            login: true,
+            adresse: true,
+            cp: true,
+            ville: true,
+            dateembauche: true,
+            acesstoken: true,
+            rapport: true
+        }
+    });
+};
+
+// deleteCurrentVisiteurByID : supprime un visiteur en fonction de son ID
+// L'utilisateur ne peut supprimer que son propre compte
+export function deleteCurrentVisiteurByID (id: number, payload: TokenPayload) {
+    // Vérifier que l'utilisateur ne supprime que son propre compte
+    if (payload.id !== id) {
+        throw new UnauthorizedError('Vous ne pouvez supprimer que votre propre compte');
+    }
+
+    return prisma.visiteur.delete({
+        where: { id },
+        select: {
+            id: true,
+            nom: true,
+            prenom: true,
+            login: true,
+            adresse: true,
+            cp: true,
+            ville: true,
+            dateembauche: true,
+            acesstoken: true,
+            rapport: true
+        }
+    });
+};
 
 // updateVisiteurByID : met à jour un visiteur existant en fonction de son ID et des données fournies
 export function updateVisiteurByID (id: number, data: UpdateVisiteurDTO) {
@@ -119,7 +179,7 @@ export function updateVisiteurByID (id: number, data: UpdateVisiteurDTO) {
             rapport: true
         }
     });
-}
+};
 
 // deleteVisiteurByID : supprime un visiteur en fonction de son ID
 export function deleteVisiteurByID (id: number) {
@@ -138,7 +198,7 @@ export function deleteVisiteurByID (id: number) {
             rapport: true
         }
     });
-}
+};
 
 // login : authentifie un visiteur avec login et mot de passe, retourne un token JWT
 export async function login(login: string, mdp: string): Promise<string> {
@@ -164,4 +224,4 @@ export async function login(login: string, mdp: string): Promise<string> {
     });
 
     return token;
-}
+};

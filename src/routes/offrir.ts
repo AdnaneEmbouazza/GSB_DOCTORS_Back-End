@@ -7,7 +7,7 @@ const router = Router();
 
 /**
  * @swagger
- * /api/offres:
+ * /api/offrir:
  *   get:
  *     summary: Récupérer la liste de toutes les offres
  *     description: Retourne la liste complète de toutes les offres (médicaments offerts dans les rapports)
@@ -38,7 +38,7 @@ router.get('/offrir' ,isloggedOn , asyncHandler(offrirControlleur.listAllOffre))
 
 /**
  * @swagger
- * /api/offres/{id}:
+ * /api/offrir/{id}:
  *   get:
  *     summary: Récupérer une offre par ID
  *     description: Retourne les détails d'une offre spécifique
@@ -65,7 +65,7 @@ router.get('/offrir/:id' , isloggedOn , asyncHandler(offrirControlleur.listOffre
 
 /**
  * @swagger
- * /api/offres:
+ * /api/offrir:
  *   post:
  *     summary: Créer une nouvelle offre
  *     description: Crée une nouvelle offre (médicament offert dans un rapport)
@@ -102,7 +102,7 @@ router.post('/offrir' , isloggedOn , asyncHandler(offrirControlleur.createOffre)
 
 /**
  * @swagger
- * /api/offres/{id}:
+ * /api/offrir/{id}:
  *   put:
  *     summary: Modifier une offre
  *     description: Met à jour les informations d'une offre existante
@@ -138,7 +138,7 @@ router.put('/offrir/:id' , isloggedOn , asyncHandler(offrirControlleur.updateOff
 
 /**
  * @swagger
- * /api/offres/{id}:
+ * /api/offrir/{id}:
  *   delete:
  *     summary: Supprimer une offre
  *     description: Supprime une offre de la base de données

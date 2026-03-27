@@ -4,7 +4,7 @@
     "endpoint": "POST /api/visiteurs/login",
     "body": {
       "login": "jdupont",
-      "mdp": "password123"
+      "mdp": "securePassword123!"
     },
     "expectedResponse": {
       "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",

@@ -5,7 +5,7 @@ import { CreateOffrirDTO , UpdateOffrirDTO} from '../models/offrir';
 // getAllOffre : renvoie une liste de toutes les offres
 export function getAllOffre(): Promise<Offrir[]> {
     return prisma.offrir.findMany();
-}
+};
 
 // getOffreByID : renvoie une offre en fonction de son ID
 export function getOffreByID (idrapport: number, idmedicament: string): Promise<Offrir | null> {
@@ -17,7 +17,7 @@ export function getOffreByID (idrapport: number, idmedicament: string): Promise<
             }
         }
     });
-}
+};
 
 // createOffre : crée une nouvelle offre à partir des données fournies
 export function createOffre (data: CreateOffrirDTO): Promise<Offrir> {
@@ -28,7 +28,7 @@ export function createOffre (data: CreateOffrirDTO): Promise<Offrir> {
             quantite: data.quantite
         }
     });
-}
+};
 
 // updateOffreByID : met à jour une offre existante en fonction de son ID et des données fournies
 export function updateOffreById (idrapport: number, idmedicament: string, data: UpdateOffrirDTO): Promise<Offrir> {
@@ -43,7 +43,7 @@ export function updateOffreById (idrapport: number, idmedicament: string, data: 
             quantite: data.quantite
         }
     });
-}
+};
 
 // deleteOffreByID : supprime une offre en fonction de son ID
 export function deleteOffreByID (idrapport: number, idmedicament: string): Promise<Offrir> {
@@ -55,4 +55,4 @@ export function deleteOffreByID (idrapport: number, idmedicament: string): Promi
             }
         }
     });
-}
+};

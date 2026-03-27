@@ -4,3 +4,18 @@
 {"level":"error","message":"Erreur Serveur : [POST /api/visiteurs/inscription] 500 - \nInvalid `prisma.visiteur.create()` invocation in\n/app/src/services/visiteur.ts:32:28\n\n  29 // Hasher le mot de passe avant de le stocker\n  30 const hashedPassword = await hashPassword(data.mdp);\n  31 \n→ 32 return prisma.visiteur.create(\nThe table `Visiteur` does not exist in the current database.","timestamp":"2026-03-27 17:37:54"}
 {"level":"error","message":"Erreur Serveur : [POST /api/visiteurs/inscription] 500 - \nInvalid `prisma.visiteur.create()` invocation in\n/app/src/services/visiteur.ts:32:28\n\n  29 // Hasher le mot de passe avant de le stocker\n  30 const hashedPassword = await hashPassword(data.mdp);\n  31 \n→ 32 return prisma.visiteur.create(\nThe table `Visiteur` does not exist in the current database.","timestamp":"2026-03-27 17:39:32"}
 {"level":"info","message":"Nouveau visiteur inscrit","timestamp":"2026-03-27 18:03:09"}
+{"level":"error","message":"[DELETE /api/visiteurs/account/28] UnauthorizedError: 401 - Token d'authentification manquant","timestamp":"2026-03-27 21:22:46"}
+{"level":"error","message":"[POST /api/visiteurs/login] UnauthorizedError: 401 - Mot de passe incorrect","timestamp":"2026-03-27 21:26:47"}
+{"level":"info","message":"Nouveau visiteur inscrit","timestamp":"2026-03-27 21:31:59"}
+{"level":"info","message":"Visiteur jdupont connecté","timestamp":"2026-03-27 21:32:54"}
+{"level":"error","message":"[POST /api/visiteurs/login] UnauthorizedError: 401 - Login ou mot de passe incorrect","timestamp":"2026-03-27 21:38:58"}
+{"level":"info","message":"Nouveau visiteur inscrit","timestamp":"2026-03-27 21:43:02"}
+{"level":"info","message":"Visiteur jdupont connecté","timestamp":"2026-03-27 21:44:39"}
+{"level":"error","message":"[GET /api/familles] UnauthorizedError: 401 - Token d'authentification manquant","timestamp":"2026-03-27 21:47:59"}
+{"level":"error","message":"[GET /api/familles] UnauthorizedError: 401 - Token d'authentification manquant","timestamp":"2026-03-27 21:51:04"}
+{"level":"error","message":"[GET /api/familles] UnauthorizedError: 401 - Token d'authentification manquant","timestamp":"2026-03-27 21:54:14"}
+{"level":"info","message":"Nouveau visiteur inscrit","timestamp":"2026-03-27 21:56:19"}
+{"level":"info","message":"Visiteur jdupont connecté","timestamp":"2026-03-27 21:58:29"}
+{"level":"info","message":"20 familles récupérées","timestamp":"2026-03-27 21:58:50"}
+{"level":"info","message":"1000 médecins récupérés","timestamp":"2026-03-27 21:59:02"}
+{"level":"info","message":"28 médicaments récupérés","timestamp":"2026-03-27 22:01:52"}

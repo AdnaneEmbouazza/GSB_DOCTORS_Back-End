@@ -5,14 +5,14 @@ import {CreateMedecinDTO , UpdateMedecinDTO } from "../models/medecin";
 // getAllMedecins : renvoie une liste de tous les medecins
 export function getAllMedecins(): Promise<Medecin[]> {
     return prisma.medecin.findMany();
-}
+};
 
 // getMedecinByID : renvoie un medecin en fonction de son ID
 export function getMedecinByID (id: number): Promise<Medecin | null> {
     return prisma.medecin.findUnique({
         where: { id }
     });
-}
+};
 
 // createMedecin : crée un nouveau medecin à partir des données fournies
 export function createMedecin (data: CreateMedecinDTO): Promise<Medecin> {
@@ -26,7 +26,7 @@ export function createMedecin (data: CreateMedecinDTO): Promise<Medecin> {
             departement: data.departement
         }
     });
-}
+};
 
 // updateMedecinByID : met à jour un medecin existant en fonction de son ID et des données fournies
 export function updateMedecinByID (id: number, data: UpdateMedecinDTO): Promise<Medecin> {
@@ -41,11 +41,11 @@ export function updateMedecinByID (id: number, data: UpdateMedecinDTO): Promise<
             departement: data.departement
         }
     });
-}
+};
 
 // deleteMedecinByID : supprime un medecin en fonction de son ID
 export function deleteMedecinByID (id: number): Promise<Medecin> {
     return prisma.medecin.delete({
         where: { id }
     });
-}
+};

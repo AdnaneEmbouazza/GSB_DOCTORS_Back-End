@@ -3,3 +3,9 @@
 {"level":"error","message":"[POST /api/visiteurs/inscription] BadRequestError: 400 - Login et mot de passe sont requis","timestamp":"2026-03-27 17:35:30"}
 {"level":"error","message":"Erreur Serveur : [POST /api/visiteurs/inscription] 500 - \nInvalid `prisma.visiteur.create()` invocation in\n/app/src/services/visiteur.ts:32:28\n\n  29 // Hasher le mot de passe avant de le stocker\n  30 const hashedPassword = await hashPassword(data.mdp);\n  31 \n→ 32 return prisma.visiteur.create(\nThe table `Visiteur` does not exist in the current database.","timestamp":"2026-03-27 17:37:54"}
 {"level":"error","message":"Erreur Serveur : [POST /api/visiteurs/inscription] 500 - \nInvalid `prisma.visiteur.create()` invocation in\n/app/src/services/visiteur.ts:32:28\n\n  29 // Hasher le mot de passe avant de le stocker\n  30 const hashedPassword = await hashPassword(data.mdp);\n  31 \n→ 32 return prisma.visiteur.create(\nThe table `Visiteur` does not exist in the current database.","timestamp":"2026-03-27 17:39:32"}
+{"level":"error","message":"[DELETE /api/visiteurs/account/28] UnauthorizedError: 401 - Token d'authentification manquant","timestamp":"2026-03-27 21:22:46"}
+{"level":"error","message":"[POST /api/visiteurs/login] UnauthorizedError: 401 - Mot de passe incorrect","timestamp":"2026-03-27 21:26:47"}
+{"level":"error","message":"[POST /api/visiteurs/login] UnauthorizedError: 401 - Login ou mot de passe incorrect","timestamp":"2026-03-27 21:38:58"}
+{"level":"error","message":"[GET /api/familles] UnauthorizedError: 401 - Token d'authentification manquant","timestamp":"2026-03-27 21:47:59"}
+{"level":"error","message":"[GET /api/familles] UnauthorizedError: 401 - Token d'authentification manquant","timestamp":"2026-03-27 21:51:04"}
+{"level":"error","message":"[GET /api/familles] UnauthorizedError: 401 - Token d'authentification manquant","timestamp":"2026-03-27 21:54:14"}
