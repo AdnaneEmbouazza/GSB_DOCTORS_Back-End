@@ -3704,9 +3704,9 @@ ALTER TABLE `rapport`
   ADD KEY `rapport_fk1` (`idVisiteur`),
   ADD KEY `rapport_fk2` (`idMedecin`);
 
---
--- AUTO_INCREMENT pour les tables exportées
---
+
+-- Mettre à jour le format des date null , pour Prisma 
+UPDATE visiteur SET dateEmbauche = NULL WHERE dateEmbauche = '0000-00-00' OR YEAR(dateEmbauche) = 0;
 
 --
 -- Contraintes pour les tables exportées

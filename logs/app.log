@@ -26,3 +26,11 @@
 {"level":"info","message":"28 médicaments récupérés","timestamp":"2026-03-27 22:49:56"}
 {"level":"info","message":"863 offres récupérées","timestamp":"2026-03-27 22:50:13"}
 {"level":"info","message":"1589 rapports récupérés","timestamp":"2026-03-27 22:51:08"}
+{"level":"info","message":"Nouveau visiteur inscrit","timestamp":"2026-03-27 22:58:39"}
+{"level":"info","message":"Visiteur jdupont connecté","timestamp":"2026-03-27 22:58:55"}
+{"level":"info","message":"20 familles récupérées","timestamp":"2026-03-27 23:00:15"}
+{"level":"info","message":"1000 médecins récupérés","timestamp":"2026-03-27 23:01:03"}
+{"level":"info","message":"28 médicaments récupérés","timestamp":"2026-03-27 23:01:18"}
+{"level":"info","message":"863 offres récupérées","timestamp":"2026-03-27 23:01:26"}
+{"level":"info","message":"1589 rapports récupérés","timestamp":"2026-03-27 23:01:47"}
+{"level":"error","message":"Erreur Serveur : [GET /api/visiteurs] 500 - \nInvalid `prisma.visiteur.findMany()` invocation in\n/app/src/services/visiteur.ts:10:28\n\n   7 \n   8 // getAllVisiteurs : renvoie une liste de tous les visiteurs\n   9 export function getAllVisiteurs() {\n→ 10     return prisma.visiteur.findMany(\nValue out of range for the type: The column `dateEmbauche` contained an invalid datetime value with either day or month set to zero.","timestamp":"2026-03-27 23:02:20"}

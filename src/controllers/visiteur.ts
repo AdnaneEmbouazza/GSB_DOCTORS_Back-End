@@ -31,6 +31,11 @@ export async function inscription(req: Request, res: Response): Promise<void> {
         throw new BadRequestError('Les données de visiteur sont requises');
     }
     
+    // Si aucune date d'embauche n'est fournie, utiliser la date du jour
+    if (!data.dateembauche) {
+        data.dateembauche = new Date();
+    }
+    
     const visiteur = await visiteurService.createVisiteur(data);
     logger.info(`Nouveau visiteur inscrit`);
     res.status(201).json(visiteur);

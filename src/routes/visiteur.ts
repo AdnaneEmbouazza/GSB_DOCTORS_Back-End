@@ -72,6 +72,8 @@ router.post('/visiteurs/login' , asyncHandler(visiteurControleur.login));
  *                 type: string
  *               ville:
  *                 type: string
+ *              dateembauche:
+ *                type: string
  *             required:
  *               - login
  *               - mdp

@@ -9,3 +9,4 @@
 {"level":"error","message":"[GET /api/familles] UnauthorizedError: 401 - Token d'authentification manquant","timestamp":"2026-03-27 21:47:59"}
 {"level":"error","message":"[GET /api/familles] UnauthorizedError: 401 - Token d'authentification manquant","timestamp":"2026-03-27 21:51:04"}
 {"level":"error","message":"[GET /api/familles] UnauthorizedError: 401 - Token d'authentification manquant","timestamp":"2026-03-27 21:54:14"}
+{"level":"error","message":"Erreur Serveur : [GET /api/visiteurs] 500 - \nInvalid `prisma.visiteur.findMany()` invocation in\n/app/src/services/visiteur.ts:10:28\n\n   7 \n   8 // getAllVisiteurs : renvoie une liste de tous les visiteurs\n   9 export function getAllVisiteurs() {\n→ 10     return prisma.visiteur.findMany(\nValue out of range for the type: The column `dateEmbauche` contained an invalid datetime value with either day or month set to zero.","timestamp":"2026-03-27 23:02:20"}
