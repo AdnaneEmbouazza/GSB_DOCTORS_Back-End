@@ -22,11 +22,11 @@ const router = Router();
  *             properties:
  *               login:
  *                 type: string
- *               password:
+ *               mdp:
  *                 type: string
  *             required:
  *               - login
- *               - password
+ *               - mdp
  *     responses:
  *       200:
  *         description: Authentification réussie
@@ -42,7 +42,7 @@ const router = Router();
  *       401:
  *         description: Identifiants invalides
  */
-router.post('/login' , asyncHandler(visiteurControleur.login));
+router.post('/visiteurs/login' , asyncHandler(visiteurControleur.login));
 /**
  * @swagger
  * /api/visiteurs/inscription:
@@ -64,7 +64,7 @@ router.post('/login' , asyncHandler(visiteurControleur.login));
  *                 type: string
  *               login:
  *                 type: string
- *               password:
+ *               mdp:
  *                 type: string
  *               adresse:
  *                 type: string
@@ -74,14 +74,14 @@ router.post('/login' , asyncHandler(visiteurControleur.login));
  *                 type: string
  *             required:
  *               - login
- *               - password
+ *               - mdp
  *     responses:
  *       201:
  *         description: Compte créé avec succès
  *       400:
  *         description: Données invalides ou login déjà utilisé
  */
-router.post('/inscription' , asyncHandler(visiteurControleur.inscription));
+router.post('/visiteurs/inscription' , asyncHandler(visiteurControleur.inscription));
 
 /**
  * @swagger
@@ -108,7 +108,7 @@ router.post('/inscription' , asyncHandler(visiteurControleur.inscription));
  *       401:
  *         description: Non authentifié
  */
-router.get ('/account/:id' , isloggedOn , asyncHandler(visiteurControleur.getVisiteurByID));
+router.get ('/visiteurs/account/:id' , isloggedOn , asyncHandler(visiteurControleur.getVisiteurByID));
 /**
  * @swagger
  * /api/visiteurs/account/{id}:
@@ -151,7 +151,7 @@ router.get ('/account/:id' , isloggedOn , asyncHandler(visiteurControleur.getVis
  *       401:
  *         description: Non authentifié
  */
-router.put ('/account/:id' , isloggedOn , asyncHandler(visiteurControleur.updateVisiteur));
+router.put ('/visiteurs/account/:id' , isloggedOn , asyncHandler(visiteurControleur.updateVisiteur));
 /**
  * @swagger
  * /api/visiteurs/account/{id}:
@@ -177,7 +177,7 @@ router.put ('/account/:id' , isloggedOn , asyncHandler(visiteurControleur.update
  *       401:
  *         description: Non authentifié
  */
-router.delete ('/account/:id' , isloggedOn , asyncHandler(visiteurControleur.deleteVisiteur));
+router.delete ('/visiteurs/account/:id' , isloggedOn , asyncHandler(visiteurControleur.deleteVisiteur));
 /**
  * @swagger
  * /api/visiteurs:
@@ -194,7 +194,7 @@ router.delete ('/account/:id' , isloggedOn , asyncHandler(visiteurControleur.del
  *       401:
  *         description: Non authentifié
  */
-router.get ('/' , isloggedOn , asyncHandler(visiteurControleur.getAllVisiteurs));
+router.get ('/visiteurs' , isloggedOn , asyncHandler(visiteurControleur.getAllVisiteurs));
 /**
  * @swagger
  * /api/visiteurs/{id}:
@@ -220,7 +220,7 @@ router.get ('/' , isloggedOn , asyncHandler(visiteurControleur.getAllVisiteurs))
  *       401:
  *         description: Non authentifié
  */
-router.get ('/:id' , isloggedOn , asyncHandler(visiteurControleur.getVisiteurByID));
+router.get ('/visiteurs/:id' , isloggedOn , asyncHandler(visiteurControleur.getVisiteurByID));
 
 export default router;
 

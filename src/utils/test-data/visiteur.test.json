@@ -4,7 +4,7 @@
     "endpoint": "POST /api/visiteurs/login",
     "body": {
       "login": "jdupont",
-      "password": "password123"
+      "mdp": "password123"
     },
     "expectedResponse": {
       "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
@@ -19,7 +19,7 @@
       "nom": "Dupont",
       "prenom": "Jean",
       "login": "jdupont",
-      "password": "securePassword123!",
+      "mdp": "securePassword123!",
       "adresse": "123 rue de Paris",
       "cp": "75001",
       "ville": "Paris"
@@ -35,7 +35,7 @@
     }
   },
 
-  "getAccountById": {
+  "getVisiteurById": {
     "description": "Récupérer les informations du compte",
     "endpoint": "GET /api/visiteurs/account/1",
     "headers": {
@@ -53,7 +53,7 @@
     }
   },
 
-  "updateAccount": {
+  "updateVisiteurbyid": {
     "description": "Modifier les informations du compte",
     "endpoint": "PUT /api/visiteurs/account/1",
     "headers": {

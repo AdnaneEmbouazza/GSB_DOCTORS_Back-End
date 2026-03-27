@@ -15,6 +15,8 @@ model Famille {
   id                String      @id @db.VarChar(10)
   libelle           String      @db.VarChar(80)
   medicaments       Medicament[]        // relation avec le modèle MEDICAMENTS => tout les medicaments d'une famille
+
+  @@map("famille")
 }
 
 //Modèle MEDECINS
@@ -27,6 +29,8 @@ model Medecin {
   specialitecomplementaire   String?     @db.VarChar(50)
   departement                Int         
   rapport                    Rapport[]           // relation avec le modèle RAPPORT => tout les rapports relié à un médecin
+
+  @@map("medecin")
 }
 
 //Modèle MEDICAMENTS
@@ -40,6 +44,8 @@ model Medicament {
 
   famille               Famille    @relation(fields: [idfamille], references: [id]) // relation avec le modèle FAMILLE => une famille peut avoir plusieurs medicaments
   offerts               Offrir[]            // relation avec le modèle OFFRIR => tout les apparitions d'un medicament dans des offres
+
+  @@map("medicament")
 }
 
 //Modèle VISITEUR
@@ -52,10 +58,12 @@ model Visiteur {
   adresse              String?      @db.VarChar(30)
   cp                   String?      @db.VarChar(5)
   ville                String?      @db.VarChar(30)
-  dateembauche         DateTime?
+  dateEmbauche         DateTime?    @db.Date
   acessToken           String?      @db.VarChar(500)  // JWT acess token
 
   rapport             Rapport[]     // relation avec le modèle RAPPORT => tout les rapports relié à un visiteur
+
+  @@map("visiteur")
 }
 
 //Modèle RAPPORT
@@ -70,6 +78,8 @@ model Rapport {
   visiteur             Visiteur     @relation(fields: [idvisiteur], references: [id]) // relation avec le modèle VISITEUR => un visiteur peut avoir plusieurs rapports
   medecin              Medecin      @relation(fields: [idmedecin], references: [id]) // relation avec le modèle MEDECIN => un médecin peut avoir plusieurs rapports
   offrir                Offrir[]     // relation avec le modèle OFFRIR => tout les offres relié à un rapport
+
+  @@map("rapport")
 }
 
 //Modèle OFFRIR
@@ -80,6 +90,8 @@ model Offrir {
 
   @@id([idrapport, idmedicament]) // clé primaire composée 
 
-  rapport                Rapport          @relation(fields: [idrapport], references: [id]) // relation avec le modèle RAPPORT => un rapport peut etre relié à plusieurs offres
+  rapport                Rapport          @relation(fields: [idrapport], references: [id]) // relation avec le modèle RAPPORT => un rapport peut ester relié à plusieurs offres
   medicament             Medicament       @relation(fields: [idmedicament] , references: [id])  // relation avec le modèle MEDICAMENTS => un medicament peut etre relié à plusieurs offres
+
+  @@map("offrir")
 }
