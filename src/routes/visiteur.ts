@@ -106,6 +106,51 @@ router.post('/visiteurs/logout' , isloggedOn , asyncHandler(visiteurControleur.l
 
 /**
  * @swagger
+ * /api/visiteurs:
+ *   get:
+ *     summary: Récupérer la liste de tous les visiteurs
+ *     description: Retourne la liste complète de tous les visiteurs (admin uniquement)
+ *     security:
+ *       - BearerAuth: []
+ *     tags:
+ *       - Visiteurs
+ *     responses:
+ *       200:
+ *         description: Liste des visiteurs récupérée
+ *       401:
+ *         description: Non authentifié
+ */
+router.get ('/visiteurs' , isloggedOn , asyncHandler(visiteurControleur.getAllVisiteurs));
+
+/**
+ * @swagger
+ * /api/visiteurs/{id}:
+ *   get:
+ *     summary: Récupérer un visiteur par ID
+ *     description: Retourne les détails d'un visiteur spécifique (admin uniquement)
+ *     security:
+ *       - BearerAuth: []
+ *     tags:
+ *       - Visiteurs
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: integer
+ *         description: ID du visiteur
+ *     responses:
+ *       200:
+ *         description: Visiteur récupéré avec succès
+ *       404:
+ *         description: Visiteur non trouvé
+ *       401:
+ *         description: Non authentifié
+ */
+router.get ('/visiteurs/:id' , isloggedOn , asyncHandler(visiteurControleur.getVisiteurByID));
+
+/**
+ * @swagger
  * /api/visiteurs/account:
  *   get:
  *     summary: Récupérer les infos de mon compte
@@ -188,81 +233,6 @@ router.put('/visiteurs/account', isloggedOn , asyncHandler(visiteurControleur.up
  *         description: Visiteur non trouvé
  */
 router.delete('/visiteurs/account', isloggedOn , asyncHandler(visiteurControleur.deleteCurrentVisiteur));
-
-/**
- * @swagger
- * /api/visiteurs:
- *   get:
- *     summary: Récupérer la liste de tous les visiteurs
- *     description: Retourne la liste complète de tous les visiteurs (admin uniquement)
- *     security:
- *       - BearerAuth: []
- *     tags:
- *       - Visiteurs
- *     responses:
- *       200:
- *         description: Liste des visiteurs récupérée
- *       401:
- *         description: Non authentifié
- */
-router.get ('/visiteurs' , isloggedOn , asyncHandler(visiteurControleur.getAllVisiteurs));
-
-/**
- * @swagger
- * /api/visiteurs/search:
- *   get:
- *     summary: Rechercher des visiteurs par nom ou prénom
- *     description: Retourne la liste des visiteurs dont le nom ou prénom contient le terme recherché
- *     tags:
- *       - Visiteurs
- *     parameters:
- *       - in: query
- *         name: search
- *         required: true
- *         schema:
- *           type: string
- *         description: Terme à rechercher dans les noms ou prénoms
- *         example: "Dupont"
- *     responses:
- *       200:
- *         description: Liste des visiteurs correspondant à la recherche
- *         content:
- *           application/json:
- *             schema:
- *               type: array
- *               items:
- *                 $ref: '#/components/schemas/Visiteur'
- *       400:
- *         description: Paramètre de recherche manquant
- */
-router.get('/visiteurs/search', asyncHandler(visiteurControleur.searchVisiteursByNom));
-
-/**
- * @swagger
- * /api/visiteurs/{id}:
- *   get:
- *     summary: Récupérer un visiteur par ID
- *     description: Retourne les détails d'un visiteur spécifique (admin uniquement)
- *     security:
- *       - BearerAuth: []
- *     tags:
- *       - Visiteurs
- *     parameters:
- *       - in: path
- *         name: id
- *         required: true
- *         schema:
- *           type: integer
- *         description: ID du visiteur
- *     responses:
- *       200:
- *         description: Visiteur récupéré avec succès
- *       404:
- *         description: Visiteur non trouvé
- *       401:
- *         description: Non authentifié
- */
-router.get ('/visiteurs/:id' , isloggedOn , asyncHandler(visiteurControleur.getVisiteurByID));
 
 
 

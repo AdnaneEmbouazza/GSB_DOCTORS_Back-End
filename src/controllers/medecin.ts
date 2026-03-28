@@ -69,3 +69,17 @@ export async function deleteMedecinByID(req: Request, res: Response): Promise<vo
     logger.info(`Médecin ${id} supprimé`);
     res.status(200).json(deleteMedecin);
 };
+
+export async function searchMedecinsByNom(req: Request, res: Response): Promise<void> {
+    const { search } = req.query;
+
+    // Gestion erreur 400 (paramètre manquant)
+    if (!search || typeof search !== 'string' || !search.trim()) {
+        throw new BadRequestError('Le paramètre de recherche est requis');
+    }
+
+    const medecins = await medecinService.searchMedecinsByNom(search.trim());
+    
+    logger.info(`Recherche effectuée pour: "${search}" - ${medecins.length} résultats trouvés`);
+    res.status(200).json(medecins);
+};

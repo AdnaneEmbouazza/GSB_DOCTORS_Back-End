@@ -49,3 +49,15 @@ export function deleteMedecinByID (id: number): Promise<Medecin> {
         where: { id }
     });
 };
+
+// searchMedecinsByNom : recherche les medecins par nom ou prénom (LIKE en SQL)
+export function searchMedecinsByNom(searchTerm: string): Promise<Medecin[]> {
+    return prisma.medecin.findMany({
+        where: {
+            OR: [
+                { nom: { contains: searchTerm } },
+                { prenom: { contains: searchTerm } }
+            ]
+        }
+    });
+};

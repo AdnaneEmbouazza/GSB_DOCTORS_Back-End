@@ -171,17 +171,3 @@ export async function logout(req: Request, res: Response): Promise<void> {
     logger.info('Utilisateur déconnecté');
     res.status(200).json({ message: 'Déconnexion réussie' });
 };
-
-export async function searchVisiteursByNom(req: Request, res: Response): Promise<void> {
-    const { search } = req.query;
-
-    // Gestion erreur 400 (paramètre manquant)
-    if (!search || typeof search !== 'string' || !search.trim()) {
-        throw new BadRequestError('Le paramètre de recherche est requis');
-    }
-
-    const visiteurs = await visiteurService.searchVisiteursByNom(search.trim());
-    
-    logger.info(`Recherche effectuée pour: "${search}" - ${visiteurs.length} résultats trouvés`);
-    res.status(200).json(visiteurs);
-};

@@ -61,101 +61,101 @@ router.get('/familles', isloggedOn , asyncHandler(familleControlleur.listAllFami
  */
 router.get('/famille/:id', isloggedOn , asyncHandler(familleControlleur.listFamilleByID));
 
-/**
- * @swagger
- * /api/famille:
- *   post:
- *     summary: Créer une nouvelle famille
- *     description: Crée une nouvelle famille de médicaments
- *     security:
- *       - BearerAuth: []
- *     tags:
- *       - Familles
- *     requestBody:
- *       required: true
- *       content:
- *         application/json:
- *           schema:
- *             type: object
- *             properties:
- *               id:
- *                 type: string
- *               libelle:
- *                 type: string
- *             required:
- *               - id
- *               - libelle
- *     responses:
- *       201:
- *         description: Famille créée avec succès
- *       400:
- *         description: Données invalides
- *       401:
- *         description: Non authentifié
- */
-router.post('/famille' , isloggedOn , asyncHandler(familleControlleur.createFamille));
+// /**
+//  * @swagger
+//  * /api/famille:
+//  *   post:
+//  *     summary: Créer une nouvelle famille
+//  *     description: Crée une nouvelle famille de médicaments
+//  *     security:
+//  *       - BearerAuth: []
+//  *     tags:
+//  *       - Familles
+//  *     requestBody:
+//  *       required: true
+//  *       content:
+//  *         application/json:
+//  *           schema:
+//  *             type: object
+//  *             properties:
+//  *               id:
+//  *                 type: string
+//  *               libelle:
+//  *                 type: string
+//  *             required:
+//  *               - id
+//  *               - libelle
+//  *     responses:
+//  *       201:
+//  *         description: Famille créée avec succès
+//  *       400:
+//  *         description: Données invalides
+//  *       401:
+//  *         description: Non authentifié
+//  */
+// router.post('/famille' , isloggedOn , asyncHandler(familleControlleur.createFamille));
 
-/**
- * @swagger
- * /api/famille/{id}:
- *   put:
- *     summary: Modifier une famille
- *     description: Met à jour les informations d'une famille existante
- *     security:
- *       - BearerAuth: []
- *     tags:
- *       - Familles
- *     parameters:
- *       - in: path
- *         name: id
- *         required: true
- *         schema:
- *           type: string
- *         description: ID de la famille
- *     requestBody:
- *       required: true
- *       content:
- *         application/json:
- *           schema:
- *             type: object
- *             properties:
- *               libelle:
- *                 type: string
- *     responses:
- *       200:
- *         description: Famille modifiée avec succès
- *       404:
- *         description: Famille non trouvée
- *       401:
- *         description: Non authentifié
- */
-router.put('/famille/:id' , isloggedOn , asyncHandler(familleControlleur.updateFamilleByID));
+// /**
+//  * @swagger
+//  * /api/famille/{id}:
+//  *   put:
+//  *     summary: Modifier une famille
+//  *     description: Met à jour les informations d'une famille existante
+//  *     security:
+//  *       - BearerAuth: []
+//  *     tags:
+//  *       - Familles
+//  *     parameters:
+//  *       - in: path
+//  *         name: id
+//  *         required: true
+//  *         schema:
+//  *           type: string
+//  *         description: ID de la famille
+//  *     requestBody:
+//  *       required: true
+//  *       content:
+//  *         application/json:
+//  *           schema:
+//  *             type: object
+//  *             properties:
+//  *               libelle:
+//  *                 type: string
+//  *     responses:
+//  *       200:
+//  *         description: Famille modifiée avec succès
+//  *       404:
+//  *         description: Famille non trouvée
+//  *       401:
+//  *         description: Non authentifié
+//  */
+// router.put('/famille/:id' , isloggedOn , asyncHandler(familleControlleur.updateFamilleByID));
 
-/**
- * @swagger
- * /api/famille/{id}:
- *   delete:
- *     summary: Supprimer une famille
- *     description: Supprime une famille de la base de données
- *     security:
- *       - BearerAuth: []
- *     tags:
- *       - Familles
- *     parameters:
- *       - in: path
- *         name: id
- *         required: true
- *         schema:
- *           type: string
- *         description: ID de la famille
- *     responses:
- *       200:
- *         description: Famille supprimée avec succès
- *       404:
- *         description: Famille non trouvée
- *       401:
- *         description: Non authentifié
- */
-router.delete('/famille/:id' , isloggedOn , asyncHandler(familleControlleur.deleteFamilleByID));
+// /**
+//  * @swagger
+//  * /api/famille/{id}:
+//  *   delete:
+//  *     summary: Supprimer une famille
+//  *     description: Supprime une famille de la base de données
+//  *     security:
+//  *       - BearerAuth: []
+//  *     tags:
+//  *       - Familles
+//  *     parameters:
+//  *       - in: path
+//  *         name: id
+//  *         required: true
+//  *         schema:
+//  *           type: string
+//  *         description: ID de la famille
+//  *     responses:
+//  *       200:
+//  *         description: Famille supprimée avec succès
+//  *       404:
+//  *         description: Famille non trouvée
+//  *       401:
+//  *         description: Non authentifié
+//  */
+// router.delete('/famille/:id' , isloggedOn , asyncHandler(familleControlleur.deleteFamilleByID));
 
 export default router;
