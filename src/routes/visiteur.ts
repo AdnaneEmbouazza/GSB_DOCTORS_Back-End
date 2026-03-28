@@ -88,6 +88,24 @@ router.post('/visiteurs/inscription' , asyncHandler(visiteurControleur.inscripti
 
 /**
  * @swagger
+ * /api/visiteurs/logout:
+ *   post:
+ *     summary: Déconnnecter l'utilisateur
+ *     description: Supprime le token d'authentification et déconnecte l'utilisateur
+ *     security:
+ *       - BearerAuth: []
+ *     tags:
+ *       - Visiteurs
+ *     responses:
+ *       200:
+ *         description: Déconnexion réussie
+ *       401:
+ *         description: Non authentifié
+ */
+router.post('/visiteurs/logout' , isloggedOn , asyncHandler(visiteurControleur.logout));
+
+/**
+ * @swagger
  * /api/visiteurs/account/{id}:
  *   get:
  *     summary: Récupérer les infos du compte

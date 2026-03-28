@@ -2,8 +2,8 @@ import { Request, Response } from "express";
 import * as visiteurService from "../services/visiteur";
 import { UnauthorizedError, BadRequestError, NotFoundError } from "../error";
 import { UpdateVisiteurDTO , CreateVisiteurDTO , LoginDTO } from "../models/visiteur";
+import { generateAccessToken, TokenPayload } from "../utils/token";
 import logger from "../utils/logger";
-import { TokenPayload } from "../utils/token";
 
 export async function login(req: Request, res: Response): Promise<void> {
     const { login, mdp } : LoginDTO = req.body;
@@ -15,8 +15,16 @@ export async function login(req: Request, res: Response): Promise<void> {
     
     const token = await visiteurService.login(login, mdp);
     
+    // Envoyer le token en HttpOnly cookie
+    res.cookie('authToken', token, {
+        httpOnly: true,      // Pas accessible à JavaScript (prévient XSS)
+        secure: process.env.NODE_ENV === 'production', // HTTPS seulement en prod
+        sameSite: 'strict',  // CSRF protection
+        maxAge: 15 * 60 * 1000 // 15 minutes en millisecondes
+    });
+    
     logger.info(`Visiteur ${login} connecté`);
-    res.status(200).json({ token });
+    res.status(200).json({ token , message: 'Authentification réussie' });
 };
 
 export async function inscription(req: Request, res: Response): Promise<void> {
@@ -157,4 +165,11 @@ export async function deleteVisiteur(req: Request, res: Response): Promise<void>
     
     logger.info(`Visiteur ${id} supprimé`);
     res.status(200).json(visiteur);
+};
+
+export async function logout(req: Request, res: Response): Promise<void> {
+    // Effacer le cookie authToken
+    res.clearCookie('authToken');
+    logger.info('Utilisateur déconnecté');
+    res.status(200).json({ message: 'Déconnexion réussie' });
 };

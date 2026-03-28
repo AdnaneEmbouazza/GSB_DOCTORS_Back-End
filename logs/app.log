@@ -79,3 +79,63 @@
 {"level":"info","message":"863 offres récupérées","timestamp":"2026-03-28 03:47:53"}
 {"level":"error","message":"[POST /api/offrir] BadRequestError: 400 - Les données de l'offre sont requises","timestamp":"2026-03-28 03:48:30"}
 {"level":"error","message":"[POST /api/offrir] BadRequestError: 400 - Les données de l'offre sont requises","timestamp":"2026-03-28 03:49:01"}
+{"level":"info","message":"Visiteur cbedos connecté","timestamp":"2026-03-28 03:57:50"}
+{"level":"error","message":"[POST /api/offrir] BadRequestError: 400 - Les données de l'offre sont requises","timestamp":"2026-03-28 03:59:22"}
+{"level":"info","message":"Visiteur ltusseau connecté","timestamp":"2026-03-28 04:11:09"}
+{"level":"info","message":"863 offres récupérées","timestamp":"2026-03-28 04:13:17"}
+{"level":"info","message":"Nouvelle offre créée","timestamp":"2026-03-28 04:13:47"}
+{"level":"info","message":"864 offres récupérées","timestamp":"2026-03-28 04:14:03"}
+{"level":"error","message":"Erreur Serveur : [GET /api/offrir/5] 500 - \nInvalid `prisma.offrir.findUnique()` invocation in\n/app/src/services/offrir.ts:12:26\n\n   9 \n  10 // getOffreByID : renvoie une offre en fonction de son ID\n  11 export function getOffreByID (idrapport: number, idmedicament: string): Promise<Offrir | null> {\n→ 12     return prisma.offrir.findUnique({\n           where: {\n             idrapport_idmedicament: {\n               idrapport: NaN,\n         +     idmedicament: String\n             }\n           }\n         })\n\nArgument `idmedicament` is missing.","timestamp":"2026-03-28 04:14:39"}
+{"level":"info","message":"Visiteur pbentot connecté","timestamp":"2026-03-28 04:17:34"}
+{"level":"info","message":"Offre 5-AMOXIG12 récupérée","timestamp":"2026-03-28 04:19:09"}
+{"level":"warn","message":"Tentative d'accès à une offre inexistante : 8-AMOXIG12","timestamp":"2026-03-28 04:19:15"}
+{"level":"error","message":"[GET /api/offrir/8/AMOXIG12] NotFoundError: 404 - Offre non trouvée","timestamp":"2026-03-28 04:19:15"}
+{"level":"info","message":"Offre 4-CLAZER6 mise à jour","timestamp":"2026-03-28 04:21:12"}
+{"level":"info","message":"1590 rapports récupérés","timestamp":"2026-03-28 04:22:13"}
+{"level":"info","message":"Rapport 5 récupéré","timestamp":"2026-03-28 04:22:22"}
+{"level":"info","message":"Rapport 1 mis à jour","timestamp":"2026-03-28 04:24:18"}
+{"level":"info","message":"Nouveau rapport créé","timestamp":"2026-03-28 04:24:58"}
+{"level":"info","message":"864 offres récupérées","timestamp":"2026-03-28 04:25:17"}
+{"level":"error","message":"Erreur Serveur : [POST /api/offrir] 500 - \nInvalid `prisma.offrir.create()` invocation in\n/app/src/services/offrir.ts:24:26\n\n  21 \n  22 // createOffre : crée une nouvelle offre à partir des données fournies\n  23 export function createOffre (data: CreateOffrirDTO): Promise<Offrir> {\n→ 24     return prisma.offrir.create(\nUnique constraint failed on the constraint: `PRIMARY`","timestamp":"2026-03-28 04:25:42"}
+{"level":"info","message":"Offre 3-BACTIG10 supprimée","timestamp":"2026-03-28 04:26:51"}
+{"level":"info","message":"Nouvelle offre créée","timestamp":"2026-03-28 04:27:15"}
+{"level":"warn","message":"Tentative d'accès à une offre inexistante : 8-AMOXIG12","timestamp":"2026-03-28 04:27:26"}
+{"level":"error","message":"[GET /api/offrir/8/AMOXIG12] NotFoundError: 404 - Offre non trouvée","timestamp":"2026-03-28 04:27:26"}
+{"level":"info","message":"Offre 4-3MYC7 récupérée","timestamp":"2026-03-28 04:27:49"}
+{"level":"info","message":"Offre 4-CLAZER6 mise à jour","timestamp":"2026-03-28 04:28:16"}
+{"level":"info","message":"20 familles récupérées","timestamp":"2026-03-28 04:28:35"}
+{"level":"info","message":"Famille AA récupérée","timestamp":"2026-03-28 04:28:47"}
+{"level":"info","message":"Famille AA mise à jour","timestamp":"2026-03-28 04:28:59"}
+{"level":"info","message":"Nouvelle famille créée","timestamp":"2026-03-28 04:29:21"}
+{"level":"info","message":"1000 médecins récupérés","timestamp":"2026-03-28 04:31:01"}
+{"level":"info","message":"Médecin 12 récupéré","timestamp":"2026-03-28 04:31:54"}
+{"level":"error","message":"[PUT /api/medecin/12] UnauthorizedError: 401 - Token expiré","timestamp":"2026-03-28 04:35:44"}
+{"level":"info","message":"Visiteur lbioret connecté","timestamp":"2026-03-28 04:36:48"}
+{"level":"info","message":"Médecin 12 mis à jour","timestamp":"2026-03-28 04:38:55"}
+{"level":"info","message":"Nouveau médecin créé","timestamp":"2026-03-28 04:40:14"}
+{"level":"info","message":"28 médicaments récupérés","timestamp":"2026-03-28 04:40:31"}
+{"level":"info","message":"Médicament ADIMOL9 récupéré","timestamp":"2026-03-28 04:40:51"}
+{"level":"info","message":"Médicament ADIMOL9 mis à jour","timestamp":"2026-03-28 04:42:02"}
+{"level":"info","message":"Nouveau médicament créé","timestamp":"2026-03-28 04:42:52"}
+{"level":"info","message":"Visiteur 6 récupéré (depuis le token)","timestamp":"2026-03-28 04:48:49"}
+{"level":"info","message":"Visiteur 6 récupéré (depuis le token)","timestamp":"2026-03-28 04:49:02"}
+{"level":"info","message":"Visiteur 4 récupéré","timestamp":"2026-03-28 04:49:21"}
+{"level":"info","message":"27 visiteurs récupérés","timestamp":"2026-03-28 04:49:40"}
+{"level":"info","message":"Visiteur fbunisset connecté","timestamp":"2026-03-28 12:03:20"}
+{"level":"info","message":"21 familles récupérées","timestamp":"2026-03-28 12:03:48"}
+{"level":"info","message":"Famille AA récupérée","timestamp":"2026-03-28 12:04:03"}
+{"level":"info","message":"Famille AA mise à jour","timestamp":"2026-03-28 12:04:21"}
+{"level":"info","message":"Nouvelle famille créée","timestamp":"2026-03-28 12:16:59"}
+{"level":"info","message":"29 médicaments récupérés","timestamp":"2026-03-28 12:17:41"}
+{"level":"info","message":"Médicament ADIMOL9 récupéré","timestamp":"2026-03-28 12:17:57"}
+{"level":"error","message":"[PUT /api/medicament/ADIMOL9] UnauthorizedError: 401 - Token expiré","timestamp":"2026-03-28 12:18:44"}
+{"level":"info","message":"Visiteur aribiA connecté","timestamp":"2026-03-28 12:57:11"}
+{"level":"error","message":"[GET /api/familles] UnauthorizedError: 401 - Bad \"options.expiresIn\" option the payload already has an \"exp\" property.","timestamp":"2026-03-28 12:59:01"}
+{"level":"info","message":"Visiteur dandre connecté","timestamp":"2026-03-28 13:02:54"}
+{"level":"error","message":"[GET /api/familles] UnauthorizedError: 401 - Bad \"options.expiresIn\" option the payload already has an \"exp\" property.","timestamp":"2026-03-28 13:03:14"}
+{"level":"info","message":"Visiteur cbedos connecté","timestamp":"2026-03-28 13:10:49"}
+{"level":"info","message":"20 familles récupérées","timestamp":"2026-03-28 13:11:06"}
+{"level":"warn","message":"Tentative d'accès à une famille inexistante : 1","timestamp":"2026-03-28 13:11:20"}
+{"level":"error","message":"[GET /api/famille/1] NotFoundError: 404 - Famille non trouvée","timestamp":"2026-03-28 13:11:20"}
+{"level":"info","message":"Famille AA récupérée","timestamp":"2026-03-28 13:11:28"}
+{"level":"info","message":"Famille AA mise à jour","timestamp":"2026-03-28 13:11:41"}

@@ -29,8 +29,14 @@ export async function listOffreByID(req: Request, res: Response): Promise<void> 
 export async function createOffre(req: Request, res: Response): Promise<void> {
     const data : CreateOffrirDTO = req.body;
     
-    if (!data.idMedicament || data.idRapport === undefined ) {
-        throw new BadRequestError('Les données de l\'offre sont requises');
+    if (data.idrapport === undefined || data.idrapport === null) {
+        throw new BadRequestError('Le champ idrapport est requis');
+    }
+    if (!data.idmedicament) {
+        throw new BadRequestError('Le champ idmedicament est requis');
+    }
+    if (data.quantite === undefined || data.quantite === null) {
+        throw new BadRequestError('Le champ quantite est requis');
     }
     
     const offre = await offrirService.createOffre(data);

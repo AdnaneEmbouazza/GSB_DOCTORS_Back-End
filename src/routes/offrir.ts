@@ -38,7 +38,7 @@ router.get('/offrir' ,isloggedOn , asyncHandler(offrirControlleur.listAllOffre))
 
 /**
  * @swagger
- * /api/offrir/{id}:
+ * /api/offrir/{idRapport}/{idMedicament}:
  *   get:
  *     summary: Récupérer une offre par ID
  *     description: Retourne les détails d'une offre spécifique
@@ -48,11 +48,17 @@ router.get('/offrir' ,isloggedOn , asyncHandler(offrirControlleur.listAllOffre))
  *       - Offres
  *     parameters:
  *       - in: path
- *         name: id
+ *         name: idRapport
+ *         required: true
+ *         schema:
+ *           type: integer
+ *         description: ID du rapport
+ *       - in: path
+ *         name: idMedicament
  *         required: true
  *         schema:
  *           type: string
- *         description: ID de l'offre (composé de idrapport-idmedicament)
+ *         description: ID du médicament
  *     responses:
  *       200:
  *         description: Offre récupérée avec succès
@@ -61,7 +67,7 @@ router.get('/offrir' ,isloggedOn , asyncHandler(offrirControlleur.listAllOffre))
  *       401:
  *         description: Non authentifié
  */
-router.get('/offrir/:id' , isloggedOn , asyncHandler(offrirControlleur.listOffreByID));
+router.get('/offrir/:idRapport/:idMedicament' , isloggedOn , asyncHandler(offrirControlleur.listOffreByID));
 
 /**
  * @swagger
@@ -102,7 +108,7 @@ router.post('/offrir' , isloggedOn , asyncHandler(offrirControlleur.createOffre)
 
 /**
  * @swagger
- * /api/offrir/{id}:
+ * /api/offrir/{idRapport}/{idMedicament}:
  *   put:
  *     summary: Modifier une offre
  *     description: Met à jour les informations d'une offre existante
@@ -112,11 +118,17 @@ router.post('/offrir' , isloggedOn , asyncHandler(offrirControlleur.createOffre)
  *       - Offres
  *     parameters:
  *       - in: path
- *         name: id
+ *         name: idRapport
+ *         required: true
+ *         schema:
+ *           type: integer
+ *         description: ID du rapport
+ *       - in: path
+ *         name: idMedicament
  *         required: true
  *         schema:
  *           type: string
- *         description: ID de l'offre
+ *         description: ID du médicament
  *     requestBody:
  *       required: true
  *       content:
@@ -134,11 +146,11 @@ router.post('/offrir' , isloggedOn , asyncHandler(offrirControlleur.createOffre)
  *       401:
  *         description: Non authentifié
  */
-router.put('/offrir/:id' , isloggedOn , asyncHandler(offrirControlleur.updateOffreByID));
+router.put('/offrir/:idRapport/:idMedicament' , isloggedOn , asyncHandler(offrirControlleur.updateOffreByID));
 
 /**
  * @swagger
- * /api/offrir/{id}:
+ * /api/offrir/{idRapport}/{idMedicament}:
  *   delete:
  *     summary: Supprimer une offre
  *     description: Supprime une offre de la base de données
@@ -148,11 +160,17 @@ router.put('/offrir/:id' , isloggedOn , asyncHandler(offrirControlleur.updateOff
  *       - Offres
  *     parameters:
  *       - in: path
- *         name: id
+ *         name: idRapport
+ *         required: true
+ *         schema:
+ *           type: integer
+ *         description: ID du rapport
+ *       - in: path
+ *         name: idMedicament
  *         required: true
  *         schema:
  *           type: string
- *         description: ID de l'offre
+ *         description: ID du médicament
  *     responses:
  *       200:
  *         description: Offre supprimée avec succès
@@ -161,7 +179,7 @@ router.put('/offrir/:id' , isloggedOn , asyncHandler(offrirControlleur.updateOff
  *       401:
  *         description: Non authentifié
  */
-router.delete('/offrir/:id' , isloggedOn , asyncHandler(offrirControlleur.deleteOffreByID));
+router.delete('/offrir/:idRapport/:idMedicament' , isloggedOn , asyncHandler(offrirControlleur.deleteOffreByID));
  
 
 export default router;

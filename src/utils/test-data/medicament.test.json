@@ -76,7 +76,8 @@
     "body": {
       "nomcommercial": "Nurofen 500mg",
       "composition": "Ibuprofène 500mg",
-      "effets": "Anti-inflammatoire puissant, analgésique"
+      "effets": "Anti-inflammatoire puissant, analgésique",
+      "contreindications": "contraction , douleur estomac"
     },
     "expectedResponse": {
       "id": "NUROFEN",

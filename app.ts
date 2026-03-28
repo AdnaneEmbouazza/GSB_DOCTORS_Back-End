@@ -1,5 +1,6 @@
 import { swaggerUi, specs } from './src/swagger';
 import express from 'express';
+import cookieParser from 'cookie-parser';
 import familleRouter from './src/routes/famille';
 import medicamentRouter from './src/routes/medicaments';
 import medecinRouter from './src/routes/medecin';
@@ -18,6 +19,7 @@ const PORT = 3000;
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs));
 
 app.use(express.json());
+app.use(cookieParser()); // Middleware pour parser les cookies
 app.use('/api', familleRouter);
 app.use('/api', medicamentRouter);
 app.use('/api', medecinRouter);
