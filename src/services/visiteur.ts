@@ -246,3 +246,27 @@ export async function login(login: string, mdp: string): Promise<string> {
 
     return token;
 };
+
+// searchVisiteursByNom : recherche les visiteurs par nom ou prénom (LIKE en SQL)
+export function searchVisiteursByNom(searchTerm: string) {
+    return prisma.visiteur.findMany({
+        where: {
+            OR: [
+                { nom: { contains: searchTerm } },
+                { prenom: { contains: searchTerm } }
+            ]
+        },
+        select: {
+            id: true,
+            nom: true,
+            prenom: true,
+            login: true,
+            adresse: true,
+            cp: true,
+            ville: true,
+            dateembauche: true,
+            acesstoken: true,
+            rapport: true
+        }
+    });
+};

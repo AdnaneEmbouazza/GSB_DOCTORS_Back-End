@@ -90,7 +90,6 @@ export async function getVisiteurByID(req: Request, res: Response): Promise<void
 };
 
 export async function updateCurrentVisiteur(req: Request, res: Response): Promise<void> {
-    const id = Number(req.params.id);
     const payload : TokenPayload | undefined = req.visiteur;
     const data : UpdateVisiteurDTO = req.body;
     
@@ -103,14 +102,14 @@ export async function updateCurrentVisiteur(req: Request, res: Response): Promis
         throw new BadRequestError('Les données de mise à jour sont requises');
     }
     
-    const visiteur = await visiteurService.updateCurrentVisiteurByID(id, data, payload);
+    const visiteur = await visiteurService.updateCurrentVisiteurByID(payload.id, data, payload);
     
     // gestion erreur 404 (non trouvé)
     if (!visiteur) {
         throw new NotFoundError('Visiteur non trouvé');
     }
     
-    logger.info(`Visiteur ${id} mis à jour`);
+    logger.info(`Visiteur ${payload.id} mis à jour (compte personnel)`);
     res.status(200).json(visiteur);
 };
 
@@ -135,21 +134,20 @@ export async function updateVisiteur(req: Request, res: Response): Promise<void>
 };
 
 export async function deleteCurrentVisiteur(req: Request, res: Response): Promise<void> {
-    const id = Number(req.params.id);
     const payload : TokenPayload | undefined = req.visiteur;
     
     if (!payload) {
         throw new UnauthorizedError('Token invalide');
     }
     
-    const visiteur = await visiteurService.deleteCurrentVisiteurByID(id, payload);
+    const visiteur = await visiteurService.deleteCurrentVisiteurByID(payload.id, payload);
     
     // gestion erreur 404 (non trouvé)
     if (!visiteur) {
         throw new NotFoundError('Visiteur non trouvé');
     }
     
-    logger.info(`Visiteur ${id} supprimé`);
+    logger.info(`Visiteur ${payload.id} supprimé (compte personnel)`);
     res.status(200).json(visiteur);
 };
 
@@ -172,4 +170,18 @@ export async function logout(req: Request, res: Response): Promise<void> {
     res.clearCookie('authToken');
     logger.info('Utilisateur déconnecté');
     res.status(200).json({ message: 'Déconnexion réussie' });
+};
+
+export async function searchVisiteursByNom(req: Request, res: Response): Promise<void> {
+    const { search } = req.query;
+
+    // Gestion erreur 400 (paramètre manquant)
+    if (!search || typeof search !== 'string' || !search.trim()) {
+        throw new BadRequestError('Le paramètre de recherche est requis');
+    }
+
+    const visiteurs = await visiteurService.searchVisiteursByNom(search.trim());
+    
+    logger.info(`Recherche effectuée pour: "${search}" - ${visiteurs.length} résultats trouvés`);
+    res.status(200).json(visiteurs);
 };

@@ -139,3 +139,39 @@
 {"level":"error","message":"[GET /api/famille/1] NotFoundError: 404 - Famille non trouvée","timestamp":"2026-03-28 13:11:20"}
 {"level":"info","message":"Famille AA récupérée","timestamp":"2026-03-28 13:11:28"}
 {"level":"info","message":"Famille AA mise à jour","timestamp":"2026-03-28 13:11:41"}
+{"level":"info","message":"Nouvelle famille créée","timestamp":"2026-03-28 13:14:51"}
+{"level":"info","message":"1000 médecins récupérés","timestamp":"2026-03-28 13:15:07"}
+{"level":"info","message":"Médecin 954 récupéré","timestamp":"2026-03-28 13:15:24"}
+{"level":"info","message":"Médecin 5 mis à jour","timestamp":"2026-03-28 13:16:39"}
+{"level":"info","message":"Nouveau médecin créé","timestamp":"2026-03-28 13:17:11"}
+{"level":"info","message":"28 médicaments récupérés","timestamp":"2026-03-28 13:17:33"}
+{"level":"info","message":"Médicament AMOPIL7 récupéré","timestamp":"2026-03-28 13:17:52"}
+{"level":"info","message":"Médicament AMOPIL7 mis à jour","timestamp":"2026-03-28 13:18:34"}
+{"level":"info","message":"Nouveau médicament créé","timestamp":"2026-03-28 13:19:05"}
+{"level":"info","message":"863 offres récupérées","timestamp":"2026-03-28 13:19:13"}
+{"level":"warn","message":"Tentative d'accès à une offre inexistante : 6-963","timestamp":"2026-03-28 13:20:25"}
+{"level":"error","message":"[GET /api/offrir/6/963] NotFoundError: 404 - Offre non trouvée","timestamp":"2026-03-28 13:20:25"}
+{"level":"warn","message":"Tentative d'accès à une offre inexistante : 4-3","timestamp":"2026-03-28 13:20:51"}
+{"level":"error","message":"[GET /api/offrir/4/3] NotFoundError: 404 - Offre non trouvée","timestamp":"2026-03-28 13:20:51"}
+{"level":"info","message":"Offre 4-3MYC7 récupérée","timestamp":"2026-03-28 13:20:55"}
+{"level":"info","message":"Offre 4-3MYC7 mise à jour","timestamp":"2026-03-28 13:21:18"}
+{"level":"info","message":"1589 rapports récupérés","timestamp":"2026-03-28 13:22:23"}
+{"level":"info","message":"Rapport 12 récupéré","timestamp":"2026-03-28 13:22:36"}
+{"level":"info","message":"Rapport 12 mis à jour","timestamp":"2026-03-28 13:23:27"}
+{"level":"info","message":"Nouveau rapport créé","timestamp":"2026-03-28 13:23:49"}
+{"level":"info","message":"Nouveau visiteur inscrit","timestamp":"2026-03-28 13:24:20"}
+{"level":"info","message":"Visiteur 3 récupéré (depuis le token)","timestamp":"2026-03-28 13:24:31"}
+{"level":"info","message":"Visiteur 15 récupéré","timestamp":"2026-03-28 13:25:59"}
+{"level":"info","message":"28 visiteurs récupérés","timestamp":"2026-03-28 13:26:09"}
+{"level":"error","message":"[DELETE /api/visiteurs/28] UnauthorizedError: 401 - Vous ne pouvez supprimer que votre propre compte","timestamp":"2026-03-28 13:26:46"}
+{"level":"error","message":"[DELETE /api/visiteurs/account/28] UnauthorizedError: 401 - Vous ne pouvez supprimer que votre propre compte","timestamp":"2026-03-28 13:28:10"}
+{"level":"error","message":"Erreur Serveur : [DELETE /api/visiteurs/account/3] 500 - \nInvalid `prisma.visiteur.delete()` invocation in\n/app/src/services/visiteur.ts:138:28\n\n  135     throw new UnauthorizedError('Vous ne pouvez supprimer que votre propre compte');\n  136 }\n  137 \n→ 138 return prisma.visiteur.delete(\nForeign key constraint violated on the fields: (`idVisiteur`)","timestamp":"2026-03-28 13:28:16"}
+{"level":"error","message":"[PUT /api/visiteurs/account/15] UnauthorizedError: 401 - Vous ne pouvez modifier que votre propre compte","timestamp":"2026-03-28 13:29:04"}
+{"level":"info","message":"Visiteur 3 mis à jour","timestamp":"2026-03-28 13:30:01"}
+{"level":"error","message":"Erreur Serveur : [DELETE /api/visiteurs/account/3] 500 - \nInvalid `prisma.visiteur.delete()` invocation in\n/app/src/services/visiteur.ts:138:28\n\n  135     throw new UnauthorizedError('Vous ne pouvez supprimer que votre propre compte');\n  136 }\n  137 \n→ 138 return prisma.visiteur.delete(\nForeign key constraint violated on the fields: (`idVisiteur`)","timestamp":"2026-03-28 13:30:14"}
+{"level":"info","message":"Visiteur 3 récupéré (depuis le token)","timestamp":"2026-03-28 13:30:25"}
+{"level":"info","message":"Visiteur 15 mis à jour","timestamp":"2026-03-28 13:31:06"}
+{"level":"error","message":"[DELETE /api/visiteurs/28] UnauthorizedError: 401 - Vous ne pouvez supprimer que votre propre compte","timestamp":"2026-03-28 13:31:32"}
+{"level":"info","message":"Visiteur 15 récupéré","timestamp":"2026-03-28 13:31:42"}
+{"level":"info","message":"28 visiteurs récupérés","timestamp":"2026-03-28 13:32:04"}
+{"level":"info","message":"Utilisateur déconnecté","timestamp":"2026-03-28 13:33:17"}

@@ -106,21 +106,14 @@ router.post('/visiteurs/logout' , isloggedOn , asyncHandler(visiteurControleur.l
 
 /**
  * @swagger
- * /api/visiteurs/account/{id}:
+ * /api/visiteurs/account:
  *   get:
- *     summary: Récupérer les infos du compte
- *     description: Retourne les informations du compte de l'utilisateur connecté
+ *     summary: Récupérer les infos de mon compte
+ *     description: Retourne les informations du compte de l'utilisateur connecté (extrait du token)
  *     security:
  *       - BearerAuth: []
  *     tags:
  *       - Visiteurs
- *     parameters:
- *       - in: path
- *         name: id
- *         required: true
- *         schema:
- *           type: integer
- *         description: ID du visiteur
  *     responses:
  *       200:
  *         description: Informations du compte récupérées
@@ -129,25 +122,18 @@ router.post('/visiteurs/logout' , isloggedOn , asyncHandler(visiteurControleur.l
  *       401:
  *         description: Non authentifié
  */
-router.get ('/visiteurs/account/:id' , isloggedOn , asyncHandler(visiteurControleur.getCurrentVisiteur));
+router.get ('/visiteurs/account' , isloggedOn , asyncHandler(visiteurControleur.getCurrentVisiteur));
 
 /**
  * @swagger
- * /api/visiteurs/{id}:
+ * /api/visiteurs/account:
  *   put:
- *     summary: Modifier les infos du compte
- *     description: Met à jour les informations du compte d'un visiteur 
+ *     summary: Mettre à jour mon compte
+ *     description: Met à jour les informations de mon compte via le token d'authentification
  *     security:
  *       - BearerAuth: []
  *     tags:
  *       - Visiteurs
- *     parameters:
- *       - in: path
- *         name: id
- *         required: true
- *         schema:
- *           type: integer
- *         description: ID du visiteur
  *     requestBody:
  *       required: true
  *       content:
@@ -165,42 +151,43 @@ router.get ('/visiteurs/account/:id' , isloggedOn , asyncHandler(visiteurControl
  *                 type: string
  *               ville:
  *                 type: string
+ *               telephone:
+ *                 type: string
+ *               login:
+ *                 type: string
+ *               motdepasse:
+ *                 type: string
  *     responses:
  *       200:
- *         description: Compte modifié avec succès
- *       404:
- *         description: Visiteur non trouvé
+ *         description: Compte mis à jour avec succès
+ *       400:
+ *         description: Données invalides
  *       401:
  *         description: Non authentifié
+ *       404:
+ *         description: Visiteur non trouvé
  */
-router.put ('/visiteurs/:id' , isloggedOn , asyncHandler(visiteurControleur.updateVisiteur));
+router.put('/visiteurs/account', isloggedOn , asyncHandler(visiteurControleur.updateCurrentVisiteur));
 
 /**
  * @swagger
- * /api/visiteurs/{id}:
+ * /api/visiteurs/account:
  *   delete:
- *     summary: Supprimer le compte
- *     description: Supprime le compte d'un utilisateur
+ *     summary: Supprimer mon compte
+ *     description: Supprime définitivement mon compte via le token d'authentification
  *     security:
  *       - BearerAuth: []
  *     tags:
  *       - Visiteurs
- *     parameters:
- *       - in: path
- *         name: id
- *         required: true
- *         schema:
- *           type: integer
- *         description: ID du visiteur
  *     responses:
  *       200:
  *         description: Compte supprimé avec succès
- *       404:
- *         description: Visiteur non trouvé
  *       401:
  *         description: Non authentifié
+ *       404:
+ *         description: Visiteur non trouvé
  */
-router.delete ('/visiteurs/:id' , isloggedOn , asyncHandler(visiteurControleur.deleteCurrentVisiteur));
+router.delete('/visiteurs/account', isloggedOn , asyncHandler(visiteurControleur.deleteCurrentVisiteur));
 
 /**
  * @swagger
@@ -219,6 +206,36 @@ router.delete ('/visiteurs/:id' , isloggedOn , asyncHandler(visiteurControleur.d
  *         description: Non authentifié
  */
 router.get ('/visiteurs' , isloggedOn , asyncHandler(visiteurControleur.getAllVisiteurs));
+
+/**
+ * @swagger
+ * /api/visiteurs/search:
+ *   get:
+ *     summary: Rechercher des visiteurs par nom ou prénom
+ *     description: Retourne la liste des visiteurs dont le nom ou prénom contient le terme recherché
+ *     tags:
+ *       - Visiteurs
+ *     parameters:
+ *       - in: query
+ *         name: search
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: Terme à rechercher dans les noms ou prénoms
+ *         example: "Dupont"
+ *     responses:
+ *       200:
+ *         description: Liste des visiteurs correspondant à la recherche
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/Visiteur'
+ *       400:
+ *         description: Paramètre de recherche manquant
+ */
+router.get('/visiteurs/search', asyncHandler(visiteurControleur.searchVisiteursByNom));
 
 /**
  * @swagger
@@ -247,91 +264,7 @@ router.get ('/visiteurs' , isloggedOn , asyncHandler(visiteurControleur.getAllVi
  */
 router.get ('/visiteurs/:id' , isloggedOn , asyncHandler(visiteurControleur.getVisiteurByID));
 
-/**
- * @swagger
- * /api/visiteurs/account/{id}:
- *   put:
- *     summary: Modifier mes informations personnelles
- *     description: Met à jour les informations de votre compte. Vous ne pouvez modifier que votre propre compte.
- *     security:
- *       - BearerAuth: []
- *     tags:
- *       - Visiteurs
- *     parameters:
- *       - in: path
- *         name: id
- *         required: true
- *         schema:
- *           type: integer
- *         description: ID du visiteur (doit correspondent à votre compte connecté)
- *     requestBody:
- *       required: true
- *       content:
- *         application/json:
- *           schema:
- *             type: object
- *             properties:
- *               nom:
- *                 type: string
- *                 description: Nom du visiteur
- *               prenom:
- *                 type: string
- *                 description: Prénom du visiteur
- *               adresse:
- *                 type: string
- *                 description: Adresse du visiteur
- *               cp:
- *                 type: string
- *                 description: Code postal
- *               ville:
- *                 type: string
- *                 description: Ville du visiteur
- *     responses:
- *       200:
- *         description: Compte modifié avec succès
- *         content:
- *           application/json:
- *             schema:
- *               $ref: '#/components/schemas/Visiteur'
- *       400:
- *         description: Données invalides
- *       401:
- *         description: Non authentifié ou tentative de modifier un autre compte
- *       404:
- *         description: Compte non trouvé
- */
-router.put ('/visiteurs/account/:id' , isloggedOn , asyncHandler(visiteurControleur.updateCurrentVisiteur));
 
-/**
- * @swagger
- * /api/visiteurs/account/{id}:
- *   delete:
- *     summary: Supprimer mon compte
- *     description: Supprime définitivement votre compte. Vous ne pouvez supprimer que votre propre compte. Cette action est irréversible.
- *     security:
- *       - BearerAuth: []
- *     tags:
- *       - Visiteurs
- *     parameters:
- *       - in: path
- *         name: id
- *         required: true
- *         schema:
- *           type: integer
- *         description: ID du visiteur (doit correspondre à votre compte connecté)
- *     responses:
- *       200:
- *         description: Compte supprimé avec succès
- *         content:
- *           application/json:
- *             schema:
- *               $ref: '#/components/schemas/Visiteur'
- *       401:
- *         description: Non authentifié ou tentative de supprimer un autre compte
- *       404:
- *         description: Compte non trouvé
- */
-router.delete ('/visiteurs/account/:id' , isloggedOn , asyncHandler(visiteurControleur.deleteCurrentVisiteur));
 
 export default router;
 
