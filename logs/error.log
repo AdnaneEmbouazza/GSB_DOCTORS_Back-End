@@ -12,3 +12,8 @@
 {"level":"error","message":"Erreur Serveur : [GET /api/visiteurs] 500 - \nInvalid `prisma.visiteur.findMany()` invocation in\n/app/src/services/visiteur.ts:10:28\n\n   7 \n   8 // getAllVisiteurs : renvoie une liste de tous les visiteurs\n   9 export function getAllVisiteurs() {\n→ 10     return prisma.visiteur.findMany(\nValue out of range for the type: The column `dateEmbauche` contained an invalid datetime value with either day or month set to zero.","timestamp":"2026-03-27 23:02:20"}
 {"level":"error","message":"Erreur Serveur : [DELETE /api/famille/AA] 500 - \nInvalid `prisma.famille.delete()` invocation in\n/app/src/services/famille.ts:39:27\n\n  36 \n  37 // deleteFamilleByID : supprime une famille en fonction de son ID\n  38 export function deleteFamilleByID (id: string): Promise<Famille> {\n→ 39     return prisma.famille.delete(\nForeign key constraint violated on the fields: (`idFamille`)","timestamp":"2026-03-28 01:40:33"}
 {"level":"error","message":"[POST /api/medicament] UnauthorizedError: 401 - Token d'authentification manquant","timestamp":"2026-03-28 02:28:31"}
+{"level":"error","message":"[GET /api/familles] UnauthorizedError: 401 - Token invalide","timestamp":"2026-03-28 02:58:38"}
+{"level":"error","message":"[POST /api/rapport] BadRequestError: 400 - Tous les champs sont requis","timestamp":"2026-03-28 03:15:57"}
+{"level":"error","message":"[POST /api/rapport] UnauthorizedError: 401 - Token expiré","timestamp":"2026-03-28 03:40:24"}
+{"level":"error","message":"[POST /api/offrir] BadRequestError: 400 - Les données de l'offre sont requises","timestamp":"2026-03-28 03:48:30"}
+{"level":"error","message":"[POST /api/offrir] BadRequestError: 400 - Les données de l'offre sont requises","timestamp":"2026-03-28 03:49:01"}

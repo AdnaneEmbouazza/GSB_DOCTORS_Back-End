@@ -26,7 +26,7 @@ export async function listRapportByID(req: Request, res: Response): Promise<void
 export async function createRapport(req: Request, res: Response): Promise<void> {
     const data : CreateRapportDTO = req.body;
 
-    if (!data.date || !data.bilan || !data.motif || data.idMedecin === undefined || !data.idVisiteur) {
+    if (!data.date || !data.bilan || !data.motif || data.idmedecin === undefined || !data.idvisiteur) {
         throw new BadRequestError('Tous les champs sont requis');
     }
 

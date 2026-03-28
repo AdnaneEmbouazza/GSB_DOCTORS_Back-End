@@ -62,3 +62,20 @@
 {"level":"error","message":"[POST /api/medicament] UnauthorizedError: 401 - Token d'authentification manquant","timestamp":"2026-03-28 02:28:31"}
 {"level":"info","message":"Visiteur aribiA connecté","timestamp":"2026-03-28 02:53:52"}
 {"level":"info","message":"Nouveau médicament créé","timestamp":"2026-03-28 02:54:36"}
+{"level":"error","message":"[GET /api/familles] UnauthorizedError: 401 - Token invalide","timestamp":"2026-03-28 02:58:38"}
+{"level":"info","message":"Visiteur dandre connecté","timestamp":"2026-03-28 03:08:17"}
+{"level":"info","message":"20 familles récupérées","timestamp":"2026-03-28 03:08:31"}
+{"level":"info","message":"863 offres récupérées","timestamp":"2026-03-28 03:13:14"}
+{"level":"info","message":"Rapport 5 récupéré","timestamp":"2026-03-28 03:13:38"}
+{"level":"info","message":"Rapport 5 mis à jour","timestamp":"2026-03-28 03:14:11"}
+{"level":"error","message":"[POST /api/rapport] BadRequestError: 400 - Tous les champs sont requis","timestamp":"2026-03-28 03:15:57"}
+{"level":"info","message":"Visiteur aribiA connecté","timestamp":"2026-03-28 03:21:57"}
+{"level":"error","message":"[POST /api/rapport] UnauthorizedError: 401 - Token expiré","timestamp":"2026-03-28 03:40:24"}
+{"level":"info","message":"Visiteur dandre connecté","timestamp":"2026-03-28 03:42:18"}
+{"level":"info","message":"Rapport 5 récupéré","timestamp":"2026-03-28 03:42:57"}
+{"level":"info","message":"1589 rapports récupérés","timestamp":"2026-03-28 03:43:04"}
+{"level":"info","message":"Rapport 5 mis à jour","timestamp":"2026-03-28 03:44:30"}
+{"level":"info","message":"Nouveau rapport créé","timestamp":"2026-03-28 03:45:46"}
+{"level":"info","message":"863 offres récupérées","timestamp":"2026-03-28 03:47:53"}
+{"level":"error","message":"[POST /api/offrir] BadRequestError: 400 - Les données de l'offre sont requises","timestamp":"2026-03-28 03:48:30"}
+{"level":"error","message":"[POST /api/offrir] BadRequestError: 400 - Les données de l'offre sont requises","timestamp":"2026-03-28 03:49:01"}
