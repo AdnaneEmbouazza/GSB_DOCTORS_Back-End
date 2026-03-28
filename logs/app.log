@@ -60,3 +60,5 @@
 {"level":"info","message":"Visiteur cbedos connecté","timestamp":"2026-03-28 02:26:43"}
 {"level":"info","message":"Visiteur ltusseau connecté","timestamp":"2026-03-28 02:27:52"}
 {"level":"error","message":"[POST /api/medicament] UnauthorizedError: 401 - Token d'authentification manquant","timestamp":"2026-03-28 02:28:31"}
+{"level":"info","message":"Visiteur aribiA connecté","timestamp":"2026-03-28 02:53:52"}
+{"level":"info","message":"Nouveau médicament créé","timestamp":"2026-03-28 02:54:36"}
