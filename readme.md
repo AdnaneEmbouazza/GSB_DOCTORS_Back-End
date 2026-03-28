@@ -141,51 +141,116 @@ GSB_DOCTORS_Back-End/
 └── package.json
 ```
 
+## 🔒 Sécurité & Contrôle d'accès
+
+### Modèle de sécurité
+
+L'application implémente un **contrôle d'accès basé sur l'utilisateur** (user-scoped access control) :
+
+- **Rapports** : Chaque visiteur ne peut voir/modifier/supprimer que **ses propres rapports**
+- **Offres** : Chaque visiteur ne peut voir/modifier/supprimer que les offres de **ses rapports**
+- **Vérification** : À chaque opération, on vérifie que `rapport.idvisiteur === utilisateur.id`
+
+### Implémentation technique
+
+**Couche Service** : Deux ensembles de fonctions
+
+1. **Fonctions filtrées (avec contrôle d'accès)** :
+   - `getAllRapportsByVisiteur(visiteurId)` - Aucun accès non authentifié
+   - `getRapportByIDAndVisiteur(id, visiteurId)` - Jette `UnauthorizedError` si pas propriétaire
+   - `getAllOffreByVisiteur(visiteurId)` - Accès filtré
+   - `getOffreByIDAndVisiteur(idrapport, idmedicament, visiteurId)` - Vérification complète
+   - Etc.
+
+2. **Fonctions originales (sans filtre)** :
+   - `getAllRapports()` - Toutes les données
+   - `getRapportByID(id)` - Sans contrôle d'accès
+   - `getAllOffre()` - Toutes les données
+   - Etc. *(Réservées pour l'accès admin futur)*
+
+**Couche Contrôleur** :
+- Extraction du token JWT via `req.visiteur` (défini par le middleware `authHandler`)
+- Appel des fonctions **filtrées** avec l'ID de l'utilisateur
+- Gestion des erreurs : `UnauthorizedError` si accès refusé
+
+**Couche Route** :
+- Middleware `isloggedOn` pour les routes protégées
+- Documentation Swagger avec mention explicite de la viscosité (ex: "**mes** rapports")
+
+### Contrôle d'accès par endpoint
+
+| Endpoint | Visiteur A peut accéder à | Visiteur B peut accéder à |
+|----------|---------------------------|--------------------------|
+| GET /api/rapports | Ses rapports seulement | Ses rapports seulement |
+| GET /api/rapports/:id | Un de ses rapports | Jette UnauthorizedError |
+| POST /api/rapports | Force son ID visiteur | Force son ID visiteur |
+| PUT /api/rapports/:id | Modifie ses rapports | Jette UnauthorizedError |
+| GET /api/offrir | Ses offres seulement | Ses offres seulement |
+| GET /api/medecins | Priorce la liste complète | Priorce la liste complète |
+
 ## 📡 Endpoints
 
 ### Authentification & Visiteurs (`/api/visiteurs`)
-- `POST /api/visiteurs/login` - Connexion
+- `POST /api/visiteurs/login` - Connexion (génère un HttpOnly Cookie avec JWT)
 - `POST /api/visiteurs/inscription` - Création compte
-- `GET /api/visiteurs/account/:id` - Récupérer infos (protégé)
-- `PUT /api/visiteurs/account/:id` - Modifier compte (protégé)
-- `DELETE /api/visiteurs/account/:id` - Supprimer compte (protégé)
+- `GET /api/visiteurs/account` - Récupérer ses infos (protégé, utilise le token)
+- `PUT /api/visiteurs/account` - Modifier son compte (protégé)
+- `DELETE /api/visiteurs/account` - Supprimer son compte (protégé)
 - `GET /api/visiteurs` - Lister tous (protégé)
 - `GET /api/visiteurs/:id` - Détails (protégé)
 
 ### Familles de médicaments (`/api/familles`)
 - `GET /api/familles` - Lister toutes
 - `GET /api/familles/:id` - Détails
-- `POST /api/familles` - Créer
-- `PUT /api/familles/:id` - Modifier
-- `DELETE /api/familles/:id` - Supprimer
+- ⚠️ POST, PUT, DELETE - Commentées (conservées pour utilisation future)
 
 ### Médicaments (`/api/medicaments`)
 - `GET /api/medicaments` - Lister tous
 - `GET /api/medicaments/:id` - Détails
-- `POST /api/medicaments` - Créer
-- `PUT /api/medicaments/:id` - Modifier
-- `DELETE /api/medicaments/:id` - Supprimer
+- ⚠️ POST, PUT, DELETE - Commentées (conservées pour utilisation future)
 
 ### Médecins (`/api/medecins`)
 - `GET /api/medecins` - Lister tous (public)
-- `GET /api/medecins/:id` - Détails
-- `POST /api/medecins` - Créer
-- `PUT /api/medecins/:id` - Modifier
-- `DELETE /api/medecins/:id` - Supprimer
+- `GET /api/medecins/:id` - Détails avec les rapports associés (public)
+- `GET /api/medecins/search?search=<nom>` - Rechercher par nom (publique)
+- ⚠️ POST, PUT, DELETE - Commentées (conservées pour utilisation future)
 
 ### Rapports de visite (`/api/rapports`)
-- `GET /api/rapports` - Lister tous
-- `GET /api/rapports/:id` - Détails
-- `POST /api/rapports` - Créer
-- `PUT /api/rapports/:id` - Modifier
-- `DELETE /api/rapports/:id` - Supprimer
 
-### Offres de médicaments (`/api/offres`)
-- `GET /api/offres` - Lister toutes
-- `GET /api/offres/:id` - Détails
-- `POST /api/offres` - Créer
-- `PUT /api/offres/:id` - Modifier
-- `DELETE /api/offres/:id` - Supprimer
+**Accès utilisateur (scoped)** - Voir seulement ses rapports :
+- `GET /api/rapports` - Lister ses rapports
+- `GET /api/rapports/:id` - Détails d'un de ses rapports
+- `GET /api/rapports/date?date=YYYY-MM-DD&idvisiteur=X` - Rapports d'une date spécifique
+  - Paramètres :
+    - `date` (requis) : Format YYYY-MM-DD (ex: "2024-01-15")
+    - `idvisiteur` (optionnel) : ID du visiteur. Si omis, utilise l'utilisateur connecté
+- `POST /api/rapports` - Créer un rapport (forcer son propre ID visiteur)
+- `PUT /api/rapports/:id` - Modifier un de ses rapports
+- `DELETE /api/rapports/:id` - Supprimer un de ses rapports
+
+**Routes originales (toutes les données)** - Conservées pour accès admin futur :
+- `getAllRapports()` - Tous les rapports
+- `getRapportByID()` - Détails (sans contrôle d'accès)
+- `createRapport()` - Créer (sans forcer visiteur)
+- `updateRapportByID()` - Modifier
+- `deleteRapportByID()` - Supprimer
+
+### Offres de médicaments (`/api/offrir`)
+
+**Accès utilisateur (scoped)** - Voir seulement ses offres :
+- `GET /api/offrir` - Lister ses offres (rapports de l'utilisateur)
+- `GET /api/offrir/:idRapport/:idMedicament` - Détails d'une offre (vérification d'appartenance)
+- `POST /api/offrir` - Créer une offre pour ses rapports
+  - **Important** : Le rapport doit appartenir à l'utilisateur
+- `PUT /api/offrir/:idRapport/:idMedicament` - Modifier une offre (vérification d'appartenance)
+- `DELETE /api/offrir/:idRapport/:idMedicament` - Supprimer une offre (vérification d'appartenance)
+
+**Routes originales (toutes les données)** - Conservées pour accès admin futur :
+- `getAllOffre()` - Toutes les offres
+- `getOffreByID()` - Détails (sans contrôle d'accès)
+- `createOffre()` - Créer
+- `updateOffreById()` - Modifier
+- `deleteOffreByID()` - Supprimer
 
 ## 📚 Documentation API
 
@@ -195,18 +260,134 @@ La documentation interactive est disponible via **Swagger UI** :
 http://localhost:3000/api-docs
 ```
 
+### Cas d'usage courants
+
+#### 1. Authentification et gestion de compte
+
+```bash
+# Inscription
+POST /api/visiteurs/inscription
+{
+  "login": "john_doe",
+  "mdp": "SecurePassword123",
+  "nom": "Doe",
+  "prenom": "John"
+}
+
+# Connexion
+POST /api/visiteurs/login
+{
+  "login": "john_doe",
+  "mdp": "SecurePassword123"
+}
+# Retour: HttpOnly Cookie avec JWT automatiquement défini
+
+# Accès compte personnel
+GET /api/visiteurs/account
+# Récupère les infos de l'utilisateur connecté (via JWT du cookie)
+```
+
+#### 2. Consultation des rapports et filtrage par date
+
+```bash
+# Lister ses rapports
+GET /api/rapports
+# Retourne: Array de tous les rapports du visiteur connecté
+
+# Filtrer rapports du visiteur connecté par date
+GET /api/rapports/date?date=2024-01-15
+# Retourne: Array de rapports à cette date spécifique
+
+# Filtrer rapports d'un visiteur spécifique par date
+GET /api/rapports/date?date=2024-01-15&idvisiteur=5
+# Retourne: Array de rapports du visiteur 5 à cette date
+# Note: Nécessite authentification (JWT valide)
+```
+
+#### 3. Gestion des offres (médicaments offerts)
+
+```bash
+# Lister ses offres (médicaments dans ses rapports)
+GET /api/offrir
+# Retourne: Array d'offres du visiteur connecté
+
+# Détails d'une offre spécifique
+GET /api/offrir/123/MED001
+# idRapport=123, idMedicament=MED001
+# Throw UnauthorizedError si rapport n'appartient pas au visiteur
+
+# Créer une offre (ajouter un médicament à un rapport)
+POST /api/offrir
+{
+  "idrapport": 123,
+  "idmedicament": "MED001",
+  "quantite": 5
+}
+# Throw UnauthorizedError si le rapport 123 ne vous appartient pas
+
+# Modifier une offre
+PUT /api/offrir/123/MED001
+{
+  "quantite": 10
+}
+
+# Supprimer une offre
+DELETE /api/offrir/123/MED001
+```
+
+#### 4. Recherche de médecins
+
+```bash
+# Lister tous les médecins
+GET /api/medecins
+# Public - pas d'authentification requise
+
+# Chercher un médecin par nom
+GET /api/medecins/search?search=dupont
+# Retourne: Array de médecins dont nom/prenom contient "dupont"
+# Public - pas d'authentification requise
+
+# Détails d'un médecin avec rapports associés
+GET /api/medecins/42
+# Retourne:
+# {
+#   "id": 42,
+#   "nom": "Dupont",
+#   "prenom": "Marie",
+#   ...
+#   "rapport": [
+#     { "id": 1, "date": "2024-01-15", "motif": "...", "idvisiteur": 5, ... },
+#     { "id": 2, "date": "2024-01-20", "motif": "...", "idvisiteur": 7, ... }
+#   ]
+# }
+```
+
 ## 🔐 Authentification
 
-L'API utilise **JWT (JSON Web Tokens)**. 
+L'API utilise **JWT (JSON Web Tokens)** stockés dans des **HttpOnly Cookies** pour la sécurité.
 
-**Routes publiques :**
-- `GET /api/medecins`
-- `POST /api/visiteurs/login`
-- `POST /api/visiteurs/inscription`
+### Mécanisme de sécurité
 
-**Routes protégées** : Nécessitent un token JWT valide `Authorization: Bearer <token>`
+- **Stockage** : Les tokens JWT sont stockés dans des HttpOnly Cookies (non accessibles au JavaScript côté client)
+- **Drapeaux de sécurité** :
+  - `HttpOnly` : Protège contre les attaques XSS
+  - `Secure` : Transmission HTTPS uniquement (production)
+  - `SameSite=strict` : Protection CSRF
+- **Durée de vie** : 15 minutes
+- **Refresh** : Fenêtre glissante - le token est régénéré à chaque requête authentifiée si valide
+- **Hachage des mots de passe** : bcryptjs avec salt rounds configurés
 
-Les mots de passe sont hashés avec **bcrypt**.
+### Routes publiques (sans authentification)
+
+- `GET /api/medecins` - Lister tous les médecins
+- `GET /api/medecins/:id` - Détails d'un médecin (avec rapports associés)
+- `GET /api/medecins/search?search=...` - Rechercher un médecin par nom
+- `POST /api/visiteurs/login` - Connexion
+- `POST /api/visiteurs/inscription` - Création compte
+
+### Routes protégées (authentification requise)
+
+Toutes les autres routes nécessitent un token JWT valide. Le token est automatiquement géré via les HttpOnly Cookies.
 
 ## 🗄️ Base de données avec Prisma
 

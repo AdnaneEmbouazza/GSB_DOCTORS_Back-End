@@ -47,7 +47,7 @@ router.get('/rapports' , isloggedOn , asyncHandler(rapportControleur.listAllRapp
  * @swagger
  * /api/rapports/date:
  *   get:
- *     summary: Récupérer les rapports à une date spécifique
+ *     summary: Récupérer les rapports d'un visiteur à une date spécifique
  *     description: Retourne la liste des rapports pour une date donnée et un visiteur spécifique. Si idvisiteur est omis, retourne les rapports de l'utilisateur connecté.
  *     security:
  *       - BearerAuth: []

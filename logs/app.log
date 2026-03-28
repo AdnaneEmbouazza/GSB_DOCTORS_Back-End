@@ -175,3 +175,4 @@
 {"level":"info","message":"Visiteur 15 récupéré","timestamp":"2026-03-28 13:31:42"}
 {"level":"info","message":"28 visiteurs récupérés","timestamp":"2026-03-28 13:32:04"}
 {"level":"info","message":"Utilisateur déconnecté","timestamp":"2026-03-28 13:33:17"}
+{"level":"error","message":"[GET /api/rapport/1] UnauthorizedError: 401 - Token d'authentification manquant","timestamp":"2026-03-28 16:15:27"}

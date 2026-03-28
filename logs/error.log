@@ -35,3 +35,4 @@
 {"level":"error","message":"[PUT /api/visiteurs/account/15] UnauthorizedError: 401 - Vous ne pouvez modifier que votre propre compte","timestamp":"2026-03-28 13:29:04"}
 {"level":"error","message":"Erreur Serveur : [DELETE /api/visiteurs/account/3] 500 - \nInvalid `prisma.visiteur.delete()` invocation in\n/app/src/services/visiteur.ts:138:28\n\n  135     throw new UnauthorizedError('Vous ne pouvez supprimer que votre propre compte');\n  136 }\n  137 \n→ 138 return prisma.visiteur.delete(\nForeign key constraint violated on the fields: (`idVisiteur`)","timestamp":"2026-03-28 13:30:14"}
 {"level":"error","message":"[DELETE /api/visiteurs/28] UnauthorizedError: 401 - Vous ne pouvez supprimer que votre propre compte","timestamp":"2026-03-28 13:31:32"}
+{"level":"error","message":"[GET /api/rapport/1] UnauthorizedError: 401 - Token d'authentification manquant","timestamp":"2026-03-28 16:15:27"}
