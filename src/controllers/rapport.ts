@@ -17,6 +17,39 @@ export async function listAllRapport(req: Request, res: Response): Promise<void>
     res.status(200).json(rapport);
 };
 
+export async function getRapportsByDate(req: Request, res: Response): Promise<void> {
+    const { date, idvisiteur } = req.query;
+    
+    if (!date || typeof date !== 'string' || !date.trim()) {
+        throw new BadRequestError('La date est requise au format YYYY-MM-DD');
+    }
+    
+    // Valider le format de la date
+    const dateRegex = /^\d{4}-\d{2}-\d{2}$/;
+    if (!dateRegex.test(date)) {
+        throw new BadRequestError('Format de date invalide. Utilisez le format YYYY-MM-DD');
+    }
+    
+    // Utiliser l'idvisiteur fourni ou celui de l'utilisateur connecté
+    let visiteurId: number;
+    if (idvisiteur && typeof idvisiteur === 'string') {
+        visiteurId = Number(idvisiteur);
+        if (isNaN(visiteurId)) {
+            throw new BadRequestError('idvisiteur doit être un nombre');
+        }
+    } else {
+        const payload: TokenPayload | undefined = req.visiteur;
+        if (!payload) {
+            throw new UnauthorizedError('Token invalide');
+        }
+        visiteurId = payload.id;
+    }
+    
+    const rapports = await rapportService.getRapportsByVisiteurAndDate(visiteurId, date);
+    logger.info(`${rapports.length} rapports récupérés pour le visiteur ${visiteurId} à la date ${date}`);
+    res.status(200).json(rapports);
+};
+
 export async function listRapportByID(req: Request, res: Response): Promise<void> {
     const payload: TokenPayload | undefined = req.visiteur;
     const id = Number(req.params.id);

@@ -45,6 +45,62 @@ router.get('/rapports' , isloggedOn , asyncHandler(rapportControleur.listAllRapp
 
 /**
  * @swagger
+ * /api/rapports/date:
+ *   get:
+ *     summary: Récupérer les rapports à une date spécifique
+ *     description: Retourne la liste des rapports pour une date donnée et un visiteur spécifique. Si idvisiteur est omis, retourne les rapports de l'utilisateur connecté.
+ *     security:
+ *       - BearerAuth: []
+ *     tags:
+ *       - Rapports
+ *     parameters:
+ *       - in: query
+ *         name: date
+ *         required: true
+ *         schema:
+ *           type: string
+ *           format: date
+ *         description: Date au format YYYY-MM-DD
+ *         example: "2024-01-15"
+ *       - in: query
+ *         name: idvisiteur
+ *         required: false
+ *         schema:
+ *           type: integer
+ *         description: ID du visiteur (optionnel). Si non fourni, utilise l'utilisateur connecté
+ *         example: 5
+ *     responses:
+ *       200:
+ *         description: Liste des rapports récupérée avec succès
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 type: object
+ *                 properties:
+ *                   id:
+ *                     type: integer
+ *                   date:
+ *                     type: string
+ *                     format: date-time
+ *                   motif:
+ *                     type: string
+ *                   bilan:
+ *                     type: string
+ *                   idvisiteur:
+ *                     type: integer
+ *                   idmedecin:
+ *                     type: integer
+ *       400:
+ *         description: Date invalide ou manquante
+ *       401:
+ *         description: Non authentifié
+ */
+router.get('/rapports/date' , isloggedOn , asyncHandler(rapportControleur.getRapportsByDate));
+
+/**
+ * @swagger
  * /api/rapport/{id}:
  *   get:
  *     summary: Récupérer un de vos rapports

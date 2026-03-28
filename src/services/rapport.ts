@@ -12,6 +12,16 @@ export function getAllRapportsByVisiteur(visiteurId: number): Promise<Rapport[]>
     });
 };
 
+// getRapportsByVisiteurAndDate : renvoie les rapports du visiteur à une date spécifique
+export async function getRapportsByVisiteurAndDate(visiteurId: number, date: string): Promise<Rapport[]> {
+    return prisma.rapport.findMany({
+        where: {
+            idvisiteur: visiteurId,
+            date: new Date(date)
+        }
+    });
+};
+
 // getRapportByIDAndVisiteur : renvoie un rapport si le visiteur en est propriétaire
 export async function getRapportByIDAndVisiteur(id: number, visiteurId: number): Promise<Rapport | null> {
     const rapport = await prisma.rapport.findUnique({
