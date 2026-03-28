@@ -27,7 +27,7 @@ const router = Router();
  *                 properties:
  *                   id:
  *                     type: string
- *                   nomCommercial:
+ *                   nomcommercial:
  *                     type: string
  *                   idfamille:
  *                     type: string
@@ -44,7 +44,7 @@ router.get('/medicaments' ,isloggedOn , asyncHandler(medicamentsControleur.listA
 
 /**
  * @swagger
- * /api/medicaments/{id}:
+ * /api/medicament/{id}:
  *   get:
  *     summary: Récupérer un médicament par ID
  *     description: Retourne les détails d'un médicament spécifique
@@ -67,11 +67,11 @@ router.get('/medicaments' ,isloggedOn , asyncHandler(medicamentsControleur.listA
  *       401:
  *         description: Non authentifié
  */
-router.get('/medicament' , isloggedOn , asyncHandler(medicamentsControleur.listMedicamentsByID));
+router.get('/medicament/:id' , isloggedOn , asyncHandler(medicamentsControleur.listMedicamentsByID));
 
 /**
  * @swagger
- * /api/medicaments:
+ * /api/medicament:
  *   post:
  *     summary: Créer un nouveau médicament
  *     security:
@@ -87,7 +87,7 @@ router.get('/medicament' , isloggedOn , asyncHandler(medicamentsControleur.listM
  *             properties:
  *               id:
  *                 type: string
- *               nomCommercial:
+ *               nomcommercial:
  *                 type: string
  *               idfamille:
  *                 type: string
@@ -99,7 +99,7 @@ router.get('/medicament' , isloggedOn , asyncHandler(medicamentsControleur.listM
  *                 type: string
  *             required:
  *               - id
- *               - nomCommercial
+ *               - nomcommercial
  *               - idfamille
  *     responses:
  *       201:
@@ -109,11 +109,11 @@ router.get('/medicament' , isloggedOn , asyncHandler(medicamentsControleur.listM
  *       401:
  *         description: Non authentifié
  */
-router.post('/medicament/:id' , isloggedOn , asyncHandler(medicamentsControleur.createMedicament));
+router.post('/medicament' , isloggedOn , asyncHandler(medicamentsControleur.createMedicament));
 
 /**
  * @swagger
- * /api/medicaments/{id}:
+ * /api/medicament/{id}:
  *   put:
  *     summary: Modifier un médicament
  *     security:
@@ -134,7 +134,7 @@ router.post('/medicament/:id' , isloggedOn , asyncHandler(medicamentsControleur.
  *           schema:
  *             type: object
  *             properties:
- *               nomCommercial:
+ *               nomcommercial:
  *                 type: string
  *               composition:
  *                 type: string
@@ -154,7 +154,7 @@ router.put('/medicament/:id' , isloggedOn , asyncHandler(medicamentsControleur.u
 
 /**
  * @swagger
- * /api/medicaments/{id}:
+ * /api/medicament/{id}:
  *   delete:
  *     summary: Supprimer un médicament
  *     security:

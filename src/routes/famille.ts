@@ -36,7 +36,7 @@ router.get('/familles', isloggedOn , asyncHandler(familleControlleur.listAllFami
 
 /**
  * @swagger
- * /api/familles/{id}:
+ * /api/famille/{id}:
  *   get:
  *     summary: Récupérer une famille par ID
  *     description: Retourne les détails d'une famille spécifique
@@ -63,7 +63,7 @@ router.get('/famille/:id', isloggedOn , asyncHandler(familleControlleur.listFami
 
 /**
  * @swagger
- * /api/familles:
+ * /api/famille:
  *   post:
  *     summary: Créer une nouvelle famille
  *     description: Crée une nouvelle famille de médicaments
@@ -97,7 +97,7 @@ router.post('/famille' , isloggedOn , asyncHandler(familleControlleur.createFami
 
 /**
  * @swagger
- * /api/familles/{id}:
+ * /api/famille/{id}:
  *   put:
  *     summary: Modifier une famille
  *     description: Met à jour les informations d'une famille existante
@@ -133,7 +133,7 @@ router.put('/famille/:id' , isloggedOn , asyncHandler(familleControlleur.updateF
 
 /**
  * @swagger
- * /api/familles/{id}:
+ * /api/famille/{id}:
  *   delete:
  *     summary: Supprimer une famille
  *     description: Supprime une famille de la base de données

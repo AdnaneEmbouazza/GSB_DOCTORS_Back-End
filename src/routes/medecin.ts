@@ -42,7 +42,7 @@ router.get('/medecins' , asyncHandler(medecinControleur.listAllMedecins));
 
 /**
  * @swagger
- * /api/medecins/{id}:
+ * /api/medecin/{id}:
  *   get:
  *     summary: Récupérer un médecin par ID
  *     description: Retourne les détails d'un médecin spécifique
@@ -69,7 +69,7 @@ router.get('/medecin/:id' , isloggedOn , asyncHandler(medecinControleur.listMede
 
 /**
  * @swagger
- * /api/medecins:
+ * /api/medecin:
  *   post:
  *     summary: Créer un nouveau médecin
  *     security:
@@ -112,7 +112,7 @@ router.post('/medecin' , isloggedOn , asyncHandler(medecinControleur.createMedec
 
 /**
  * @swagger
- * /api/medecins/{id}:
+ * /api/medecin/{id}:
  *   put:
  *     summary: Modifier un médecin
  *     security:
@@ -157,7 +157,7 @@ router.put('/medecin/:id' , isloggedOn , asyncHandler(medecinControleur.updateMe
 
 /**
  * @swagger
- * /api/medecins/{id}:
+ * /api/medecin/{id}:
  *   delete:
  *     summary: Supprimer un médecin
  *     security:

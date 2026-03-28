@@ -201,6 +201,7 @@ export function deleteVisiteurByID (id: number) {
 };
 
 // login : authentifie un visiteur avec login et mot de passe, retourne un token JWT
+// Hashe les mots de passe en clair lors de la connexion
 export async function login(login: string, mdp: string): Promise<string> {
     // Chercher le visiteur par login
     const visiteur = await prisma.visiteur.findUnique({
@@ -211,8 +212,28 @@ export async function login(login: string, mdp: string): Promise<string> {
         throw new UnauthorizedError('Login ou mot de passe incorrect');
     }
 
-    // Vérifier le mot de passe
-    const isPasswordValid = await comparePassword(mdp, visiteur.mdp);
+    // Vérifier si le mdp est déjà hashé (commence par $2a$, $2b$, ou $2y$)
+    const isBcrypt = /^\$2[aby]\$/.test(visiteur.mdp);
+    
+    let isPasswordValid = false;
+    
+    if (isBcrypt) {
+        // Mdp déjà hashé - utiliser bcrypt pour la comparaison
+        isPasswordValid = await comparePassword(mdp, visiteur.mdp);
+    } else {
+        // Mdp en clair - comparaison directe
+        isPasswordValid = mdp === visiteur.mdp;
+        
+        // Si le mdp correspond, le hasher et le sauvegarder pour sécuriser le compte
+        if (isPasswordValid) {
+            const hashedPassword = await hashPassword(mdp);
+            await prisma.visiteur.update({
+                where: { id: visiteur.id },
+                data: { mdp: hashedPassword }
+            });
+        }
+    }
+
     if (!isPasswordValid) {
         throw new UnauthorizedError('Mot de passe incorrect');
     }

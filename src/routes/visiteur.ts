@@ -43,6 +43,7 @@ const router = Router();
  *         description: Identifiants invalides
  */
 router.post('/visiteurs/login' , asyncHandler(visiteurControleur.login));
+
 /**
  * @swagger
  * /api/visiteurs/inscription:
@@ -72,8 +73,8 @@ router.post('/visiteurs/login' , asyncHandler(visiteurControleur.login));
  *                 type: string
  *               ville:
  *                 type: string
- *              dateembauche:
- *                type: string
+ *               dateembauche:
+ *                 type: string
  *             required:
  *               - login
  *               - mdp

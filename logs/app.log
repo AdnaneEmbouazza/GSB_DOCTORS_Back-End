@@ -34,3 +34,29 @@
 {"level":"info","message":"863 offres récupérées","timestamp":"2026-03-27 23:01:26"}
 {"level":"info","message":"1589 rapports récupérés","timestamp":"2026-03-27 23:01:47"}
 {"level":"error","message":"Erreur Serveur : [GET /api/visiteurs] 500 - \nInvalid `prisma.visiteur.findMany()` invocation in\n/app/src/services/visiteur.ts:10:28\n\n   7 \n   8 // getAllVisiteurs : renvoie une liste de tous les visiteurs\n   9 export function getAllVisiteurs() {\n→ 10     return prisma.visiteur.findMany(\nValue out of range for the type: The column `dateEmbauche` contained an invalid datetime value with either day or month set to zero.","timestamp":"2026-03-27 23:02:20"}
+{"level":"info","message":"Visiteur aribiA connecté","timestamp":"2026-03-28 01:34:08"}
+{"level":"info","message":"Visiteur aribiA connecté","timestamp":"2026-03-28 01:38:34"}
+{"level":"info","message":"20 familles récupérées","timestamp":"2026-03-28 01:38:57"}
+{"level":"info","message":"Famille AA récupérée","timestamp":"2026-03-28 01:39:18"}
+{"level":"info","message":"Famille AA mise à jour","timestamp":"2026-03-28 01:39:41"}
+{"level":"error","message":"Erreur Serveur : [DELETE /api/famille/AA] 500 - \nInvalid `prisma.famille.delete()` invocation in\n/app/src/services/famille.ts:39:27\n\n  36 \n  37 // deleteFamilleByID : supprime une famille en fonction de son ID\n  38 export function deleteFamilleByID (id: string): Promise<Famille> {\n→ 39     return prisma.famille.delete(\nForeign key constraint violated on the fields: (`idFamille`)","timestamp":"2026-03-28 01:40:33"}
+{"level":"info","message":"Nouvelle famille créée","timestamp":"2026-03-28 01:41:10"}
+{"level":"info","message":"1000 médecins récupérés","timestamp":"2026-03-28 01:41:23"}
+{"level":"info","message":"Médecin 5 récupéré","timestamp":"2026-03-28 01:41:48"}
+{"level":"info","message":"Médecin 5 mis à jour","timestamp":"2026-03-28 01:42:45"}
+{"level":"info","message":"Nouveau médecin créé","timestamp":"2026-03-28 01:44:27"}
+{"level":"info","message":"28 médicaments récupérés","timestamp":"2026-03-28 01:45:00"}
+{"level":"info","message":"Médicament 3MYC7 récupéré","timestamp":"2026-03-28 01:45:26"}
+{"level":"info","message":"Médicament 3MYC7 mis à jour","timestamp":"2026-03-28 01:45:53"}
+{"level":"info","message":"Médicament 3MYC7 mis à jour","timestamp":"2026-03-28 01:49:04"}
+{"level":"info","message":"Médicament 3MYC7 mis à jour","timestamp":"2026-03-28 01:50:18"}
+{"level":"info","message":"Médicament AMOPIL7 mis à jour","timestamp":"2026-03-28 01:50:38"}
+{"level":"info","message":"Visiteur dandre connecté","timestamp":"2026-03-28 01:52:12"}
+{"level":"info","message":"Médicament 3MYC7 mis à jour","timestamp":"2026-03-28 01:52:54"}
+{"level":"info","message":"Visiteur cbedos connecté","timestamp":"2026-03-28 01:56:08"}
+{"level":"info","message":"Visiteur aribiA connecté","timestamp":"2026-03-28 02:02:30"}
+{"level":"info","message":"Visiteur aribiA connecté","timestamp":"2026-03-28 02:16:41"}
+{"level":"info","message":"Visiteur dandre connecté","timestamp":"2026-03-28 02:19:09"}
+{"level":"info","message":"Visiteur cbedos connecté","timestamp":"2026-03-28 02:26:43"}
+{"level":"info","message":"Visiteur ltusseau connecté","timestamp":"2026-03-28 02:27:52"}
+{"level":"error","message":"[POST /api/medicament] UnauthorizedError: 401 - Token d'authentification manquant","timestamp":"2026-03-28 02:28:31"}

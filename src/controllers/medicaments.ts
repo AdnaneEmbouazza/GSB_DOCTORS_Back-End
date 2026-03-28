@@ -30,8 +30,8 @@ export async function createMedicament(req: Request, res: Response): Promise<voi
         throw new BadRequestError('Les données du médicament sont requises');
     }
 
-    if (!data.id || !data.nomCommercial || !data.idFamille || !data.composition || !data.effets || !data.contreIndications) {
-        throw new BadRequestError('Les champs id, nomCommercial, famille, composition effets et contre-indications sont requis');
+    if (!data.id || !data.nomcommercial || !data.idfamille || !data.composition || !data.effets || !data.contreindications) {
+        throw new BadRequestError('Les champs id, nomcommercial, famille, composition effets et contre-indications sont requis');
     }
     
     const newMedicament = await medicamentsServices.createMedicament(data);
