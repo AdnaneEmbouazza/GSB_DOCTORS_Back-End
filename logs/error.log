@@ -26,3 +26,4 @@
 {"level":"error","message":"[PUT /api/medicament/ADIMOL9] UnauthorizedError: 401 - Token expiré","timestamp":"2026-03-28 12:18:44"}
 {"level":"error","message":"[GET /api/familles] UnauthorizedError: 401 - Bad \"options.expiresIn\" option the payload already has an \"exp\" property.","timestamp":"2026-03-28 12:59:01"}
 {"level":"error","message":"[GET /api/familles] UnauthorizedError: 401 - Bad \"options.expiresIn\" option the payload already has an \"exp\" property.","timestamp":"2026-03-28 13:03:14"}
+{"level":"error","message":"[GET /api/famille/1] NotFoundError: 404 - Famille non trouvée","timestamp":"2026-03-28 13:11:20"}
