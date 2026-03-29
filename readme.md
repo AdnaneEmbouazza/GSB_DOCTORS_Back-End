@@ -15,7 +15,7 @@ API REST complète pour gérer les rapports de visite médicale des visiteurs, l
 
 ## 🔧 Prérequis
 
-- **Node.js** >= 16
+- **Node.js**
 - **npm** 
 - **Docker** et **Docker Compose** (recommandé pour la base de données)
 
@@ -71,19 +71,6 @@ Cette commande crée :
 - **adminer** : Interface web pour gérer la BDD
   - URL : `http://localhost:8080`
 
-### 3. Configuration locale (sans Docker)
-
-Si vous préférez MySQL en local :
-
-```bash
-# Créer la base de données
-mysql -h localhost -u root -p < script_sql/gsbrapports.sql
-
-# Installer les dépendances et lancer
-npm install
-npx prisma generate
-npm run dev
-```
 
 ## 🚀 Démarrage
 
@@ -103,19 +90,6 @@ L'application sera disponible sur :
 - 🌐 **API** : `http://localhost:3000`
 - 📚 **Swagger** : `http://localhost:3000/api-docs`
 - 🗄️ **Adminer** : `http://localhost:8080` (user: `ADN`, pass: `FeKl%KfF*Bp6J:p$:%NF`, db: `gsbrapports`)
-
-### Sans Docker (développement local)
-
-```bash
-# Installer les dépendances
-npm install
-
-# Générer le client Prisma
-npx prisma generate
-
-# Démarrer le serveur
-npm run dev
-```
 
 Le serveur démarre sur `http://localhost:3000` et la documentation Swagger sur `http://localhost:3000/api-docs`
 
@@ -166,7 +140,7 @@ L'application implémente un **contrôle d'accès basé sur l'utilisateur** (use
    - `getAllRapports()` - Toutes les données
    - `getRapportByID(id)` - Sans contrôle d'accès
    - `getAllOffre()` - Toutes les données
-   - Etc. *(Réservées pour l'accès admin futur)*
+   - Etc. *(Réservées pour un potentiel accès admin futur)*
 
 **Couche Contrôleur** :
 - Extraction du token JWT via `req.visiteur` (défini par le middleware `authHandler`)
@@ -175,7 +149,7 @@ L'application implémente un **contrôle d'accès basé sur l'utilisateur** (use
 
 **Couche Route** :
 - Middleware `isloggedOn` pour les routes protégées
-- Documentation Swagger avec mention explicite de la viscosité (ex: "**mes** rapports")
+- Documentation Swagger avec mention explicite de la viscosité (ex: "**vos** rapports")
 
 ### Contrôle d'accès par endpoint
 
@@ -186,7 +160,7 @@ L'application implémente un **contrôle d'accès basé sur l'utilisateur** (use
 | POST /api/rapports | Force son ID visiteur | Force son ID visiteur |
 | PUT /api/rapports/:id | Modifie ses rapports | Jette UnauthorizedError |
 | GET /api/offrir | Ses offres seulement | Ses offres seulement |
-| GET /api/medecins | Priorce la liste complète | Priorce la liste complète |
+| GET /api/medecins | affiche la liste complète | affiche la liste complète |
 
 ## 📡 Endpoints
 
@@ -228,7 +202,7 @@ L'application implémente un **contrôle d'accès basé sur l'utilisateur** (use
 - `PUT /api/rapports/:id` - Modifier un de ses rapports
 - `DELETE /api/rapports/:id` - Supprimer un de ses rapports
 
-**Routes originales (toutes les données)** - Conservées pour accès admin futur :
+**Routes originales (toutes les données)** - Conservées pour potentiel accès admin futur :
 - `getAllRapports()` - Tous les rapports
 - `getRapportByID()` - Détails (sans contrôle d'accès)
 - `createRapport()` - Créer (sans forcer visiteur)
@@ -245,7 +219,7 @@ L'application implémente un **contrôle d'accès basé sur l'utilisateur** (use
 - `PUT /api/offrir/:idRapport/:idMedicament` - Modifier une offre (vérification d'appartenance)
 - `DELETE /api/offrir/:idRapport/:idMedicament` - Supprimer une offre (vérification d'appartenance)
 
-**Routes originales (toutes les données)** - Conservées pour accès admin futur :
+**Routes originales (toutes les données)** - Conservées pour potentiel accès admin futur :
 - `getAllOffre()` - Toutes les offres
 - `getOffreByID()` - Détails (sans contrôle d'accès)
 - `createOffre()` - Créer
@@ -258,108 +232,6 @@ La documentation interactive est disponible via **Swagger UI** :
 
 ```
 http://localhost:3000/api-docs
-```
-
-### Cas d'usage courants
-
-#### 1. Authentification et gestion de compte
-
-```bash
-# Inscription
-POST /api/visiteurs/inscription
-{
-  "login": "john_doe",
-  "mdp": "SecurePassword123",
-  "nom": "Doe",
-  "prenom": "John"
-}
-
-# Connexion
-POST /api/visiteurs/login
-{
-  "login": "john_doe",
-  "mdp": "SecurePassword123"
-}
-# Retour: HttpOnly Cookie avec JWT automatiquement défini
-
-# Accès compte personnel
-GET /api/visiteurs/account
-# Récupère les infos de l'utilisateur connecté (via JWT du cookie)
-```
-
-#### 2. Consultation des rapports et filtrage par date
-
-```bash
-# Lister ses rapports
-GET /api/rapports
-# Retourne: Array de tous les rapports du visiteur connecté
-
-# Filtrer rapports du visiteur connecté par date
-GET /api/rapports/date?date=2024-01-15
-# Retourne: Array de rapports à cette date spécifique
-
-# Filtrer rapports d'un visiteur spécifique par date
-GET /api/rapports/date?date=2024-01-15&idvisiteur=5
-# Retourne: Array de rapports du visiteur 5 à cette date
-# Note: Nécessite authentification (JWT valide)
-```
-
-#### 3. Gestion des offres (médicaments offerts)
-
-```bash
-# Lister ses offres (médicaments dans ses rapports)
-GET /api/offrir
-# Retourne: Array d'offres du visiteur connecté
-
-# Détails d'une offre spécifique
-GET /api/offrir/123/MED001
-# idRapport=123, idMedicament=MED001
-# Throw UnauthorizedError si rapport n'appartient pas au visiteur
-
-# Créer une offre (ajouter un médicament à un rapport)
-POST /api/offrir
-{
-  "idrapport": 123,
-  "idmedicament": "MED001",
-  "quantite": 5
-}
-# Throw UnauthorizedError si le rapport 123 ne vous appartient pas
-
-# Modifier une offre
-PUT /api/offrir/123/MED001
-{
-  "quantite": 10
-}
-
-# Supprimer une offre
-DELETE /api/offrir/123/MED001
-```
-
-#### 4. Recherche de médecins
-
-```bash
-# Lister tous les médecins
-GET /api/medecins
-# Public - pas d'authentification requise
-
-# Chercher un médecin par nom
-GET /api/medecins/search?search=dupont
-# Retourne: Array de médecins dont nom/prenom contient "dupont"
-# Public - pas d'authentification requise
-
-# Détails d'un médecin avec rapports associés
-GET /api/medecins/42
-# Retourne:
-# {
-#   "id": 42,
-#   "nom": "Dupont",
-#   "prenom": "Marie",
-#   ...
-#   "rapport": [
-#     { "id": 1, "date": "2024-01-15", "motif": "...", "idvisiteur": 5, ... },
-#     { "id": 2, "date": "2024-01-20", "motif": "...", "idvisiteur": 7, ... }
-#   ]
-# }
 ```
 
 ## 🔐 Authentification
@@ -415,11 +287,6 @@ npx prisma migrate reset   # Réinitialiser DB (supprime les données)
 - Le fichier `script_sql/gsbrapports.sql` est copié dans `/docker-entrypoint-initdb.d/`
 - MySQL l'exécute automatiquement au premier démarrage du conteneur
 - Aucune action manuelle requise
-
-**Sans Docker** (local) :
-```bash
-mysql -h localhost -u root -p < script_sql/gsbrapports.sql
-```
 
 ### Script init-db.sh
 
@@ -519,7 +386,7 @@ npm run build    # Build
 npm start        # Production
 ```
 
-## 🚀 Déploiement en production
+## 🚀 Déploiement en pré-production
 
 ### Avec Docker Compose (recommandé)
 
