@@ -98,8 +98,10 @@ function displayRapports() {
     rapportsSection.style.display = 'block';
 }
 
-function openCreateRapportModal() {
-    if (!visiteurData) {
+async function openCreateRapportModal() {
+    // Vérifier l'authentification avant d'ouvrir la modale
+    const isAuthenticated = await checkAuthStatus();
+    if (!isAuthenticated) {
         alert('Vous devez être connecté pour créer un rapport');
         return;
     }

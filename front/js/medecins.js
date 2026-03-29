@@ -40,6 +40,8 @@ let allMedecins = [];
 let currentPage = 1;
 let totalPages = 1;
 let isUserAuthenticated = false;
+let isSearching = false;
+let searchResults = [];
 
 // Éléments DOM
 const medecinsList = document.getElementById('medecins-list');
@@ -50,6 +52,8 @@ const lastBtn = document.getElementById('last-btn');
 const pageInfo = document.getElementById('page-info');
 const loadingDiv = document.getElementById('loading');
 const errorDiv = document.getElementById('error');
+const searchInput = document.getElementById('search-input');
+const clearSearchBtn = document.getElementById('clear-search-btn');
 
 /**
  * Charge tous les médecins depuis l'API
@@ -84,12 +88,15 @@ async function loadMedecins() {
  * Affiche la page courante
  */
 function displayPage() {
+    // Choisir les données à afficher (recherche ou liste complète)
+    const dataToDisplay = isSearching ? searchResults : allMedecins;
+    
     // Calculer les indices
     const startIndex = (currentPage - 1) * MEDECINS_PAR_PAGE;
     const endIndex = startIndex + MEDECINS_PAR_PAGE;
     
     // Récupérer les médecins de cette page
-    const medecinsDeLaPage = allMedecins.slice(startIndex, endIndex);
+    const medecinsDeLaPage = dataToDisplay.slice(startIndex, endIndex);
     
     // Vider et remplir la liste
     medecinsList.innerHTML = '';
@@ -200,14 +207,85 @@ function handleLastPage() {
 }
 
 /**
+ * Recherche des médecins par nom/prénom
+ */
+async function searchMedecins(searchTerm) {
+    if (!searchTerm.trim()) {
+        // Si le champ est vide, retourner à la liste complète
+        isSearching = false;
+        searchResults = [];
+        clearSearchBtn.style.display = 'none';
+        currentPage = 1;
+        displayPage();
+        return;
+    }
+
+    try {
+        loadingDiv.style.display = 'block';
+        errorDiv.style.display = 'none';
+
+        const response = await fetch(`http://localhost:3000/api/medecins/search?search=${encodeURIComponent(searchTerm)}`);
+        
+        if (!response.ok) {
+            throw new Error('Erreur lors de la recherche');
+        }
+
+        searchResults = await response.json();
+        isSearching = true;
+        clearSearchBtn.style.display = 'block';
+        
+        // Réinitialiser la pagination et afficher les résultats
+        currentPage = 1;
+        totalPages = Math.ceil(searchResults.length / MEDECINS_PAR_PAGE);
+        displayPage();
+        
+        loadingDiv.style.display = 'none';
+    } catch (error) {
+        loadingDiv.style.display = 'none';
+        errorDiv.style.display = 'block';
+        errorDiv.textContent = `Erreur lors de la recherche: ${error.message}`;
+        console.error(error);
+    }
+}
+
+/**
+ * Gère les changements du champ de recherche
+ */
+function handleSearchInput(e) {
+    const searchTerm = e.target.value.trim();
+    searchMedecins(searchTerm);
+}
+
+/**
+ * Réinitialise la recherche
+ */
+function handleClearSearch() {
+    searchInput.value = '';
+    isSearching = false;
+    searchResults = [];
+    clearSearchBtn.style.display = 'none';
+    currentPage = 1;
+    totalPages = Math.ceil(allMedecins.length / MEDECINS_PAR_PAGE);
+    displayPage();
+}
+
+/**
+ * Affiche la page courante (modifiée pour gérer les résultats de recherche)
+ */
+
+/**
  * Initialise l'application
  */
 function init() {
-    // Ajouter les event listeners
+    // Ajouter les event listeners de pagination
     firstBtn.addEventListener('click', handleFirstPage);
     prevBtn.addEventListener('click', handlePrevPage);
     nextBtn.addEventListener('click', handleNextPage);
     lastBtn.addEventListener('click', handleLastPage);
+    
+    // Ajouter les event listeners de recherche
+    searchInput.addEventListener('input', handleSearchInput);
+    clearSearchBtn.addEventListener('click', handleClearSearch);
     
     // Charger les médecins
     loadMedecins();

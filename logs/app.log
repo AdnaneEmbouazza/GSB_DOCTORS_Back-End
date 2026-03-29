@@ -658,3 +658,208 @@
 {"level":"info","message":"Visiteur 1 récupéré (depuis le token)","timestamp":"2026-03-29 21:03:35"}
 {"level":"info","message":"Visiteur 1 récupéré (depuis le token)","timestamp":"2026-03-29 21:03:35"}
 {"level":"info","message":"Médecin 18 récupéré","timestamp":"2026-03-29 21:03:35"}
+{"level":"info","message":"Visiteur 1 récupéré (depuis le token)","timestamp":"2026-03-29 21:04:56"}
+{"level":"info","message":"Visiteur 1 récupéré (depuis le token)","timestamp":"2026-03-29 21:04:56"}
+{"level":"info","message":"Médecin 18 récupéré","timestamp":"2026-03-29 21:04:56"}
+{"level":"info","message":"Visiteur 1 récupéré (depuis le token)","timestamp":"2026-03-29 21:04:59"}
+{"level":"info","message":"Visiteur 1 récupéré (depuis le token)","timestamp":"2026-03-29 21:04:59"}
+{"level":"info","message":"Visiteur 1 récupéré (depuis le token)","timestamp":"2026-03-29 21:05:05"}
+{"level":"info","message":"Visiteur 1 récupéré (depuis le token)","timestamp":"2026-03-29 21:05:05"}
+{"level":"info","message":"1000 médecins récupérés","timestamp":"2026-03-29 21:05:05"}
+{"level":"info","message":"Visiteur 1 récupéré (depuis le token)","timestamp":"2026-03-29 21:05:08"}
+{"level":"info","message":"Visiteur 1 récupéré (depuis le token)","timestamp":"2026-03-29 21:05:08"}
+{"level":"info","message":"Médecin 2 récupéré","timestamp":"2026-03-29 21:05:08"}
+{"level":"info","message":"Visiteur 1 récupéré (depuis le token)","timestamp":"2026-03-29 21:05:12"}
+{"level":"info","message":"Visiteur 1 récupéré (depuis le token)","timestamp":"2026-03-29 21:05:12"}
+{"level":"info","message":"1000 médecins récupérés","timestamp":"2026-03-29 21:05:12"}
+{"level":"info","message":"Utilisateur déconnecté","timestamp":"2026-03-29 21:05:23"}
+{"level":"error","message":"[GET /api/visiteurs/account] UnauthorizedError: 401 - Token d'authentification manquant","timestamp":"2026-03-29 21:05:23"}
+{"level":"error","message":"[GET /api/visiteurs/account] UnauthorizedError: 401 - Token d'authentification manquant","timestamp":"2026-03-29 21:05:23"}
+{"level":"error","message":"[GET /api/visiteurs/account] UnauthorizedError: 401 - Token d'authentification manquant","timestamp":"2026-03-29 21:05:23"}
+{"level":"info","message":"1000 médecins récupérés","timestamp":"2026-03-29 21:05:23"}
+{"level":"error","message":"[GET /api/visiteurs/account] UnauthorizedError: 401 - Token d'authentification manquant","timestamp":"2026-03-29 21:05:24"}
+{"level":"info","message":"Visiteur aribiA connecté","timestamp":"2026-03-29 21:05:28"}
+{"level":"info","message":"Visiteur 1 récupéré (depuis le token)","timestamp":"2026-03-29 21:05:29"}
+{"level":"info","message":"Visiteur 1 récupéré (depuis le token)","timestamp":"2026-03-29 21:05:29"}
+{"level":"info","message":"1000 médecins récupérés","timestamp":"2026-03-29 21:05:29"}
+{"level":"info","message":"Visiteur 1 récupéré (depuis le token)","timestamp":"2026-03-29 21:05:31"}
+{"level":"info","message":"Visiteur 1 récupéré (depuis le token)","timestamp":"2026-03-29 21:05:31"}
+{"level":"info","message":"Médecin 3 récupéré","timestamp":"2026-03-29 21:05:31"}
+{"level":"info","message":"Utilisateur déconnecté","timestamp":"2026-03-29 21:05:35"}
+{"level":"error","message":"[GET /api/visiteurs/account] UnauthorizedError: 401 - Token d'authentification manquant","timestamp":"2026-03-29 21:05:35"}
+{"level":"error","message":"[GET /api/visiteurs/account] UnauthorizedError: 401 - Token d'authentification manquant","timestamp":"2026-03-29 21:05:35"}
+{"level":"error","message":"[GET /api/visiteurs/account] UnauthorizedError: 401 - Token d'authentification manquant","timestamp":"2026-03-29 21:05:35"}
+{"level":"info","message":"1000 médecins récupérés","timestamp":"2026-03-29 21:05:35"}
+{"level":"error","message":"[GET /api/visiteurs/account] UnauthorizedError: 401 - Token d'authentification manquant","timestamp":"2026-03-29 21:05:36"}
+{"level":"error","message":"[GET /api/visiteurs/account] UnauthorizedError: 401 - Token d'authentification manquant","timestamp":"2026-03-29 21:05:43"}
+{"level":"error","message":"[GET /api/visiteurs/account] UnauthorizedError: 401 - Token d'authentification manquant","timestamp":"2026-03-29 21:05:43"}
+{"level":"info","message":"1000 médecins récupérés","timestamp":"2026-03-29 21:05:43"}
+{"level":"error","message":"[GET /api/visiteurs/account] UnauthorizedError: 401 - Token d'authentification manquant","timestamp":"2026-03-29 21:05:56"}
+{"level":"info","message":"Visiteur cbedos connecté","timestamp":"2026-03-29 21:06:04"}
+{"level":"info","message":"Visiteur 3 récupéré (depuis le token)","timestamp":"2026-03-29 21:06:06"}
+{"level":"info","message":"Visiteur 3 récupéré (depuis le token)","timestamp":"2026-03-29 21:06:06"}
+{"level":"info","message":"1000 médecins récupérés","timestamp":"2026-03-29 21:06:06"}
+{"level":"info","message":"Visiteur 3 récupéré (depuis le token)","timestamp":"2026-03-29 21:06:09"}
+{"level":"info","message":"Visiteur 3 récupéré (depuis le token)","timestamp":"2026-03-29 21:06:09"}
+{"level":"info","message":"Médecin 2 récupéré","timestamp":"2026-03-29 21:06:09"}
+{"level":"info","message":"Visiteur 3 récupéré (depuis le token)","timestamp":"2026-03-29 21:06:13"}
+{"level":"info","message":"Visiteur 3 récupéré (depuis le token)","timestamp":"2026-03-29 21:06:13"}
+{"level":"info","message":"1000 médecins récupérés","timestamp":"2026-03-29 21:06:13"}
+{"level":"info","message":"Visiteur 3 récupéré (depuis le token)","timestamp":"2026-03-29 21:06:14"}
+{"level":"info","message":"Visiteur 3 récupéré (depuis le token)","timestamp":"2026-03-29 21:06:14"}
+{"level":"info","message":"Médecin 3 récupéré","timestamp":"2026-03-29 21:06:14"}
+{"level":"info","message":"Visiteur 3 récupéré (depuis le token)","timestamp":"2026-03-29 21:14:02"}
+{"level":"info","message":"Visiteur 3 récupéré (depuis le token)","timestamp":"2026-03-29 21:14:02"}
+{"level":"info","message":"Médecin 3 récupéré","timestamp":"2026-03-29 21:14:02"}
+{"level":"info","message":"Visiteur 3 récupéré (depuis le token)","timestamp":"2026-03-29 21:14:04"}
+{"level":"info","message":"Visiteur 3 récupéré (depuis le token)","timestamp":"2026-03-29 21:17:07"}
+{"level":"info","message":"Visiteur 3 récupéré (depuis le token)","timestamp":"2026-03-29 21:17:07"}
+{"level":"info","message":"Médecin 3 récupéré","timestamp":"2026-03-29 21:17:07"}
+{"level":"info","message":"Visiteur 3 récupéré (depuis le token)","timestamp":"2026-03-29 21:20:08"}
+{"level":"info","message":"Nouveau rapport créé pour le visiteur 3","timestamp":"2026-03-29 21:20:24"}
+{"level":"info","message":"Visiteur 3 récupéré (depuis le token)","timestamp":"2026-03-29 21:20:25"}
+{"level":"info","message":"Médecin 3 récupéré","timestamp":"2026-03-29 21:20:25"}
+{"level":"info","message":"Visiteur 3 récupéré (depuis le token)","timestamp":"2026-03-29 21:20:38"}
+{"level":"info","message":"Visiteur 3 récupéré (depuis le token)","timestamp":"2026-03-29 21:20:38"}
+{"level":"info","message":"1000 médecins récupérés","timestamp":"2026-03-29 21:20:38"}
+{"level":"info","message":"Visiteur 3 récupéré (depuis le token)","timestamp":"2026-03-29 21:22:26"}
+{"level":"info","message":"Visiteur 3 récupéré (depuis le token)","timestamp":"2026-03-29 21:22:26"}
+{"level":"info","message":"Médecin 8 récupéré","timestamp":"2026-03-29 21:22:26"}
+{"level":"info","message":"Visiteur 3 récupéré (depuis le token)","timestamp":"2026-03-29 21:22:28"}
+{"level":"info","message":"Visiteur 3 récupéré (depuis le token)","timestamp":"2026-03-29 21:27:42"}
+{"level":"info","message":"Visiteur 3 récupéré (depuis le token)","timestamp":"2026-03-29 21:27:42"}
+{"level":"info","message":"Médecin 8 récupéré","timestamp":"2026-03-29 21:27:42"}
+{"level":"info","message":"Utilisateur déconnecté","timestamp":"2026-03-29 21:27:47"}
+{"level":"error","message":"[GET /api/visiteurs/account] UnauthorizedError: 401 - Token d'authentification manquant","timestamp":"2026-03-29 21:27:47"}
+{"level":"error","message":"[GET /api/visiteurs/account] UnauthorizedError: 401 - Token d'authentification manquant","timestamp":"2026-03-29 21:27:47"}
+{"level":"error","message":"[GET /api/visiteurs/account] UnauthorizedError: 401 - Token d'authentification manquant","timestamp":"2026-03-29 21:27:47"}
+{"level":"info","message":"1000 médecins récupérés","timestamp":"2026-03-29 21:27:47"}
+{"level":"error","message":"[GET /api/visiteurs/account] UnauthorizedError: 401 - Token d'authentification manquant","timestamp":"2026-03-29 21:27:48"}
+{"level":"info","message":"Visiteur aribiA connecté","timestamp":"2026-03-29 21:27:57"}
+{"level":"info","message":"Visiteur 1 récupéré (depuis le token)","timestamp":"2026-03-29 21:28:01"}
+{"level":"info","message":"Visiteur 1 récupéré (depuis le token)","timestamp":"2026-03-29 21:28:01"}
+{"level":"info","message":"1000 médecins récupérés","timestamp":"2026-03-29 21:28:01"}
+{"level":"info","message":"Visiteur 1 récupéré (depuis le token)","timestamp":"2026-03-29 21:29:05"}
+{"level":"info","message":"Visiteur 1 récupéré (depuis le token)","timestamp":"2026-03-29 21:29:05"}
+{"level":"info","message":"Médecin 3 récupéré","timestamp":"2026-03-29 21:29:05"}
+{"level":"info","message":"Visiteur 1 récupéré (depuis le token)","timestamp":"2026-03-29 21:29:31"}
+{"level":"info","message":"Visiteur 1 récupéré (depuis le token)","timestamp":"2026-03-29 21:29:31"}
+{"level":"info","message":"Visiteur 1 récupéré (depuis le token)","timestamp":"2026-03-29 21:30:18"}
+{"level":"info","message":"Visiteur 1 récupéré (depuis le token)","timestamp":"2026-03-29 21:30:18"}
+{"level":"info","message":"1000 médecins récupérés","timestamp":"2026-03-29 21:30:18"}
+{"level":"info","message":"Visiteur 1 récupéré (depuis le token)","timestamp":"2026-03-29 21:30:19"}
+{"level":"info","message":"Visiteur 1 récupéré (depuis le token)","timestamp":"2026-03-29 21:30:19"}
+{"level":"info","message":"Médecin 2 récupéré","timestamp":"2026-03-29 21:30:19"}
+{"level":"info","message":"Visiteur 1 récupéré (depuis le token)","timestamp":"2026-03-29 21:30:21"}
+{"level":"info","message":"Visiteur 1 récupéré (depuis le token)","timestamp":"2026-03-29 21:30:21"}
+{"level":"info","message":"1000 médecins récupérés","timestamp":"2026-03-29 21:30:21"}
+{"level":"info","message":"Visiteur 1 récupéré (depuis le token)","timestamp":"2026-03-29 21:30:30"}
+{"level":"info","message":"Visiteur 1 récupéré (depuis le token)","timestamp":"2026-03-29 21:30:30"}
+{"level":"info","message":"Médecin 4 récupéré","timestamp":"2026-03-29 21:30:30"}
+{"level":"info","message":"Visiteur 1 récupéré (depuis le token)","timestamp":"2026-03-29 21:30:32"}
+{"level":"info","message":"Visiteur 1 récupéré (depuis le token)","timestamp":"2026-03-29 21:30:51"}
+{"level":"info","message":"Visiteur 1 récupéré (depuis le token)","timestamp":"2026-03-29 21:30:52"}
+{"level":"info","message":"1000 médecins récupérés","timestamp":"2026-03-29 21:30:52"}
+{"level":"info","message":"Visiteur 1 récupéré (depuis le token)","timestamp":"2026-03-29 21:30:55"}
+{"level":"info","message":"Visiteur 1 récupéré (depuis le token)","timestamp":"2026-03-29 21:30:55"}
+{"level":"info","message":"Médecin 4 récupéré","timestamp":"2026-03-29 21:30:55"}
+{"level":"error","message":"[GET /api/visiteurs/account] UnauthorizedError: 401 - Token d'authentification manquant","timestamp":"2026-03-29 21:56:43"}
+{"level":"error","message":"[GET /api/visiteurs/account] UnauthorizedError: 401 - Token d'authentification manquant","timestamp":"2026-03-29 21:56:43"}
+{"level":"error","message":"[GET /api/medecin/4] UnauthorizedError: 401 - Token d'authentification manquant","timestamp":"2026-03-29 21:56:43"}
+{"level":"error","message":"[GET /api/visiteurs/account] UnauthorizedError: 401 - Token d'authentification manquant","timestamp":"2026-03-29 21:56:46"}
+{"level":"info","message":"Visiteur aribiA connecté","timestamp":"2026-03-29 21:56:50"}
+{"level":"info","message":"Visiteur 1 récupéré (depuis le token)","timestamp":"2026-03-29 21:56:51"}
+{"level":"info","message":"Visiteur 1 récupéré (depuis le token)","timestamp":"2026-03-29 21:56:51"}
+{"level":"info","message":"1000 médecins récupérés","timestamp":"2026-03-29 21:56:51"}
+{"level":"info","message":"Visiteur 1 récupéré (depuis le token)","timestamp":"2026-03-29 21:56:53"}
+{"level":"info","message":"Visiteur 1 récupéré (depuis le token)","timestamp":"2026-03-29 21:56:53"}
+{"level":"info","message":"Médecin 2 récupéré","timestamp":"2026-03-29 21:56:53"}
+{"level":"info","message":"Visiteur 1 récupéré (depuis le token)","timestamp":"2026-03-29 21:56:54"}
+{"level":"info","message":"Visiteur 1 récupéré (depuis le token)","timestamp":"2026-03-29 21:56:58"}
+{"level":"info","message":"Visiteur 1 récupéré (depuis le token)","timestamp":"2026-03-29 21:56:58"}
+{"level":"info","message":"1000 médecins récupérés","timestamp":"2026-03-29 21:56:58"}
+{"level":"info","message":"Recherche effectuée pour: \"c\" - 377 résultats trouvés","timestamp":"2026-03-29 21:57:00"}
+{"level":"info","message":"Recherche effectuée pour: \"ca\" - 107 résultats trouvés","timestamp":"2026-03-29 21:57:01"}
+{"level":"info","message":"Recherche effectuée pour: \"cam\" - 14 résultats trouvés","timestamp":"2026-03-29 21:57:01"}
+{"level":"info","message":"Recherche effectuée pour: \"cami\" - 11 résultats trouvés","timestamp":"2026-03-29 21:57:01"}
+{"level":"info","message":"Recherche effectuée pour: \"camil\" - 11 résultats trouvés","timestamp":"2026-03-29 21:57:01"}
+{"level":"info","message":"Recherche effectuée pour: \"camill\" - 11 résultats trouvés","timestamp":"2026-03-29 21:57:01"}
+{"level":"info","message":"Recherche effectuée pour: \"camille\" - 11 résultats trouvés","timestamp":"2026-03-29 21:57:01"}
+{"level":"info","message":"Recherche effectuée pour: \"a\" - 888 résultats trouvés","timestamp":"2026-03-29 21:57:17"}
+{"level":"info","message":"Recherche effectuée pour: \"al\" - 151 résultats trouvés","timestamp":"2026-03-29 21:57:17"}
+{"level":"info","message":"Recherche effectuée pour: \"ali\" - 72 résultats trouvés","timestamp":"2026-03-29 21:57:17"}
+{"level":"info","message":"Recherche effectuée pour: \"alic\" - 15 résultats trouvés","timestamp":"2026-03-29 21:57:17"}
+{"level":"info","message":"Recherche effectuée pour: \"alice\" - 15 résultats trouvés","timestamp":"2026-03-29 21:57:17"}
+{"level":"info","message":"Recherche effectuée pour: \"m\" - 370 résultats trouvés","timestamp":"2026-03-29 21:57:23"}
+{"level":"info","message":"Recherche effectuée pour: \"mo\" - 64 résultats trouvés","timestamp":"2026-03-29 21:57:23"}
+{"level":"info","message":"Recherche effectuée pour: \"moh\" - 9 résultats trouvés","timestamp":"2026-03-29 21:57:23"}
+{"level":"info","message":"Recherche effectuée pour: \"moha\" - 9 résultats trouvés","timestamp":"2026-03-29 21:57:23"}
+{"level":"info","message":"Recherche effectuée pour: \"moham\" - 9 résultats trouvés","timestamp":"2026-03-29 21:57:23"}
+{"level":"info","message":"Recherche effectuée pour: \"mohame\" - 1 résultats trouvés","timestamp":"2026-03-29 21:57:23"}
+{"level":"info","message":"Recherche effectuée pour: \"mohamed\" - 1 résultats trouvés","timestamp":"2026-03-29 21:57:24"}
+{"level":"info","message":"Recherche effectuée pour: \"mohame\" - 1 résultats trouvés","timestamp":"2026-03-29 21:57:25"}
+{"level":"info","message":"Recherche effectuée pour: \"moham\" - 9 résultats trouvés","timestamp":"2026-03-29 21:57:25"}
+{"level":"info","message":"Recherche effectuée pour: \"mohame\" - 1 résultats trouvés","timestamp":"2026-03-29 21:57:26"}
+{"level":"info","message":"Recherche effectuée pour: \"mohamed\" - 1 résultats trouvés","timestamp":"2026-03-29 21:57:26"}
+{"level":"info","message":"Visiteur 1 récupéré (depuis le token)","timestamp":"2026-03-29 21:57:31"}
+{"level":"info","message":"Visiteur 1 récupéré (depuis le token)","timestamp":"2026-03-29 21:57:31"}
+{"level":"info","message":"Médecin 307 récupéré","timestamp":"2026-03-29 21:57:31"}
+{"level":"info","message":"Recherche effectuée pour: \"c\" - 377 résultats trouvés","timestamp":"2026-03-29 21:59:04"}
+{"level":"info","message":"Recherche effectuée pour: \"ca\" - 107 résultats trouvés","timestamp":"2026-03-29 21:59:04"}
+{"level":"info","message":"Recherche effectuée pour: \"car\" - 31 résultats trouvés","timestamp":"2026-03-29 21:59:05"}
+{"level":"info","message":"Recherche effectuée pour: \"caro\" - 12 résultats trouvés","timestamp":"2026-03-29 21:59:05"}
+{"level":"info","message":"Recherche effectuée pour: \"carol\" - 12 résultats trouvés","timestamp":"2026-03-29 21:59:05"}
+{"level":"info","message":"Recherche effectuée pour: \"carole\" - 12 résultats trouvés","timestamp":"2026-03-29 21:59:05"}
+{"level":"info","message":"Recherche effectuée pour: \"carole\" - 12 résultats trouvés","timestamp":"2026-03-29 21:59:08"}
+{"level":"info","message":"Recherche effectuée pour: \"carole s\" - 0 résultats trouvés","timestamp":"2026-03-29 21:59:08"}
+{"level":"info","message":"Recherche effectuée pour: \"carole sa\" - 0 résultats trouvés","timestamp":"2026-03-29 21:59:08"}
+{"level":"info","message":"Recherche effectuée pour: \"carole sai\" - 0 résultats trouvés","timestamp":"2026-03-29 21:59:08"}
+{"level":"info","message":"Recherche effectuée pour: \"carole said\" - 0 résultats trouvés","timestamp":"2026-03-29 21:59:08"}
+{"level":"info","message":"Recherche effectuée pour: \"carole saidf\" - 0 résultats trouvés","timestamp":"2026-03-29 21:59:08"}
+{"level":"info","message":"Recherche effectuée pour: \"carole said\" - 0 résultats trouvés","timestamp":"2026-03-29 21:59:09"}
+{"level":"info","message":"Recherche effectuée pour: \"carole sai\" - 0 résultats trouvés","timestamp":"2026-03-29 21:59:10"}
+{"level":"info","message":"Recherche effectuée pour: \"carole sa\" - 0 résultats trouvés","timestamp":"2026-03-29 21:59:10"}
+{"level":"info","message":"Recherche effectuée pour: \"carole s\" - 0 résultats trouvés","timestamp":"2026-03-29 21:59:10"}
+{"level":"info","message":"Recherche effectuée pour: \"carole\" - 12 résultats trouvés","timestamp":"2026-03-29 21:59:11"}
+{"level":"info","message":"Recherche effectuée pour: \"carole s\" - 0 résultats trouvés","timestamp":"2026-03-29 21:59:17"}
+{"level":"info","message":"Recherche effectuée pour: \"carole\" - 12 résultats trouvés","timestamp":"2026-03-29 21:59:18"}
+{"level":"info","message":"Recherche effectuée pour: \"carole\" - 12 résultats trouvés","timestamp":"2026-03-29 21:59:20"}
+{"level":"info","message":"Recherche effectuée pour: \"carol\" - 12 résultats trouvés","timestamp":"2026-03-29 21:59:20"}
+{"level":"info","message":"Recherche effectuée pour: \"caro\" - 12 résultats trouvés","timestamp":"2026-03-29 21:59:20"}
+{"level":"info","message":"Recherche effectuée pour: \"car\" - 31 résultats trouvés","timestamp":"2026-03-29 21:59:20"}
+{"level":"info","message":"Recherche effectuée pour: \"ca\" - 107 résultats trouvés","timestamp":"2026-03-29 21:59:20"}
+{"level":"info","message":"Recherche effectuée pour: \"c\" - 377 résultats trouvés","timestamp":"2026-03-29 21:59:20"}
+{"level":"info","message":"Recherche effectuée pour: \"s\" - 410 résultats trouvés","timestamp":"2026-03-29 21:59:21"}
+{"level":"info","message":"Recherche effectuée pour: \"sa\" - 71 résultats trouvés","timestamp":"2026-03-29 21:59:21"}
+{"level":"info","message":"Recherche effectuée pour: \"sai\" - 2 résultats trouvés","timestamp":"2026-03-29 21:59:21"}
+{"level":"info","message":"Recherche effectuée pour: \"said\" - 2 résultats trouvés","timestamp":"2026-03-29 21:59:21"}
+{"level":"info","message":"Recherche effectuée pour: \"sai\" - 2 résultats trouvés","timestamp":"2026-03-29 21:59:23"}
+{"level":"info","message":"Recherche effectuée pour: \"sa\" - 71 résultats trouvés","timestamp":"2026-03-29 21:59:23"}
+{"level":"info","message":"Recherche effectuée pour: \"s\" - 410 résultats trouvés","timestamp":"2026-03-29 21:59:23"}
+{"level":"info","message":"Recherche effectuée pour: \"m\" - 370 résultats trouvés","timestamp":"2026-03-29 21:59:24"}
+{"level":"info","message":"Recherche effectuée pour: \"ma\" - 137 résultats trouvés","timestamp":"2026-03-29 21:59:24"}
+{"level":"info","message":"Recherche effectuée pour: \"mar\" - 66 résultats trouvés","timestamp":"2026-03-29 21:59:24"}
+{"level":"info","message":"Recherche effectuée pour: \"mart\" - 25 résultats trouvés","timestamp":"2026-03-29 21:59:25"}
+{"level":"info","message":"Recherche effectuée pour: \"marti\" - 22 résultats trouvés","timestamp":"2026-03-29 21:59:25"}
+{"level":"info","message":"Recherche effectuée pour: \"martin\" - 14 résultats trouvés","timestamp":"2026-03-29 21:59:25"}
+{"level":"info","message":"Recherche effectuée pour: \"martin\" - 14 résultats trouvés","timestamp":"2026-03-29 21:59:25"}
+{"level":"info","message":"Recherche effectuée pour: \"martin p\" - 0 résultats trouvés","timestamp":"2026-03-29 21:59:26"}
+{"level":"info","message":"Recherche effectuée pour: \"martin pr\" - 0 résultats trouvés","timestamp":"2026-03-29 21:59:26"}
+{"level":"info","message":"Recherche effectuée pour: \"martin pro\" - 0 résultats trouvés","timestamp":"2026-03-29 21:59:26"}
+{"level":"info","message":"Recherche effectuée pour: \"martin pros\" - 0 résultats trouvés","timestamp":"2026-03-29 21:59:27"}
+{"level":"info","message":"Recherche effectuée pour: \"martin prosp\" - 0 résultats trouvés","timestamp":"2026-03-29 21:59:27"}
+{"level":"info","message":"Recherche effectuée pour: \"martin prospe\" - 0 résultats trouvés","timestamp":"2026-03-29 21:59:27"}
+{"level":"info","message":"Recherche effectuée pour: \"martin prosper\" - 0 résultats trouvés","timestamp":"2026-03-29 21:59:27"}
+{"level":"info","message":"Recherche effectuée pour: \"martin prospe\" - 0 résultats trouvés","timestamp":"2026-03-29 21:59:28"}
+{"level":"info","message":"Recherche effectuée pour: \"martin prosp\" - 0 résultats trouvés","timestamp":"2026-03-29 21:59:28"}
+{"level":"info","message":"Recherche effectuée pour: \"martin pros\" - 0 résultats trouvés","timestamp":"2026-03-29 21:59:28"}
+{"level":"info","message":"Recherche effectuée pour: \"martin pro\" - 0 résultats trouvés","timestamp":"2026-03-29 21:59:28"}
+{"level":"info","message":"Recherche effectuée pour: \"martin pr\" - 0 résultats trouvés","timestamp":"2026-03-29 21:59:28"}
+{"level":"info","message":"Recherche effectuée pour: \"martin p\" - 0 résultats trouvés","timestamp":"2026-03-29 21:59:28"}
+{"level":"info","message":"Recherche effectuée pour: \"martin\" - 14 résultats trouvés","timestamp":"2026-03-29 21:59:28"}
+{"level":"info","message":"Recherche effectuée pour: \"martin\" - 14 résultats trouvés","timestamp":"2026-03-29 21:59:28"}
+{"level":"info","message":"Recherche effectuée pour: \"marti\" - 22 résultats trouvés","timestamp":"2026-03-29 21:59:28"}
+{"level":"info","message":"Recherche effectuée pour: \"mart\" - 25 résultats trouvés","timestamp":"2026-03-29 21:59:28"}
+{"level":"info","message":"Recherche effectuée pour: \"mar\" - 66 résultats trouvés","timestamp":"2026-03-29 21:59:28"}
+{"level":"info","message":"Recherche effectuée pour: \"ma\" - 137 résultats trouvés","timestamp":"2026-03-29 21:59:28"}
+{"level":"info","message":"Recherche effectuée pour: \"m\" - 370 résultats trouvés","timestamp":"2026-03-29 21:59:28"}

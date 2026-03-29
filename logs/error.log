@@ -96,3 +96,26 @@
 {"level":"error","message":"[POST /api/visiteurs/login] UnauthorizedError: 401 - Mot de passe incorrect","timestamp":"2026-03-29 20:20:17"}
 {"level":"error","message":"[POST /api/visiteurs/login] UnauthorizedError: 401 - Mot de passe incorrect","timestamp":"2026-03-29 20:20:18"}
 {"level":"error","message":"[POST /api/visiteurs/login] UnauthorizedError: 401 - Mot de passe incorrect","timestamp":"2026-03-29 20:20:21"}
+{"level":"error","message":"[GET /api/visiteurs/account] UnauthorizedError: 401 - Token d'authentification manquant","timestamp":"2026-03-29 21:03:20"}
+{"level":"error","message":"[GET /api/visiteurs/account] UnauthorizedError: 401 - Token d'authentification manquant","timestamp":"2026-03-29 21:03:20"}
+{"level":"error","message":"[GET /api/visiteurs/account] UnauthorizedError: 401 - Token d'authentification manquant","timestamp":"2026-03-29 21:03:20"}
+{"level":"error","message":"[GET /api/visiteurs/account] UnauthorizedError: 401 - Token d'authentification manquant","timestamp":"2026-03-29 21:03:24"}
+{"level":"error","message":"[GET /api/visiteurs/account] UnauthorizedError: 401 - Token d'authentification manquant","timestamp":"2026-03-29 21:05:23"}
+{"level":"error","message":"[GET /api/visiteurs/account] UnauthorizedError: 401 - Token d'authentification manquant","timestamp":"2026-03-29 21:05:23"}
+{"level":"error","message":"[GET /api/visiteurs/account] UnauthorizedError: 401 - Token d'authentification manquant","timestamp":"2026-03-29 21:05:23"}
+{"level":"error","message":"[GET /api/visiteurs/account] UnauthorizedError: 401 - Token d'authentification manquant","timestamp":"2026-03-29 21:05:24"}
+{"level":"error","message":"[GET /api/visiteurs/account] UnauthorizedError: 401 - Token d'authentification manquant","timestamp":"2026-03-29 21:05:35"}
+{"level":"error","message":"[GET /api/visiteurs/account] UnauthorizedError: 401 - Token d'authentification manquant","timestamp":"2026-03-29 21:05:35"}
+{"level":"error","message":"[GET /api/visiteurs/account] UnauthorizedError: 401 - Token d'authentification manquant","timestamp":"2026-03-29 21:05:35"}
+{"level":"error","message":"[GET /api/visiteurs/account] UnauthorizedError: 401 - Token d'authentification manquant","timestamp":"2026-03-29 21:05:36"}
+{"level":"error","message":"[GET /api/visiteurs/account] UnauthorizedError: 401 - Token d'authentification manquant","timestamp":"2026-03-29 21:05:43"}
+{"level":"error","message":"[GET /api/visiteurs/account] UnauthorizedError: 401 - Token d'authentification manquant","timestamp":"2026-03-29 21:05:43"}
+{"level":"error","message":"[GET /api/visiteurs/account] UnauthorizedError: 401 - Token d'authentification manquant","timestamp":"2026-03-29 21:05:56"}
+{"level":"error","message":"[GET /api/visiteurs/account] UnauthorizedError: 401 - Token d'authentification manquant","timestamp":"2026-03-29 21:27:47"}
+{"level":"error","message":"[GET /api/visiteurs/account] UnauthorizedError: 401 - Token d'authentification manquant","timestamp":"2026-03-29 21:27:47"}
+{"level":"error","message":"[GET /api/visiteurs/account] UnauthorizedError: 401 - Token d'authentification manquant","timestamp":"2026-03-29 21:27:47"}
+{"level":"error","message":"[GET /api/visiteurs/account] UnauthorizedError: 401 - Token d'authentification manquant","timestamp":"2026-03-29 21:27:48"}
+{"level":"error","message":"[GET /api/visiteurs/account] UnauthorizedError: 401 - Token d'authentification manquant","timestamp":"2026-03-29 21:56:43"}
+{"level":"error","message":"[GET /api/visiteurs/account] UnauthorizedError: 401 - Token d'authentification manquant","timestamp":"2026-03-29 21:56:43"}
+{"level":"error","message":"[GET /api/medecin/4] UnauthorizedError: 401 - Token d'authentification manquant","timestamp":"2026-03-29 21:56:43"}
+{"level":"error","message":"[GET /api/visiteurs/account] UnauthorizedError: 401 - Token d'authentification manquant","timestamp":"2026-03-29 21:56:46"}

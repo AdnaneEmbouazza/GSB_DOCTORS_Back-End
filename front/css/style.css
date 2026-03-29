@@ -118,6 +118,29 @@ main {
     color: #c62828;
 }
 
+.search-container {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 30px;
+    justify-content: center;
+}
+
+.search-input {
+    padding: 12px 16px;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+    font-size: 1em;
+    width: 100%;
+    max-width: 500px;
+    transition: border-color 0.2s ease;
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: #5488bd;
+    box-shadow: 0 0 0 3px rgba(84, 136, 189, 0.1);
+}
+
 .medecins-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
