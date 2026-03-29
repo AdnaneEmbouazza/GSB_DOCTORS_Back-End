@@ -46,6 +46,13 @@ export async function getRapportsByDate(req: Request, res: Response): Promise<vo
     }
     
     const rapports = await rapportService.getRapportsByVisiteurAndDate(visiteurId, date);
+    
+    if (rapports.length === 0) {
+        logger.info(`Aucun rapport trouvé pour le visiteur ${visiteurId} à la date ${date}`);
+        res.status(200).json([]);
+        return;
+    }
+    
     logger.info(`${rapports.length} rapports récupérés pour le visiteur ${visiteurId} à la date ${date}`);
     res.status(200).json(rapports);
 };

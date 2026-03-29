@@ -1,7 +1,7 @@
 import { Offrir } from '@prisma/client';
 import prisma from '../prisma';
 import { CreateOffrirDTO , UpdateOffrirDTO} from '../models/offrir';
-import { UnauthorizedError } from '../error';
+import { UnauthorizedError, BadRequestError } from '../error';
 import { TokenPayload } from '../utils/token';
 
 // Vérifier que le rapport appartient au visiteur
@@ -55,6 +55,12 @@ export async function createOffreByVisiteur(data: CreateOffrirDTO, visiteurId: n
     
     if (!belongsToVisiteur) {
         throw new UnauthorizedError('Vous ne pouvez créer une offre que pour vos propres rapports');
+    }
+
+    // Vérifier que l'offre n'existe pas déjà
+    const existingOffre = await getOffreByID(data.idrapport, data.idmedicament);
+    if (existingOffre) {
+        throw new BadRequestError(`Cette offre existe déjà pour ce rapport. Utilisez PUT pour mettre à jour la quantité.`);
     }
     
     return prisma.offrir.create({
@@ -125,7 +131,13 @@ export function getOffreByID (idrapport: number, idmedicament: string): Promise<
 };
 
 // createOffre : crée une nouvelle offre à partir des données fournies
-export function createOffre (data: CreateOffrirDTO): Promise<Offrir> {
+export async function createOffre (data: CreateOffrirDTO): Promise<Offrir> {
+    // Vérifier que l'offre n'existe pas déjà
+    const existingOffre = await getOffreByID(data.idrapport, data.idmedicament);
+    if (existingOffre) {
+        throw new BadRequestError(`Cette offre existe déjà pour ce rapport. Utilisez PUT pour mettre à jour la quantité.`);
+    }
+
     return prisma.offrir.create({
         data: {
             idrapport: data.idrapport,

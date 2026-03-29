@@ -176,3 +176,28 @@
 {"level":"info","message":"28 visiteurs récupérés","timestamp":"2026-03-28 13:32:04"}
 {"level":"info","message":"Utilisateur déconnecté","timestamp":"2026-03-28 13:33:17"}
 {"level":"error","message":"[GET /api/rapport/1] UnauthorizedError: 401 - Token d'authentification manquant","timestamp":"2026-03-28 16:15:27"}
+{"level":"info","message":"Visiteur aribiA connecté","timestamp":"2026-03-29 00:30:24"}
+{"level":"info","message":"20 familles récupérées","timestamp":"2026-03-29 00:30:54"}
+{"level":"info","message":"Famille AA récupérée","timestamp":"2026-03-29 00:31:01"}
+{"level":"info","message":"1000 médecins récupérés","timestamp":"2026-03-29 00:31:15"}
+{"level":"info","message":"Recherche effectuée pour: \"mo\" - 64 résultats trouvés","timestamp":"2026-03-29 00:32:12"}
+{"level":"info","message":"Médecin 584 récupéré","timestamp":"2026-03-29 00:32:33"}
+{"level":"info","message":"28 médicaments récupérés","timestamp":"2026-03-29 00:32:41"}
+{"level":"warn","message":"Tentative d'accès à un médicament inexistant : AA","timestamp":"2026-03-29 00:32:48"}
+{"level":"error","message":"[GET /api/medicament/AA] NotFoundError: 404 - Médicament non trouvé","timestamp":"2026-03-29 00:32:48"}
+{"level":"info","message":"Médicament 3MYC7 récupéré","timestamp":"2026-03-29 00:33:00"}
+{"level":"info","message":"54 offres récupérées pour le visiteur 1","timestamp":"2026-03-29 00:33:08"}
+{"level":"error","message":"Erreur Serveur : [POST /api/offrir] 500 - \nInvalid `prisma.offrir.create()` invocation in\n/app/src/services/offrir.ts:60:26\n\n  57     throw new UnauthorizedError('Vous ne pouvez créer une offre que pour vos propres rapports');\n  58 }\n  59 \n→ 60 return prisma.offrir.create(\nUnique constraint failed on the constraint: `PRIMARY`","timestamp":"2026-03-29 00:46:49"}
+{"level":"info","message":"Nouvelle offre créée pour le visiteur 1","timestamp":"2026-03-29 00:48:32"}
+{"level":"info","message":"55 offres récupérées pour le visiteur 1","timestamp":"2026-03-29 00:49:25"}
+{"level":"info","message":"Offre 4-CLAZER6 récupérée pour le visiteur 1","timestamp":"2026-03-29 00:52:09"}
+{"level":"error","message":"[GET /api/offrir/7/DOLRIL7] UnauthorizedError: 401 - Vous n'avez pas accès à cette offre","timestamp":"2026-03-29 00:52:43"}
+{"level":"info","message":"Offre 4-CLAZER6 mise à jour pour le visiteur 1","timestamp":"2026-03-29 00:53:11"}
+{"level":"info","message":"Offre 4-CLAZER6 supprimée pour le visiteur 1","timestamp":"2026-03-29 00:56:28"}
+{"level":"info","message":"54 offres récupérées pour le visiteur 1","timestamp":"2026-03-29 00:56:43"}
+{"level":"info","message":"97 rapports récupérés pour le visiteur 1","timestamp":"2026-03-29 00:57:20"}
+{"level":"info","message":"1 rapports récupérés pour le visiteur 13 à la date 2016-07-02","timestamp":"2026-03-29 01:00:40"}
+{"level":"info","message":"1 rapports récupérés pour le visiteur 5 à la date 2016-07-02","timestamp":"2026-03-29 01:00:46"}
+{"level":"info","message":"1 rapports récupérés pour le visiteur 9 à la date 2016-07-02","timestamp":"2026-03-29 01:00:53"}
+{"level":"info","message":"1 rapports récupérés pour le visiteur 1 à la date 2016-07-02","timestamp":"2026-03-29 01:01:00"}
+{"level":"info","message":"0 rapports récupérés pour le visiteur 19 à la date 2016-07-02","timestamp":"2026-03-29 01:01:17"}
