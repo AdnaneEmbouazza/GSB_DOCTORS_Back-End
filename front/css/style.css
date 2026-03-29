@@ -602,6 +602,37 @@ footer {
     padding-bottom: 10px;
 }
 
+.filter-container {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 25px;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 15px;
+    background: #f9f9f9;
+    border-radius: 6px;
+}
+
+.filter-container label {
+    font-weight: 600;
+    color: #333;
+    white-space: nowrap;
+}
+
+.filter-input {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 0.95em;
+    transition: border-color 0.2s ease;
+}
+
+.filter-input:focus {
+    outline: none;
+    border-color: #5488bd;
+    box-shadow: 0 0 0 3px rgba(84, 136, 189, 0.1);
+}
+
 .reports-list {
     overflow-x: auto;
 }

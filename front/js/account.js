@@ -2,6 +2,8 @@
 
 let visiteurData = null; // Stocker les données pour les utiliser ensuite
 let currentRapportId = null; // Stocker l'ID du rapport en cours de modification
+let filteredRapports = null; // Stocker les rapports filtrés par date
+let isFiltering = false; // Indiquer si on affiche des résultats filtrés
 
 async function loadAccountInfo() {
     const loading = document.getElementById('loading');
@@ -54,7 +56,10 @@ function displayReports() {
     const reportsList = document.getElementById('reports-list');
     const reportsSection = document.getElementById('reports-section');
     
-    if (!visiteurData || !visiteurData.rapport || visiteurData.rapport.length === 0) {
+    // Utiliser les rapports filtrés ou tous les rapports
+    const rapportsToDisplay = isFiltering && filteredRapports ? filteredRapports : (visiteurData?.rapport || []);
+    
+    if (rapportsToDisplay.length === 0) {
         reportsList.innerHTML = '<p style="text-align: center; color: #999;">Aucun rapport disponible</p>';
         reportsSection.style.display = 'block';
         return;
@@ -69,7 +74,7 @@ function displayReports() {
     html += '<th>Actions</th>';
     html += '</tr></thead><tbody>';
     
-    visiteurData.rapport.forEach(rapport => {
+    rapportsToDisplay.forEach(rapport => {
         const date = new Date(rapport.date);
         const formattedDate = date.toLocaleDateString('fr-FR');
         
@@ -194,12 +199,59 @@ async function deleteRapport(rapportId) {
         
         // Recharger les infos et rafraîchir l'affichage
         await loadAccountInfo();
+        clearDateFilter(); // Réinitialiser le filtre après suppression
         displayReports();
         
     } catch (err) {
         console.error('Erreur:', err);
         alert('Erreur: ' + err.message);
     }
+}
+
+/**
+ * Recherche les rapports du visiteur connecté pour une date spécifique
+ */
+async function searchRapportsByDate() {
+    const filterDate = document.getElementById('filter-date').value;
+    
+    if (!filterDate) {
+        alert('Veuillez sélectionner une date');
+        return;
+    }
+    
+    try {
+        const response = await fetch(`http://localhost:3000/api/rapports/date?date=${filterDate}`, {
+            method: 'GET',
+            credentials: 'include',
+            headers: { 'Content-Type': 'application/json' }
+        });
+        
+        if (!response.ok) {
+            const data = await response.json();
+            throw new Error(data.message || 'Erreur lors de la recherche');
+        }
+        
+        filteredRapports = await response.json();
+        isFiltering = true;
+        document.getElementById('clear-filter-btn').style.display = 'block';
+        
+        displayReports();
+        
+    } catch (err) {
+        console.error('Erreur:', err);
+        alert('Erreur: ' + err.message);
+    }
+}
+
+/**
+ * Réinitialise le filtre et affiche tous les rapports
+ */
+function clearDateFilter() {
+    filteredRapports = null;
+    isFiltering = false;
+    document.getElementById('filter-date').value = '';
+    document.getElementById('clear-filter-btn').style.display = 'none';
+    displayReports();
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -212,6 +264,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const modalCloseBtn = document.getElementById('modal-close-edit');
     const modalCancelBtn = document.getElementById('modal-cancel-edit');
     const editModal = document.getElementById('edit-rapport-modal');
+    const filterBtn = document.getElementById('filter-btn');
+    const clearFilterBtn = document.getElementById('clear-filter-btn');
     
     if (showReportsBtn) {
         showReportsBtn.addEventListener('click', displayReports);
@@ -225,6 +279,14 @@ document.addEventListener('DOMContentLoaded', () => {
     
     if (editForm) {
         editForm.addEventListener('submit', submitEditForm);
+    }
+    
+    if (filterBtn) {
+        filterBtn.addEventListener('click', searchRapportsByDate);
+    }
+    
+    if (clearFilterBtn) {
+        clearFilterBtn.addEventListener('click', clearDateFilter);
     }
     
     if (modalCloseBtn) {

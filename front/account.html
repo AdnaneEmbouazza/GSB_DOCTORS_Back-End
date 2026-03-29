@@ -86,6 +86,14 @@
                 <div id="reports-section" style="display: none;">
                     <div class="reports-card">
                         <h2>Mes Rapports</h2>
+                        
+                        <div class="filter-container">
+                            <label for="filter-date">Filtrer par date:</label>
+                            <input type="date" id="filter-date" class="filter-input">
+                            <button id="filter-btn" class="btn-secondary">Chercher</button>
+                            <button id="clear-filter-btn" class="btn-secondary" style="display: none;">Réinitialiser</button>
+                        </div>
+
                         <div id="reports-list" class="reports-list">
                             <!-- Les rapports seront affichés ici -->
                         </div>
