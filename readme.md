@@ -9,6 +9,7 @@ API REST complète pour gérer les rapports de visite médicale des visiteurs, l
 - [Configuration](#configuration)
 - [Démarrage](#démarrage)
 - [Architecture](#architecture)
+- [Schéma de la Base de Données](#schéma-de-la-base-de-données)
 - [Endpoints](#endpoints)
 - [Documentation API](#documentation-api)
 - [Authentification](#authentification)
@@ -112,10 +113,17 @@ GSB_DOCTORS_Back-End/
 │   └── schema.prisma      # Schéma de la base de données
 ├── logs/                  # Fichiers de logs
 ├── docker-compose.yml     # Configuration Docker Compose
+├── GSB_Doctors.loo        # Diagramme complet de l'application
 └── package.json
 ```
 
-## 🔒 Sécurité & Contrôle d'accès
+## � Schéma de la Base de Données
+
+### Vue d'ensemble des relations
+
+![Schéma MCD](MCD.jpg)
+
+## �🔒 Sécurité & Contrôle d'accès
 
 ### Modèle de sécurité
 
