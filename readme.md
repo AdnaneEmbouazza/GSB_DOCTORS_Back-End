@@ -35,7 +35,7 @@ npm install
 
 ### 1. Variables d'environnement
 
-Créer un fichier `.env` à la racine du projet (optionnel avec Docker Compose, qui gère les variables) :
+Créer un fichier `.env` à la racine du projet :
 
 ```env
 # Base de données
@@ -80,12 +80,16 @@ Cette commande crée :
 ```bash
 cd GSB_DOCTORS_Back-End
 
-# Démarrer tous les services (db, app, adminer)
+# Démarrer tous les services (db, app, adminer) - au premier lancement
 docker-compose up -d
 
 # Vérifier que tout est prêt
 docker-compose logs -f app
+
+# ⚠️ Après modification du code, utiliser --build
+docker-compose up -d --build
 ```
+(si la syntaxe "docker-compose" pose problème essayer les memes commandes en retirant le tiret entre les 2 mot : "docker compose")
 
 L'application sera disponible sur :
 - 🌐 **API** : `http://localhost:3000`
@@ -119,6 +123,7 @@ GSB_DOCTORS_Back-End/
 ## Diagramme des Use Case 
 
 ![Diagramme des UseCase](useCase.jpg)
+
 ## � Schéma de la Base de Données
 
 ### Vue d'ensemble des relations
@@ -336,7 +341,7 @@ adminer     # Interface web pour gérer la BDD
 
 ```bash
 # Démarrer tous les services en arrière-plan
-docker-compose up -d
+docker-compose up -d --build
 
 # Voir les logs en direct
 docker-compose logs -f           # tous les services
